@@ -1,1 +1,1 @@
-# Qu-n-l-h-i-ngh-
+# QuanLyHoiNghi
