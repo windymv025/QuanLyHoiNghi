@@ -2,10 +2,11 @@
 /* DBMS name:      Microsoft SQL Server 2016                    */
 /* Created on:     11/8/2020 3:35:55 PM                         */
 /*==============================================================*/
-
-CREATE DATABASE QLHN
+USE MASTER
 GO
-USE QLHN
+CREATE DATABASE DBQuanLyHoiNghi
+GO
+USE DBQuanLyHoiNghi
 GO
 
 if exists (select 1
