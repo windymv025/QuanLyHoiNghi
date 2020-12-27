@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QuanLyHoiNghi"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="MainWindow" Height="700" Width="1024">
+        Title="Hội nghị đã đăng ký" Height="700" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
