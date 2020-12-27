@@ -24,5 +24,12 @@ namespace QuanLyHoiNghi
         {
             InitializeComponent();
         }
+
+        private void hoiNghiDangKyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            HoiNghiDaDangKyWindow HNDDangKy = new HoiNghiDaDangKyWindow();
+            HNDDangKy.Show();
+            this.Close();
+        }
     }
 }
