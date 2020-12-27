@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuanLyHoiNghi
 {
     /// <summary>
-    /// Interaction logic for LoiXemHNDDKWindow.xaml
+    /// Interaction logic for LoiXemHNQLWindow.xaml
     /// </summary>
-    public partial class LoiXemHNDDKWindow : Window
+    public partial class LoiXemHNQLWindow : Window
     {
-        public LoiXemHNDDKWindow()
+        public LoiXemHNQLWindow()
         {
             InitializeComponent();
         }
@@ -31,10 +31,10 @@ namespace QuanLyHoiNghi
             this.Close();
         }
 
-        private void quanLyHoiNghiBtn_Click(object sender, RoutedEventArgs e)
-        { 
-            LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
-            LoiHNQL.Show();
+        private void hoiNghiDangKyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoiXemHNDDKWindow LoiHNDDangKy = new LoiXemHNDDKWindow();
+            LoiHNDDangKy.Show();
             this.Close();
         }
     }

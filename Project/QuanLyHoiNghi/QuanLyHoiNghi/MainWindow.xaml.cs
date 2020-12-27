@@ -27,8 +27,15 @@ namespace QuanLyHoiNghi
 
         private void hoiNghiDangKyBtn_Click(object sender, RoutedEventArgs e)
         {
-            LoiXemHNDDKWindow HNDDangKy = new LoiXemHNDDKWindow();
-            HNDDangKy.Show();
+            LoiXemHNDDKWindow LoiHNDDangKy = new LoiXemHNDDKWindow();
+            LoiHNDDangKy.Show();
+            this.Close();
+        }
+
+        private void quanLyHoiNghiBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
+            LoiHNQL.Show();
             this.Close();
         }
     }
