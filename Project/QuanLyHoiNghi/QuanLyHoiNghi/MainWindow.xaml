@@ -44,12 +44,13 @@
 					</StackPanel>
 					<Border  Grid.Row="1" Height="1" Background="Black" BorderBrush="Black" OpacityMask="Black" VerticalAlignment="Bottom" Grid.ColumnSpan="2" ></Border>
 
-					<!--Tìm kiếm-->
 					<Grid Grid.Row="2" Grid.ColumnSpan="2" >
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="*"/>
 							<ColumnDefinition Width="50"/>
 						</Grid.ColumnDefinitions>
+						<!--Tìm kiếm-->
+
 						<Grid  Name="timKiem_grid" Visibility="Collapsed" Margin="20,20,20,20">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="1.5*"/>
@@ -62,10 +63,10 @@
 
 
 							<Label Content="Tên hội nghị: " FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-							<TextBox x:Name="tenHoiNghiTextBox" VerticalAlignment="Center" Grid.Column="1" Width="auto" Height="40" Margin="10,0,0,0" FontSize="14"></TextBox>
+							<TextBox x:Name="tenHoiNghiTextBox" TextChanged="tenHoiNghiTextBox_TextChanged" VerticalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Width="auto" Height="40" Margin="10,0,0,0" Padding="5" FontWeight="Bold" FontSize="14"></TextBox>
 
 							<Label Grid.Column="2" Content="Địa điểm:" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-							<TextBox Grid.Column="3" x:Name="điaiemTextBox" Width="auto" Height="40" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBox>
+							<TextBox Grid.Column="3" x:Name="điaiemTextBox" VerticalContentAlignment="Center" Width="auto" Height="40" VerticalAlignment="Center" Margin="10,0,0,0" Padding="5" FontWeight="Bold" FontSize="14"></TextBox>
 
 							<Label Grid.Column="4" Content="Thời gian:" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
 
@@ -100,12 +101,13 @@
 							</ComboBox>
 						</Grid>
 
-						<Image Grid.Column="1" x:Name="timKiemBtn" Source="Assets/search.png" Margin="5,0,5,0"></Image>
+						<Image Grid.Column="1" x:Name="timKiemBtn" MouseDown="timKiemBtn_MouseDown"
+							   Source="Assets/search.png" Margin="5,0,5,0"></Image>
 					</Grid>
 
 					<!--Hội nghị-->
 					<StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="30,10,30,10">
-						<ListView>
+						<ListView x:Name="lvDanhSachHoiNghi">
 							<ListView.ItemTemplate>
 								<DataTemplate>
 									<StackPanel Orientation="Horizontal">

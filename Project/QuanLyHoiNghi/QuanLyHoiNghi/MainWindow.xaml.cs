@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyHoiNghi.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,42 @@ namespace QuanLyHoiNghi
     /// </summary>
     public partial class MainWindow : Window
     {
+        HomeViewModel viewModel;
         public MainWindow()
         {
             InitializeComponent();
+            viewModel = new HomeViewModel();
+            viewModel.HoiNghis = HoiNghiDAO.GetAllHoiNghi();
+            int total = viewModel.HoiNghis.Count;
+            viewModel.PagingInfo = new PagingInfo(5, total);
+
+            lvDanhSachHoiNghi.ItemsSource = viewModel.HoiNghis;
+        }
+
+        private void timKiemBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(sapXep_grid.Visibility==Visibility.Visible)
+            {
+                sapXep_grid.Visibility = Visibility.Collapsed;
+                timKiem_grid.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                sapXep_grid.Visibility = Visibility.Visible;
+                timKiem_grid.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void tenHoiNghiTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tenHoiNghiTextBox.Text.Trim() != "")
+            {
+                //MessageBox.Show("Đang tìm");
+            }
+            else
+            {
+                //MessageBox.Show("Hết tìm");
+            }    
         }
     }
 }
