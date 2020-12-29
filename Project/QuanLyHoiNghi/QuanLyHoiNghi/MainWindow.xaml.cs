@@ -58,5 +58,19 @@ namespace QuanLyHoiNghi
                 //MessageBox.Show("Hết tìm");
             }    
         }
+
+        private void hoiNghiDangKyBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoiXemHNDDKWindow LoiHNDDangKy = new LoiXemHNDDKWindow();
+            LoiHNDDangKy.Show();
+            this.Close();
+        }
+
+        private void quanLyHoiNghiBtn_Click(object sender, RoutedEventArgs e)
+        {
+            LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
+            LoiHNQL.Show();
+            this.Close();
+        }
     }
 }
