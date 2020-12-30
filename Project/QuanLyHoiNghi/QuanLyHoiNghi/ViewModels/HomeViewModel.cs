@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyHoiNghi.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,24 +8,29 @@ using System.Threading.Tasks;
 namespace QuanLyHoiNghi.ViewModels
 {
     public class HoiNghiDAO
-    {
-        public static List<object> GetAllHoiNghi()
+    {        
+        public static List<HOINGHI> GetAllHoiNghi()
         {
-            return new List<object>();
+            List<HOINGHI> list = new List<HOINGHI>();
+            using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
+            {
+                list = db.HOINGHIs.ToList();
+            }
+            return list;
         }
     }
     public class PagingInfo
     {
         public int CurrentPage { get; set; }
         public int TotalPage { get; set; }
-        public int NumberOfTripInPerPage { get; set; }
+        public int ItemInPerPage { get; set; }
 
         public PagingInfo(int numberOfItemInPerPage, int total)
         {
             if (total > 0)
             {
                 CurrentPage = 1;
-                NumberOfTripInPerPage = numberOfItemInPerPage;
+                ItemInPerPage = numberOfItemInPerPage;
                 TotalPage = total / numberOfItemInPerPage +
                     ((total % numberOfItemInPerPage) == 0 ? 0 : 1);
             }
@@ -39,12 +45,12 @@ namespace QuanLyHoiNghi.ViewModels
     public class HomeViewModel
     {
         public PagingInfo PagingInfo { get; set; }
-        public List<object> HoiNghis { get; set; }
+        public List<HOINGHI> ListHoiNghi { get; set; }
 
-        public List<object> loadPage(int pageNumber, int numItemInPage)
+        public List<HOINGHI> loadPage(int pageNumber, int numItemInPage)
         {
-            List<object> resulf = new List<object>();
-            PagingInfo.NumberOfTripInPerPage = numItemInPage;
+            List<HOINGHI> resulf = new List<HOINGHI>();
+            PagingInfo.ItemInPerPage = numItemInPage;
 
             if (PagingInfo.TotalPage > 0)
             {
@@ -55,7 +61,7 @@ namespace QuanLyHoiNghi.ViewModels
 
                 PagingInfo.CurrentPage = pageNumber;
 
-                //resulf = ChuyenDis.Skip((pageNumber - 1) * PagingInfo.NumberOfTripInPerPage).Take(PagingInfo.NumberOfTripInPerPage).ToList();
+                resulf = ListHoiNghi.Skip((pageNumber - 1) * PagingInfo.ItemInPerPage).Take(PagingInfo.ItemInPerPage).ToList();
             }
             else
             {
@@ -64,5 +70,37 @@ namespace QuanLyHoiNghi.ViewModels
             return resulf;
         }
 
+        public void sapXepHoiNghiTangDanTheoTen()
+        {
+            var list = from hoiNghi in this.ListHoiNghi
+                       orderby hoiNghi.TENHN
+                       select hoiNghi;
+
+            this.ListHoiNghi = list.ToList();
+        }
+        public void sapXepHoiNghiTangDanTheoThoiGian()
+        {
+            var list = from hoiNghi in this.ListHoiNghi
+                       orderby hoiNghi.THOIGIANBATDAU
+                       select hoiNghi;
+
+            this.ListHoiNghi = list.ToList();
+        }
+        public void sapXepHoiNghiGiamDanTheoTen()
+        {
+            var list = from hoiNghi in this.ListHoiNghi
+                       orderby hoiNghi.TENHN descending
+                       select hoiNghi;
+
+            this.ListHoiNghi = list.ToList();
+        }
+        public void sapXepHoiNghiGiamDanTheoThoiGian()
+        {
+            var list = from hoiNghi in this.ListHoiNghi
+                       orderby hoiNghi.THOIGIANBATDAU descending
+                       select hoiNghi;
+
+            this.ListHoiNghi = list.ToList();
+        }
     }
 }

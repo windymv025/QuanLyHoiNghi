@@ -27,12 +27,7 @@
                 <Button Grid.Column="3" Name="taiKhoanBtn" Content="Tài khoản" FontSize="14" FontWeight="Bold"></Button>
             </Grid>
 
-            <StackPanel>
                 <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="83*"/>
-                        <ColumnDefinition Width="171*"/>
-                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="100"></RowDefinition>
                         <RowDefinition Height="15"/>
@@ -86,16 +81,16 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="1" Text="Danh sách Hội nghị" FontWeight="Bold" VerticalAlignment="Center"  FontSize="22" />
-                            <ComboBox Grid.Column="2" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White">
-                                <ComboBoxItem IsSelected="True">
+                            <ComboBox Name="loaiSapXep" Grid.Column="2" Margin="10" VerticalAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="White" Background="White">
+                                <ComboBoxItem >
                                     <TextBlock Text="Tăng dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
                                 </ComboBoxItem>
                                 <ComboBoxItem>
                                     <TextBlock Text="Giảm dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
                                 </ComboBoxItem>
                             </ComboBox>
-                            <ComboBox Grid.Column="3" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White" Text="Sắp xếp">
-                                <ComboBoxItem >
+                            <ComboBox Name="hinhThucSapXepCB" Grid.Column="3" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White">
+                                <ComboBoxItem IsSelected="True" >
                                     <TextBlock Text="Theo tên" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
                                 </ComboBoxItem>
                                 <ComboBoxItem>
@@ -104,17 +99,16 @@
                             </ComboBox>
                         </Grid>
 
-                        <Image Grid.Column="1" x:Name="timKiemBtn" Source="Assets/search.png" Margin="5,0,5,0"></Image>
+                        <Image Grid.Column="1" x:Name="timKiemBtn" MouseDown="timKiemBtn_MouseDown" Source="Assets/search.png" Margin="5,0,5,0"></Image>
                     </Grid>
 
                     <!--Hội nghị-->
-                    <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="174,10,506,10" Grid.Column="1">
-						<ListView x:Name="lvDanhSachHoiNghi">
+					<ListView x:Name="lvDanhSachHoiNghi" Grid.Row="3"  HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Horizontal" Margin="0,5,0,20">
                                         <Border  Width="100" Height="100" BorderBrush="Blue" CornerRadius="0" BorderThickness="2">
-                                            <TextBlock Text="{Binding ThoiGianBatDau}" FontWeight="Bold" Foreground="Blue" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+                                            <TextBlock Text="{Binding THOIGIANBATDAU}" FontWeight="Bold" Foreground="Blue" FontSize="18" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
                                         </Border>
                                         <Grid  Margin="30,0,0,0">
                                             <Grid.RowDefinitions>
@@ -131,17 +125,15 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                    </StackPanel>
 
                 </Grid>
 
-            </StackPanel>
 
         </DockPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image x:Name="prevBtn" Source="Assets/search.png" Width="40"/>
+            <Image x:Name="prevBtn" Source="Assets/previousbutton.png" MouseDown="prevBtn_MouseDown" Width="40"/>
             <TextBlock Text="2/10" x:Name="trangHienTaiTxt" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"  Margin="40,0,40,0"/>
-            <Image x:Name="nextBtn" Source="Assets/search.png" Width="40"/>
+            <Image x:Name="nextBtn" Source="Assets/nextbutton.png" MouseDown="nextBtn_MouseDown" Width="40"/>
         </StackPanel>
     </Grid>
 </Window>

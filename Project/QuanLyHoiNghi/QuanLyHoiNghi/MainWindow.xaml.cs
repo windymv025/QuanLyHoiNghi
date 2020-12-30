@@ -26,11 +26,22 @@ namespace QuanLyHoiNghi
         {
             InitializeComponent();
             viewModel = new HomeViewModel();
-            viewModel.HoiNghis = HoiNghiDAO.GetAllHoiNghi();
-            int total = viewModel.HoiNghis.Count;
-            viewModel.PagingInfo = new PagingInfo(5, total);
+            viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghi();
+            int total = viewModel.ListHoiNghi.Count;
+            viewModel.PagingInfo = new PagingInfo(4, total);
+            //lvDanhSachHoiNghi.ItemsSource = viewModel.ListHoiNghi;
+            loadPageHoiNghi(1);
+        }
 
-            lvDanhSachHoiNghi.ItemsSource = viewModel.HoiNghis;
+        private void loadPageHoiNghi(int page)
+        {
+            var result = viewModel.loadPage(page, viewModel.PagingInfo.ItemInPerPage);
+            lvDanhSachHoiNghi.ItemsSource = result;
+            if (viewModel.PagingInfo.TotalPage == 0) 
+            {
+                viewModel.PagingInfo.CurrentPage = 0;
+            }
+            trangHienTaiTxt.Text = $"{viewModel.PagingInfo.CurrentPage}/{viewModel.PagingInfo.TotalPage}";
         }
 
         private void timKiemBtn_MouseDown(object sender, MouseButtonEventArgs e)
@@ -71,6 +82,46 @@ namespace QuanLyHoiNghi
             LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
             LoiHNQL.Show();
             this.Close();
+        }
+
+        private void nextBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            loadPageHoiNghi(viewModel.PagingInfo.CurrentPage + 1);
+        }
+
+        private void prevBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            loadPageHoiNghi(viewModel.PagingInfo.CurrentPage - 1);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(loaiSapXep.SelectedIndex == 0)
+            {
+                if (hinhThucSapXepCB.SelectedIndex == 0)
+                {
+                    viewModel.sapXepHoiNghiTangDanTheoTen();
+                    loadPageHoiNghi(1);
+                }
+                else
+                {
+                    viewModel.sapXepHoiNghiTangDanTheoThoiGian();
+                    loadPageHoiNghi(1);
+                }
+            }
+            else
+            {
+                if (hinhThucSapXepCB.SelectedIndex == 0)
+                {
+                    viewModel.sapXepHoiNghiGiamDanTheoTen();
+                    loadPageHoiNghi(1);
+                }
+                else
+                {
+                    viewModel.sapXepHoiNghiGiamDanTheoThoiGian();
+                    loadPageHoiNghi(1);
+                }
+            }
         }
     }
 }
