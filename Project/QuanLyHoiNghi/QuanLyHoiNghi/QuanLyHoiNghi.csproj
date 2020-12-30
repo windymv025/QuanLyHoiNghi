@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,9 +64,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\CHITIETADMIN.cs">
+      <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DANGKITHAMGIA.cs">
+      <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBQuanLyHoiNghi.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBQuanLyHoiNghi.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBQuanLyHoiNghi.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DBQuanLyHoiNghi.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBQuanLyHoiNghi.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\DIADIEMTOCHUC.cs">
+      <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HOINGHI.cs">
+      <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\USER.cs">
+      <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
+    </Compile>
     <Compile Include="QuanLyHoiNghiWindow.xaml.cs">
       <DependentUpon>QuanLyHoiNghiWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Page Include="HoiNghiDaDangKyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +154,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\DBQuanLyHoiNghi.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DBQuanLyHoiNghi.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\DBQuanLyHoiNghi.edmx.diagram">
+      <DependentUpon>DBQuanLyHoiNghi.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -122,15 +170,25 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Assets\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Model\DBQuanLyHoiNghi.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DBQuanLyHoiNghi.Context.cs</LastGenOutput>
+      <DependentUpon>DBQuanLyHoiNghi.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model\DBQuanLyHoiNghi.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DBQuanLyHoiNghi.edmx</DependentUpon>
+      <LastGenOutput>DBQuanLyHoiNghi.cs</LastGenOutput>
+    </Content>
     <Resource Include="Images\exclamation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

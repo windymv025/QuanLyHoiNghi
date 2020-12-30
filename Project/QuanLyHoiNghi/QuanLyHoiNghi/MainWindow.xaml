@@ -109,7 +109,7 @@
 
                     <!--Hội nghị-->
                     <StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="174,10,506,10" Grid.Column="1">
-                        <ListView>
+						<ListView x:Name="lvDanhSachHoiNghi">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">

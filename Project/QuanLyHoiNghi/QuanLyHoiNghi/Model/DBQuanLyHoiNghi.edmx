@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QuanLiHoiNghiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CHITIETADMIN">
+          <Key>
+            <PropertyRef Name="IDHN" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDHN" Type="int" Nullable="false" />
+          <Property Name="IDUSER" Type="int" Nullable="false" />
+          <Property Name="LOAIADMIN" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DANGKITHAMGIA">
+          <Key>
+            <PropertyRef Name="IDHN" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDHN" Type="int" Nullable="false" />
+          <Property Name="IDUSER" Type="int" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="int" Nullable="false" />
+          <Property Name="THOIGIANDK" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DIADIEMTOCHUC">
+          <Key>
+            <PropertyRef Name="IDDD" />
+          </Key>
+          <Property Name="IDDD" Type="int" Nullable="false" />
+          <Property Name="TENDD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIACHI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SUCCHUA" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HOINGHI">
+          <Key>
+            <PropertyRef Name="IDHN" />
+          </Key>
+          <Property Name="IDHN" Type="int" Nullable="false" />
+          <Property Name="IDDD" Type="int" Nullable="false" />
+          <Property Name="TENHN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MOTANGANHN" Type="text" Nullable="false" />
+          <Property Name="MOTACHITIETHN" Type="text" Nullable="false" />
+          <Property Name="HINHANH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="THOIGIANBATDAU" Type="datetime" Nullable="false" />
+          <Property Name="THOIGIANKETTHUC" Type="datetime" Nullable="false" />
+          <Property Name="SOLUONG" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDUSER" Type="int" Nullable="false" />
+          <Property Name="TENUSER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="PASSWORD" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HINHANH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LOAIUSER" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_CHITIETA_CO_HOINGHI">
+          <End Role="HOINGHI" Type="Self.HOINGHI" Multiplicity="1" />
+          <End Role="CHITIETADMIN" Type="Self.CHITIETADMIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOINGHI">
+              <PropertyRef Name="IDHN" />
+            </Principal>
+            <Dependent Role="CHITIETADMIN">
+              <PropertyRef Name="IDHN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHITIETA_GOM_CO_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="CHITIETADMIN" Type="Self.CHITIETADMIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="CHITIETADMIN">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DANGKITH_BAO_GOM_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="DANGKITHAMGIA" Type="Self.DANGKITHAMGIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="DANGKITHAMGIA">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DANGKITH_DUOC_DANG_HOINGHI">
+          <End Role="HOINGHI" Type="Self.HOINGHI" Multiplicity="1" />
+          <End Role="DANGKITHAMGIA" Type="Self.DANGKITHAMGIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOINGHI">
+              <PropertyRef Name="IDHN" />
+            </Principal>
+            <Dependent Role="DANGKITHAMGIA">
+              <PropertyRef Name="IDHN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOINGHI_DUOC_TO_C_DIADIEMT">
+          <End Role="DIADIEMTOCHUC" Type="Self.DIADIEMTOCHUC" Multiplicity="1" />
+          <End Role="HOINGHI" Type="Self.HOINGHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEMTOCHUC">
+              <PropertyRef Name="IDDD" />
+            </Principal>
+            <Dependent Role="HOINGHI">
+              <PropertyRef Name="IDDD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QuanLiHoiNghiModelStoreContainer">
+          <EntitySet Name="CHITIETADMIN" EntityType="Self.CHITIETADMIN" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DANGKITHAMGIA" EntityType="Self.DANGKITHAMGIA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DIADIEMTOCHUC" EntityType="Self.DIADIEMTOCHUC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOINGHI" EntityType="Self.HOINGHI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="USER" EntityType="Self.USER" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CHITIETA_CO_HOINGHI" Association="Self.FK_CHITIETA_CO_HOINGHI">
+            <End Role="HOINGHI" EntitySet="HOINGHI" />
+            <End Role="CHITIETADMIN" EntitySet="CHITIETADMIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHITIETA_GOM_CO_USER" Association="Self.FK_CHITIETA_GOM_CO_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="CHITIETADMIN" EntitySet="CHITIETADMIN" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DANGKITH_BAO_GOM_USER" Association="Self.FK_DANGKITH_BAO_GOM_USER">
+            <End Role="USER" EntitySet="USER" />
+            <End Role="DANGKITHAMGIA" EntitySet="DANGKITHAMGIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DANGKITH_DUOC_DANG_HOINGHI" Association="Self.FK_DANGKITH_DUOC_DANG_HOINGHI">
+            <End Role="HOINGHI" EntitySet="HOINGHI" />
+            <End Role="DANGKITHAMGIA" EntitySet="DANGKITHAMGIA" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOINGHI_DUOC_TO_C_DIADIEMT" Association="Self.FK_HOINGHI_DUOC_TO_C_DIADIEMT">
+            <End Role="DIADIEMTOCHUC" EntitySet="DIADIEMTOCHUC" />
+            <End Role="HOINGHI" EntitySet="HOINGHI" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QuanLiHoiNghiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CHITIETADMIN">
+          <Key>
+            <PropertyRef Name="IDHN" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDHN" Type="Int32" Nullable="false" />
+          <Property Name="IDUSER" Type="Int32" Nullable="false" />
+          <Property Name="LOAIADMIN" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="HOINGHI" Relationship="Self.FK_CHITIETA_CO_HOINGHI" FromRole="CHITIETADMIN" ToRole="HOINGHI" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_CHITIETA_GOM_CO_USER" FromRole="CHITIETADMIN" ToRole="USER" />
+        </EntityType>
+        <EntityType Name="DANGKITHAMGIA">
+          <Key>
+            <PropertyRef Name="IDHN" />
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDHN" Type="Int32" Nullable="false" />
+          <Property Name="IDUSER" Type="Int32" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="Int32" Nullable="false" />
+          <Property Name="THOIGIANDK" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="USER" Relationship="Self.FK_DANGKITH_BAO_GOM_USER" FromRole="DANGKITHAMGIA" ToRole="USER" />
+          <NavigationProperty Name="HOINGHI" Relationship="Self.FK_DANGKITH_DUOC_DANG_HOINGHI" FromRole="DANGKITHAMGIA" ToRole="HOINGHI" />
+        </EntityType>
+        <EntityType Name="DIADIEMTOCHUC">
+          <Key>
+            <PropertyRef Name="IDDD" />
+          </Key>
+          <Property Name="IDDD" Type="Int32" Nullable="false" />
+          <Property Name="TENDD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SUCCHUA" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="HOINGHIs" Relationship="Self.FK_HOINGHI_DUOC_TO_C_DIADIEMT" FromRole="DIADIEMTOCHUC" ToRole="HOINGHI" />
+        </EntityType>
+        <EntityType Name="HOINGHI">
+          <Key>
+            <PropertyRef Name="IDHN" />
+          </Key>
+          <Property Name="IDHN" Type="Int32" Nullable="false" />
+          <Property Name="IDDD" Type="Int32" Nullable="false" />
+          <Property Name="TENHN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MOTANGANHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MOTACHITIETHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="THOIGIANBATDAU" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="THOIGIANKETTHUC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SOLUONG" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="CHITIETADMINs" Relationship="Self.FK_CHITIETA_CO_HOINGHI" FromRole="HOINGHI" ToRole="CHITIETADMIN" />
+          <NavigationProperty Name="DANGKITHAMGIAs" Relationship="Self.FK_DANGKITH_DUOC_DANG_HOINGHI" FromRole="HOINGHI" ToRole="DANGKITHAMGIA" />
+          <NavigationProperty Name="DIADIEMTOCHUC" Relationship="Self.FK_HOINGHI_DUOC_TO_C_DIADIEMT" FromRole="HOINGHI" ToRole="DIADIEMTOCHUC" />
+        </EntityType>
+        <EntityType Name="USER">
+          <Key>
+            <PropertyRef Name="IDUSER" />
+          </Key>
+          <Property Name="IDUSER" Type="Int32" Nullable="false" />
+          <Property Name="TENUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASSWORD" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LOAIUSER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="CHITIETADMINs" Relationship="Self.FK_CHITIETA_GOM_CO_USER" FromRole="USER" ToRole="CHITIETADMIN" />
+          <NavigationProperty Name="DANGKITHAMGIAs" Relationship="Self.FK_DANGKITH_BAO_GOM_USER" FromRole="USER" ToRole="DANGKITHAMGIA" />
+        </EntityType>
+        <Association Name="FK_CHITIETA_CO_HOINGHI">
+          <End Role="HOINGHI" Type="Self.HOINGHI" Multiplicity="1" />
+          <End Role="CHITIETADMIN" Type="Self.CHITIETADMIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOINGHI">
+              <PropertyRef Name="IDHN" />
+            </Principal>
+            <Dependent Role="CHITIETADMIN">
+              <PropertyRef Name="IDHN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CHITIETA_GOM_CO_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="CHITIETADMIN" Type="Self.CHITIETADMIN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="CHITIETADMIN">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DANGKITH_BAO_GOM_USER">
+          <End Role="USER" Type="Self.USER" Multiplicity="1" />
+          <End Role="DANGKITHAMGIA" Type="Self.DANGKITHAMGIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USER">
+              <PropertyRef Name="IDUSER" />
+            </Principal>
+            <Dependent Role="DANGKITHAMGIA">
+              <PropertyRef Name="IDUSER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DANGKITH_DUOC_DANG_HOINGHI">
+          <End Role="HOINGHI" Type="Self.HOINGHI" Multiplicity="1" />
+          <End Role="DANGKITHAMGIA" Type="Self.DANGKITHAMGIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOINGHI">
+              <PropertyRef Name="IDHN" />
+            </Principal>
+            <Dependent Role="DANGKITHAMGIA">
+              <PropertyRef Name="IDHN" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HOINGHI_DUOC_TO_C_DIADIEMT">
+          <End Role="DIADIEMTOCHUC" Type="Self.DIADIEMTOCHUC" Multiplicity="1" />
+          <End Role="HOINGHI" Type="Self.HOINGHI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DIADIEMTOCHUC">
+              <PropertyRef Name="IDDD" />
+            </Principal>
+            <Dependent Role="HOINGHI">
+              <PropertyRef Name="IDDD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBQuanLiHoiNghiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CHITIETADMINs" EntityType="Self.CHITIETADMIN" />
+          <EntitySet Name="DANGKITHAMGIAs" EntityType="Self.DANGKITHAMGIA" />
+          <EntitySet Name="DIADIEMTOCHUCs" EntityType="Self.DIADIEMTOCHUC" />
+          <EntitySet Name="HOINGHIs" EntityType="Self.HOINGHI" />
+          <EntitySet Name="USERs" EntityType="Self.USER" />
+          <AssociationSet Name="FK_CHITIETA_CO_HOINGHI" Association="Self.FK_CHITIETA_CO_HOINGHI">
+            <End Role="HOINGHI" EntitySet="HOINGHIs" />
+            <End Role="CHITIETADMIN" EntitySet="CHITIETADMINs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CHITIETA_GOM_CO_USER" Association="Self.FK_CHITIETA_GOM_CO_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="CHITIETADMIN" EntitySet="CHITIETADMINs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DANGKITH_BAO_GOM_USER" Association="Self.FK_DANGKITH_BAO_GOM_USER">
+            <End Role="USER" EntitySet="USERs" />
+            <End Role="DANGKITHAMGIA" EntitySet="DANGKITHAMGIAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DANGKITH_DUOC_DANG_HOINGHI" Association="Self.FK_DANGKITH_DUOC_DANG_HOINGHI">
+            <End Role="HOINGHI" EntitySet="HOINGHIs" />
+            <End Role="DANGKITHAMGIA" EntitySet="DANGKITHAMGIAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HOINGHI_DUOC_TO_C_DIADIEMT" Association="Self.FK_HOINGHI_DUOC_TO_C_DIADIEMT">
+            <End Role="DIADIEMTOCHUC" EntitySet="DIADIEMTOCHUCs" />
+            <End Role="HOINGHI" EntitySet="HOINGHIs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QuanLiHoiNghiModelStoreContainer" CdmEntityContainer="DBQuanLiHoiNghiEntities">
+          <EntitySetMapping Name="CHITIETADMINs">
+            <EntityTypeMapping TypeName="QuanLiHoiNghiModel.CHITIETADMIN">
+              <MappingFragment StoreEntitySet="CHITIETADMIN">
+                <ScalarProperty Name="IDHN" ColumnName="IDHN" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="LOAIADMIN" ColumnName="LOAIADMIN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DANGKITHAMGIAs">
+            <EntityTypeMapping TypeName="QuanLiHoiNghiModel.DANGKITHAMGIA">
+              <MappingFragment StoreEntitySet="DANGKITHAMGIA">
+                <ScalarProperty Name="IDHN" ColumnName="IDHN" />
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="THOIGIANDK" ColumnName="THOIGIANDK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DIADIEMTOCHUCs">
+            <EntityTypeMapping TypeName="QuanLiHoiNghiModel.DIADIEMTOCHUC">
+              <MappingFragment StoreEntitySet="DIADIEMTOCHUC">
+                <ScalarProperty Name="IDDD" ColumnName="IDDD" />
+                <ScalarProperty Name="TENDD" ColumnName="TENDD" />
+                <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+                <ScalarProperty Name="SUCCHUA" ColumnName="SUCCHUA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOINGHIs">
+            <EntityTypeMapping TypeName="QuanLiHoiNghiModel.HOINGHI">
+              <MappingFragment StoreEntitySet="HOINGHI">
+                <ScalarProperty Name="IDHN" ColumnName="IDHN" />
+                <ScalarProperty Name="IDDD" ColumnName="IDDD" />
+                <ScalarProperty Name="TENHN" ColumnName="TENHN" />
+                <ScalarProperty Name="MOTANGANHN" ColumnName="MOTANGANHN" />
+                <ScalarProperty Name="MOTACHITIETHN" ColumnName="MOTACHITIETHN" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="THOIGIANBATDAU" ColumnName="THOIGIANBATDAU" />
+                <ScalarProperty Name="THOIGIANKETTHUC" ColumnName="THOIGIANKETTHUC" />
+                <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERs">
+            <EntityTypeMapping TypeName="QuanLiHoiNghiModel.USER">
+              <MappingFragment StoreEntitySet="USER">
+                <ScalarProperty Name="IDUSER" ColumnName="IDUSER" />
+                <ScalarProperty Name="TENUSER" ColumnName="TENUSER" />
+                <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+                <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="LOAIUSER" ColumnName="LOAIUSER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
