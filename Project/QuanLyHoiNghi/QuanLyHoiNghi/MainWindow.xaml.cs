@@ -72,8 +72,13 @@ namespace QuanLyHoiNghi
 
         private void hoiNghiDangKyBtn_Click(object sender, RoutedEventArgs e)
         {
+            /*
             LoiXemHNDDKWindow LoiHNDDangKy = new LoiXemHNDDKWindow();
             LoiHNDDangKy.Show();
+            this.Close();*/
+
+            HoiNghiDaDangKyWindow HNDDangKy = new HoiNghiDaDangKyWindow();
+            HNDDangKy.Show();
             this.Close();
         }
 
