@@ -89,6 +89,13 @@ namespace QuanLyHoiNghi
             this.Close();
         }
 
+        private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
+        {
+            DangKyTaiKhoanWindow DK = new DangKyTaiKhoanWindow();
+            DK.Show();
+            this.Close();
+        }
+
         private void nextBtn_MouseDown(object sender, MouseButtonEventArgs e)
         {
             loadPageHoiNghi(viewModel.PagingInfo.CurrentPage + 1);
@@ -128,5 +135,7 @@ namespace QuanLyHoiNghi
                 }
             }
         }
+
+       
     }
 }

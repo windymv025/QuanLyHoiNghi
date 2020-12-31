@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DangKyTaiKhoanWindow.xaml.cs">
+      <DependentUpon>DangKyTaiKhoanWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\CHITIETADMIN.cs">
       <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
     </Compile>
@@ -97,8 +100,13 @@
     <Compile Include="QuanLyHoiNghiWindow.xaml.cs">
       <DependentUpon>QuanLyHoiNghiWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\DangKyTaiKhoanViewModel.cs" />
     <Compile Include="ViewModels\HoiNghiDaDangKyViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Page Include="DangKyTaiKhoanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="HoiNghiDaDangKyWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -182,6 +190,7 @@
     <Content Include="Assets\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Images\user_example.png" />
     <Content Include="Model\DBQuanLyHoiNghi.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBQuanLyHoiNghi.Context.cs</LastGenOutput>
