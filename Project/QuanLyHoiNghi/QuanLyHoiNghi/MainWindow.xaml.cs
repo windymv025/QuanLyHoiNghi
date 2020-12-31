@@ -29,7 +29,6 @@ namespace QuanLyHoiNghi
             viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghi();
             int total = viewModel.ListHoiNghi.Count;
             viewModel.PagingInfo = new PagingInfo(4, total);
-            //lvDanhSachHoiNghi.ItemsSource = viewModel.ListHoiNghi;
             loadPageHoiNghi(1);
         }
 
@@ -60,13 +59,21 @@ namespace QuanLyHoiNghi
 
         private void tenHoiNghiTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (tenHoiNghiTextBox.Text.Trim() != "")
+            string name = tenHoiNghiTextBox.Text.Trim();
+            string place = diaiemTextBox.Text.Trim();
+            DateTime date = ngayBatDauDatePicker.SelectedDate.GetValueOrDefault();
+            DateTime defaultDate = new DateTime();
+            if (name != "" || place != "" || date != defaultDate)
             {
-                //MessageBox.Show("Đang tìm");
+                viewModel.ListHoiNghi = HoiNghiDAO.GetResultSearchHoiNghi(name, place, date);
+                viewModel.PagingInfo = new PagingInfo(4, viewModel.ListHoiNghi.Count);
+                loadPageHoiNghi(1);
             }
             else
             {
-                //MessageBox.Show("Hết tìm");
+                viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghi();
+                viewModel.PagingInfo = new PagingInfo(4, viewModel.ListHoiNghi.Count);
+                loadPageHoiNghi(1);
             }    
         }
 
@@ -126,6 +133,51 @@ namespace QuanLyHoiNghi
                     viewModel.sapXepHoiNghiGiamDanTheoThoiGian();
                     loadPageHoiNghi(1);
                 }
+            }
+        }
+
+        private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void diaiemTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string name = tenHoiNghiTextBox.Text.Trim();
+            string place = diaiemTextBox.Text.Trim();
+            DateTime date = ngayBatDauDatePicker.SelectedDate.GetValueOrDefault();
+            DateTime defaultDate = new DateTime();
+            if (name != "" || place != "" || date != defaultDate)
+            {
+                viewModel.ListHoiNghi = HoiNghiDAO.GetResultSearchHoiNghi(name, place, date);
+                viewModel.PagingInfo = new PagingInfo(4, viewModel.ListHoiNghi.Count);
+                loadPageHoiNghi(1);
+            }
+            else
+            {
+                viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghi();
+                viewModel.PagingInfo = new PagingInfo(4, viewModel.ListHoiNghi.Count);
+                loadPageHoiNghi(1);
+            }
+        }
+
+        private void ngayBatDauDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string name = tenHoiNghiTextBox.Text.Trim();
+            string place = diaiemTextBox.Text.Trim();
+            DateTime date = ngayBatDauDatePicker.SelectedDate.GetValueOrDefault();
+            DateTime defaultDate = new DateTime();
+            if (name != "" || place != "" || date != defaultDate)
+            {
+                viewModel.ListHoiNghi = HoiNghiDAO.GetResultSearchHoiNghi(name, place, date);
+                viewModel.PagingInfo = new PagingInfo(4, viewModel.ListHoiNghi.Count);
+                loadPageHoiNghi(1);
+            }
+            else
+            {
+                viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghi();
+                viewModel.PagingInfo = new PagingInfo(4, viewModel.ListHoiNghi.Count);
+                loadPageHoiNghi(1);
             }
         }
     }
