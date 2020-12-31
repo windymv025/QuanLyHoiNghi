@@ -18,11 +18,11 @@ namespace QuanLyHoiNghi
     /// <summary>
     /// Interaction logic for ChiTietHoiNghi.xaml
     /// </summary>
-    public partial class ChiTietHoiNghi : Window
+    public partial class ChiTietHoiNghiWindow : Window
     {
         private ChiTietHoiNghiViewModel viewModel;
 
-        public ChiTietHoiNghi()
+        public ChiTietHoiNghiWindow()
         {
             InitializeComponent();
             ChiTietHoiNghiViewModel viewModel = new ChiTietHoiNghiViewModel(null, null);
