@@ -236,8 +236,6 @@
                         Style="{StaticResource HoverEffectDisabledButton}"
                         Background="Transparent"
                         FontSize="30"/>
-
-
             </Grid>
 
         </Grid>

@@ -66,27 +66,40 @@ namespace QuanLyHoiNghi
 
         private void hoiNghiDangKyBtn_Click(object sender, RoutedEventArgs e)
         {
-            /*
-            LoiXemHNDDKWindow LoiHNDDangKy = new LoiXemHNDDKWindow();
-            LoiHNDDangKy.Show();
-            this.Close();*/
-
-            HoiNghiDaDangKyWindow HNDDangKy = new HoiNghiDaDangKyWindow();
-            HNDDangKy.Show();
-            this.Close();
+            if (DangNhapViewModel.User != null)
+            {
+                HoiNghiDaDangKyWindow HNDDangKy = new HoiNghiDaDangKyWindow();
+                HNDDangKy.Show();
+                this.Close();
+            }
+            else
+            {
+                LoiXemHNDDKWindow LoiHNDDangKy = new LoiXemHNDDKWindow();
+                LoiHNDDangKy.Show();
+                this.Close();
+            }
         }
 
         private void quanLyHoiNghiBtn_Click(object sender, RoutedEventArgs e)
         {
-            LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
-            LoiHNQL.Show();
-            this.Close();
+            if (DangNhapViewModel.User != null && DangNhapViewModel.User.LOAIUSER == "1")
+            {
+                QuanLyHoiNghiWindow HNQLy = new QuanLyHoiNghiWindow();
+                HNQLy.Show();
+                this.Close();
+            }
+            else
+            {
+                LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
+                LoiHNQL.Show();
+                this.Close();
+            }
         }
 
         private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
         {
-            DangKyTaiKhoanWindow DK = new DangKyTaiKhoanWindow();
-            DK.Show();
+            DangNhapWindow DN = new DangNhapWindow();
+            DN.Show();
             this.Close();
         }
 

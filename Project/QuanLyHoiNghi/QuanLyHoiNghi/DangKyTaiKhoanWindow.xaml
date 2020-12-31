@@ -17,8 +17,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="trangChuBtn" Content="Trang Chủ" FontSize="14" FontWeight="Bold"  Click="trangChuBtn_Click"></Button>
-            <Button Grid.Column="1" x:Name="hoiNghiDangKyBtn" Content="Hội nghị đã đăng ký" FontSize="14" FontWeight="Bold" ></Button>
-            <Button Grid.Column="2" x:Name="quanLyHoiNghiBtn" Content="Quản lý hội nghị" FontSize="14" FontWeight="Bold"></Button>
+            <Button Grid.Column="1" x:Name="hoiNghiDangKyBtn" Content="Hội nghị đã đăng ký" FontSize="14" FontWeight="Bold" Click="hoiNghiDangKyBtn_Click"></Button>
+            <Button Grid.Column="2" x:Name="quanLyHoiNghiBtn" Content="Quản lý hội nghị" FontSize="14" FontWeight="Bold" Click="quanLyHoiNghiBtn_Click"></Button>
             <Button Grid.Column="3" Name="taiKhoanBtn" Content="Tài khoản" FontSize="14" FontWeight="Bold" Background="Blue" Foreground="White"></Button>
         </Grid>
         <Grid>
@@ -39,7 +39,7 @@
                     <ColumnDefinition Width="365*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Đăng ký" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Margin="0,30,445,19" Width="95" Grid.ColumnSpan="2"></TextBlock>
-                <Button Grid.Column="1" Margin="269,30,53,19" Content="Đăng nhập" Background="Blue" Foreground="White"/>
+                <Button x:Name="dangNhapBT" Grid.Column="1" Margin="269,30,53,19" Content="Đăng nhập" Background="Blue" Foreground="White" Click="dangNhapBT_Click"/>
             </Grid>
             <TextBlock x:Name="loiTB" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sai" Foreground="Red" Visibility="Hidden"></TextBlock>
             <Grid Grid.Row="2">

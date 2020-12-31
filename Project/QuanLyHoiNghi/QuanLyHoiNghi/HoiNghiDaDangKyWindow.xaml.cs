@@ -51,9 +51,18 @@ namespace QuanLyHoiNghi
 
         private void quanLyHoiNghiBtn_Click(object sender, RoutedEventArgs e)
         {
-            LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
-            LoiHNQL.Show();
-            this.Close();
+            if (DangNhapViewModel.User != null && DangNhapViewModel.User.LOAIUSER == "1")
+            {
+                QuanLyHoiNghiWindow HNQLy = new QuanLyHoiNghiWindow();
+                HNQLy.Show();
+                this.Close();
+            }
+            else
+            {
+                LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
+                LoiHNQL.Show();
+                this.Close();
+            }
         }
 
         private void timKiemBtn_MouseDown(object sender, MouseButtonEventArgs e)

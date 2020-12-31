@@ -93,6 +93,9 @@
       <DependentUpon>ChiTietHoiNghiWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="DangNhapWindow.xaml.cs">
+      <DependentUpon>DangNhapWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\CHITIETADMIN.cs">
       <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
     </Compile>
@@ -127,6 +130,7 @@
       <DependentUpon>QuanLyHoiNghiWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\DangKyTaiKhoanViewModel.cs" />
+    <Compile Include="ViewModels\DangNhapViewModel.cs" />
     <Compile Include="ViewModels\HoiNghiDaDangKyViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Page Include="DangKyTaiKhoanWindow.xaml" />
@@ -137,6 +141,10 @@
     <Compile Include="ViewModels\ChiTietHoiNghiViewModel.cs" />
     <Compile Include="ViewModels\ThemHoiNghiViewModel.cs" />
     <Page Include="ChiTietHoiNghiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DangNhapWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

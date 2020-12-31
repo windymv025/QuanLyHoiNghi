@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using QuanLyHoiNghi.ViewModels;
+
 namespace QuanLyHoiNghi
 {
     /// <summary>
@@ -32,10 +34,19 @@ namespace QuanLyHoiNghi
         }
 
         private void quanLyHoiNghiBtn_Click(object sender, RoutedEventArgs e)
-        { 
-            LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
-            LoiHNQL.Show();
-            this.Close();
+        {
+            if (DangNhapViewModel.User != null && DangNhapViewModel.User.LOAIUSER == "1")
+            {
+                QuanLyHoiNghiWindow HNQLy = new QuanLyHoiNghiWindow();
+                HNQLy.Show();
+                this.Close();
+            }
+            else
+            {
+                LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
+                LoiHNQL.Show();
+                this.Close();
+            }
         }
     }
 }
