@@ -15,10 +15,12 @@ namespace QuanLyHoiNghi.ViewModels
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
 
-                var listHoiNghi = from hoiNghi in db.HOINGHIs join dangkithamgia in db.DANGKITHAMGIAs
-                       on hoiNghi.IDHN equals dangkithamgia.IDHN join user in db.USERs on dangkithamgia.IDUSER equals user.IDUSER
-                       where user.IDUSER == 1
-                       select hoiNghi;
+                var listHoiNghi = from hoiNghi in db.HOINGHIs
+                                  join dangkithamgia in db.DANGKITHAMGIAs
+on hoiNghi.IDHN equals dangkithamgia.IDHN
+                                  join user in db.USERs on dangkithamgia.IDUSER equals user.IDUSER
+                                  where user.IDUSER == 1
+                                  select hoiNghi;
                 list = listHoiNghi.ToList();
             }
             return list;

@@ -86,16 +86,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-
     <Compile Include="DangKyTaiKhoanWindow.xaml.cs">
       <DependentUpon>DangKyTaiKhoanWindow.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="ChiTietHoiNghiWindow.xaml.cs">
       <DependentUpon>ChiTietHoiNghiWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Command\RelayCommand.cs" />
-
     <Compile Include="Model\CHITIETADMIN.cs">
       <DependentUpon>DBQuanLyHoiNghi.tt</DependentUpon>
     </Compile>
@@ -129,22 +126,17 @@
     <Compile Include="QuanLyHoiNghiWindow.xaml.cs">
       <DependentUpon>QuanLyHoiNghiWindow.xaml</DependentUpon>
     </Compile>
-
     <Compile Include="ViewModels\DangKyTaiKhoanViewModel.cs" />
     <Compile Include="ViewModels\HoiNghiDaDangKyViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
-    <Page Include="DangKyTaiKhoanWindow.xaml">
-
+    <Page Include="DangKyTaiKhoanWindow.xaml" />
     <Compile Include="ThemHoiNghiWindow.xaml.cs">
       <DependentUpon>ThemHoiNghiWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ChinhSuaHoiNghiViewModel.cs" />
     <Compile Include="ViewModels\ChiTietHoiNghiViewModel.cs" />
-    <Compile Include="ViewModels\HoiNghiDaDangKyViewModel.cs" />
-    <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ThemHoiNghiViewModel.cs" />
     <Page Include="ChiTietHoiNghiWindow.xaml">
-
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

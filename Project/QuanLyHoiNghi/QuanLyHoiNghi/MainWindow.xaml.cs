@@ -143,10 +143,6 @@ namespace QuanLyHoiNghi
             }
         }
 
-        private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void diaiemTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
