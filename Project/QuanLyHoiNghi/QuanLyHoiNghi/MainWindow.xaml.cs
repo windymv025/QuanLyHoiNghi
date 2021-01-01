@@ -98,9 +98,18 @@ namespace QuanLyHoiNghi
 
         private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
         {
-            DangNhapWindow DN = new DangNhapWindow();
-            DN.Show();
-            this.Close();
+            if (DangNhapViewModel.User == null)
+            {
+                DangNhapWindow DN = new DangNhapWindow();
+                DN.Show();
+                this.Close();
+            }
+            else
+            {
+                XemVaSuaTaiKhoanWindow TK = new XemVaSuaTaiKhoanWindow();
+                TK.Show();
+                this.Close();
+            }
         }
 
         private void nextBtn_MouseDown(object sender, MouseButtonEventArgs e)

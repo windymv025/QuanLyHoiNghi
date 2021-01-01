@@ -48,5 +48,21 @@ namespace QuanLyHoiNghi
                 this.Close();
             }
         }
+
+        private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DangNhapViewModel.User == null)
+            {
+                DangNhapWindow DN = new DangNhapWindow();
+                DN.Show();
+                this.Close();
+            }
+            else
+            {
+                XemVaSuaTaiKhoanWindow TK = new XemVaSuaTaiKhoanWindow();
+                TK.Show();
+                this.Close();
+            }
+        }
     }
 }

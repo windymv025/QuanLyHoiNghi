@@ -117,10 +117,9 @@ namespace QuanLyHoiNghi
 
             viewModel.themUser(tenTB.Text, tenDangNhapTB.Text, matKhau, emailTB.Text, loaiTk);
 
-            if (loiTB.Visibility == Visibility.Visible)
-            {
-                loiTB.Visibility = Visibility.Hidden;
-            }
+            DangNhapWindow DN = new DangNhapWindow();
+            DN.Show();
+            this.Close();
             return;
         }
 
@@ -163,11 +162,29 @@ namespace QuanLyHoiNghi
             }
         }
 
+        private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (DangNhapViewModel.User == null)
+            {
+                DangNhapWindow DN = new DangNhapWindow();
+                DN.Show();
+                this.Close();
+            }
+            else
+            {
+                XemVaSuaTaiKhoanWindow TK = new XemVaSuaTaiKhoanWindow();
+                TK.Show();
+                this.Close();
+            }
+        }
+
         private void dangNhapBT_Click(object sender, RoutedEventArgs e)
         {
             DangNhapWindow DN = new DangNhapWindow();
             DN.Show();
             this.Close();
         }
+
+        
     }
 }

@@ -11,21 +11,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 using QuanLyHoiNghi.ViewModels;
+
 
 namespace QuanLyHoiNghi
 {
     /// <summary>
-    /// Interaction logic for QuanLyHoiNghiWindow.xaml
+    /// Interaction logic for XemVaSuaTaiKhoanWindow.xaml
     /// </summary>
-    public partial class QuanLyHoiNghiWindow : Window
+    public partial class XemVaSuaTaiKhoanWindow : Window
     {
-        public QuanLyHoiNghiWindow()
+        public XemVaSuaTaiKhoanWindow()
         {
             InitializeComponent();
+            if(DangNhapViewModel.User != null)
+            {
+                String stringPath = DangNhapViewModel.User.HINHANH;
+                Uri imageUri = new Uri(stringPath, UriKind.Relative);
+                BitmapImage imageBitmap = new BitmapImage(imageUri);
+                
+                hinhAnh.Source = imageBitmap;
+               
+                tenTB.Text = DangNhapViewModel.User.TENUSER;
+                tenDangNhapTB.Text = DangNhapViewModel.User.USERNAME;
+                matKhauTB.Password = DangNhapViewModel.User.PASSWORD;
+                emailTB.Text = DangNhapViewModel.User.EMAIL;
+            }
         }
-
 
         private void trangChuBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -50,30 +64,20 @@ namespace QuanLyHoiNghi
             }
         }
 
-        private void taiKhoanBtn_Click(object sender, RoutedEventArgs e)
+        private void quanLyHoiNghiBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (DangNhapViewModel.User == null)
+            if (DangNhapViewModel.User != null && DangNhapViewModel.User.LOAIUSER == "1")
             {
-                DangNhapWindow DN = new DangNhapWindow();
-                DN.Show();
+                QuanLyHoiNghiWindow HNQLy = new QuanLyHoiNghiWindow();
+                HNQLy.Show();
                 this.Close();
             }
             else
             {
-                XemVaSuaTaiKhoanWindow TK = new XemVaSuaTaiKhoanWindow();
-                TK.Show();
+                LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
+                LoiHNQL.Show();
                 this.Close();
             }
         }
-        private void timKiemBtn_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            
-        }
-        private void themBtn_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-
-        }
-
-       
     }
 }

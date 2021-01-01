@@ -133,6 +133,9 @@
     <Compile Include="ViewModels\DangNhapViewModel.cs" />
     <Compile Include="ViewModels\HoiNghiDaDangKyViewModel.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="XemVaSuaTaiKhoanWindow.xaml.cs">
+      <DependentUpon>XemVaSuaTaiKhoanWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="DangKyTaiKhoanWindow.xaml" />
     <Compile Include="ThemHoiNghiWindow.xaml.cs">
       <DependentUpon>ThemHoiNghiWindow.xaml</DependentUpon>
@@ -188,6 +191,10 @@
     <Page Include="ThemHoiNghiWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XemVaSuaTaiKhoanWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

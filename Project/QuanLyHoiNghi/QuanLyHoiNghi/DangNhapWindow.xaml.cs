@@ -81,6 +81,10 @@ namespace QuanLyHoiNghi
                 {
                     loiTB.Visibility = Visibility.Hidden;
                 }
+
+                XemVaSuaTaiKhoanWindow TK = new XemVaSuaTaiKhoanWindow();
+                TK.Show();
+                this.Close();
                 return;
             } 
         }
