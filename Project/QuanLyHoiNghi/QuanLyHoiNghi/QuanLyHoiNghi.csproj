@@ -132,6 +132,7 @@
     <Compile Include="ViewModels\DangKyTaiKhoanViewModel.cs" />
     <Compile Include="ViewModels\DangNhapViewModel.cs" />
     <Compile Include="ViewModels\HoiNghiDaDangKyViewModel.cs" />
+    <Compile Include="ViewModels\HoiNghiDAO.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Page Include="DangKyTaiKhoanWindow.xaml" />
     <Compile Include="ThemHoiNghiWindow.xaml.cs">
