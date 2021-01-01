@@ -29,8 +29,8 @@
             <PropertyRef Name="IDDD" />
           </Key>
           <Property Name="IDDD" Type="int" Nullable="false" />
-          <Property Name="TENDD" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="DIACHI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TENDD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIACHI" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="SUCCHUA" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="HOINGHI">
@@ -39,10 +39,10 @@
           </Key>
           <Property Name="IDHN" Type="int" Nullable="false" />
           <Property Name="IDDD" Type="int" Nullable="false" />
-          <Property Name="TENHN" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="MOTANGANHN" Type="text" Nullable="false" />
-          <Property Name="MOTACHITIETHN" Type="text" Nullable="false" />
-          <Property Name="HINHANH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TENHN" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MOTANGANHN" Type="ntext" Nullable="false" />
+          <Property Name="MOTACHITIETHN" Type="ntext" Nullable="false" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="THOIGIANBATDAU" Type="datetime" Nullable="false" />
           <Property Name="THOIGIANKETTHUC" Type="datetime" Nullable="false" />
           <Property Name="SOLUONG" Type="int" Nullable="false" />
@@ -52,11 +52,11 @@
             <PropertyRef Name="IDUSER" />
           </Key>
           <Property Name="IDUSER" Type="int" Nullable="false" />
-          <Property Name="TENUSER" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TENUSER" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="PASSWORD" Type="varchar" MaxLength="256" Nullable="false" />
           <Property Name="USERNAME" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="HINHANH" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="LOAIUSER" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
         <Association Name="FK_CHITIETA_CO_HOINGHI">
@@ -178,8 +178,8 @@
             <PropertyRef Name="IDDD" />
           </Key>
           <Property Name="IDDD" Type="Int32" Nullable="false" />
-          <Property Name="TENDD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENDD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DIACHI" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SUCCHUA" Type="Int32" Nullable="false" />
           <NavigationProperty Name="HOINGHIs" Relationship="Self.FK_HOINGHI_DUOC_TO_C_DIADIEMT" FromRole="DIADIEMTOCHUC" ToRole="HOINGHI" />
         </EntityType>
@@ -189,10 +189,10 @@
           </Key>
           <Property Name="IDHN" Type="Int32" Nullable="false" />
           <Property Name="IDDD" Type="Int32" Nullable="false" />
-          <Property Name="TENHN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MOTANGANHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="MOTACHITIETHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENHN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTANGANHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MOTACHITIETHN" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="THOIGIANBATDAU" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="THOIGIANKETTHUC" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SOLUONG" Type="Int32" Nullable="false" />
@@ -205,11 +205,11 @@
             <PropertyRef Name="IDUSER" />
           </Key>
           <Property Name="IDUSER" Type="Int32" Nullable="false" />
-          <Property Name="TENUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TENUSER" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PASSWORD" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="USERNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="HINHANH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="LOAIUSER" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="CHITIETADMINs" Relationship="Self.FK_CHITIETA_GOM_CO_USER" FromRole="USER" ToRole="CHITIETADMIN" />
           <NavigationProperty Name="DANGKITHAMGIAs" Relationship="Self.FK_DANGKITH_BAO_GOM_USER" FromRole="USER" ToRole="DANGKITHAMGIA" />

@@ -46,7 +46,7 @@
                 </Grid.ColumnDefinitions>
                 <Grid >
                     <Image x:Name="hinhAnh" Height="200" Width="200" Margin="104,10,0,279"></Image>
-                    <Button Content="Sửa" Margin="158,215,55,246" RenderTransformOrigin="0.657,0.692" Background="Blue" Foreground="White"></Button>
+                    <Button x:Name="suaHinhAnhBtn" Click="suaHinhAnhBtn_Click" Content="Sửa" Margin="158,215,55,246" RenderTransformOrigin="0.657,0.692" Background="Blue" Foreground="White"></Button>
                 </Grid>
                 <Grid Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -67,7 +67,7 @@
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="80"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="tenTB" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
+                    <TextBox x:Name="tenTB" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False" ></TextBox>
 					<TextBox x:Name="tenDangNhapTB" Grid.Row="1" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
                     <PasswordBox x:Name="matKhauTB" Grid.Row="2" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></PasswordBox>
 					<TextBox x:Name="emailTB" Grid.Row="3" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
@@ -79,10 +79,10 @@
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="80"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <Button Margin="36,20,120,20" Content="Sửa" Background="Blue" Foreground="White"></Button>
-                    <Button Grid.Row="2" Margin="36,20,120,20" Content="Sửa" Background="Blue" Foreground="White"></Button>
+                    <Button x:Name="suaTenBtn" Click="suaTen_Click" Margin="36,20,120,20" Content="Sửa" Background="Blue" Foreground="White"></Button>
+                    <Button x:Name="suaMatKhauBtn" Click="suaMatKhauBtn_Click" Grid.Row="2" Margin="36,20,120,20" Content="Sửa" Background="Blue" Foreground="White"></Button>
                     
-                    <Button Grid.Row="3" Margin="36,20,120,20" Content="Sửa" Background="Blue" Foreground="White"></Button>
+                    <Button x:Name="suaEmailBtn" Click="suaEmailBtn_Click" Grid.Row="3" Margin="36,20,120,20" Content="Sửa" Background="Blue" Foreground="White"></Button>
                 </Grid>
             </Grid>
         </Grid>

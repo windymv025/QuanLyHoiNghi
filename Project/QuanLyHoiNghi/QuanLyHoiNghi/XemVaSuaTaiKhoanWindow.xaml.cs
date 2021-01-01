@@ -23,13 +23,14 @@ namespace QuanLyHoiNghi
     /// </summary>
     public partial class XemVaSuaTaiKhoanWindow : Window
     {
+        DangNhapViewModel viewModel = new DangNhapViewModel();
         public XemVaSuaTaiKhoanWindow()
         {
             InitializeComponent();
             if(DangNhapViewModel.User != null)
             {
                 String stringPath = DangNhapViewModel.User.HINHANH;
-                Uri imageUri = new Uri(stringPath, UriKind.Relative);
+                Uri imageUri = new Uri(stringPath, UriKind.RelativeOrAbsolute);
                 BitmapImage imageBitmap = new BitmapImage(imageUri);
                 
                 hinhAnh.Source = imageBitmap;
@@ -78,6 +79,61 @@ namespace QuanLyHoiNghi
                 LoiHNQL.Show();
                 this.Close();
             }
+        }
+
+        private void suaTen_Click(object sender, RoutedEventArgs e)
+        {
+            if (tenTB.IsEnabled)
+            {
+                suaTenBtn.Content = "Sửa";
+                tenTB.IsEnabled = false;
+                viewModel.chinhSuaHoTen(tenTB.Text.Trim());
+            }
+            else
+            {
+                suaTenBtn.Content = "Lưu";
+                tenTB.IsEnabled = true;
+            }
+        }
+
+        private void suaMatKhauBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (matKhauTB.IsEnabled)
+            {
+                suaMatKhauBtn.Content = "Sửa";
+                matKhauTB.IsEnabled = false;
+            }
+            else
+            {
+                suaMatKhauBtn.Content = "Lưu";
+                matKhauTB.IsEnabled = true;
+            }
+        }
+
+        private void suaEmailBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (emailTB.IsEnabled)
+            {
+                suaEmailBtn.Content = "Sửa";
+                emailTB.IsEnabled = false;
+            }
+            else
+            {
+                suaEmailBtn.Content = "Lưu";
+                emailTB.IsEnabled = true;
+            }
+        }
+
+        private void suaHinhAnhBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if(suaHinhAnhBtn.Content.ToString().Equals("Sửa"))
+            {
+                suaHinhAnhBtn.Content = "Lưu";
+            }    
+            else
+            {
+                suaHinhAnhBtn.Content = "Sửa";
+            }    
         }
     }
 }
