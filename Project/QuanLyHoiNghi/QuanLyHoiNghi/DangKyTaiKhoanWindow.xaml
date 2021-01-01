@@ -93,8 +93,8 @@
                         <RowDefinition Height="*"></RowDefinition>
                         <RowDefinition Height="*"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <RadioButton x:Name="taiKhoanThuongRB" GroupName="loaiTaiKhoanRB" Content="Tài khoản thường" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="55,10,291,10" FontSize="16" Height="19" Width="162"></RadioButton>
-                    <RadioButton x:Name="taiKhoanAdminRB" Grid.Row="1" GroupName="loaiTaiKhoanRB" Content="Tài khoản admin (có thể tạo Hội nghị)"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="55,10,158,10" FontSize="16" Width="295" ></RadioButton>
+                    <RadioButton x:Name="taiKhoanThuongRB" GroupName="loaiTaiKhoanRB" Content="Tài khoản thường" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="16" Height="19" Width="162"></RadioButton>
+                    <RadioButton x:Name="taiKhoanAdminRB" Grid.Row="1" GroupName="loaiTaiKhoanRB" Content="Tài khoản admin (có thể tạo Hội nghị)"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0" FontSize="16" Width="295" ></RadioButton>
                 </Grid>
             </Grid>
             <Button x:Name="dangKyBT" Grid.Row="8" Content="Đăng ký" Background="Blue" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="36" Margin="424,20,424,20" Width="167" Click="dangKyBT_Click"></Button>

@@ -35,7 +35,7 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Đăng nhập" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,30,452,43" Grid.ColumnSpan="2"></TextBlock>
-                <Button x:Name="dangKyBT" Grid.Column="1" Margin="283,30,39,30" Content="Đăng ký" Background="Blue" Foreground="White" Click="dangKyBT_Click"/>
+                <Button x:Name="dangKyBT" Grid.Column="1" Margin="283,30,39,30" FontWeight="Bold" Content="Đăng ký" Background="Blue" Foreground="White" Click="dangKyBT_Click"/>
             </Grid>
 
             <TextBlock x:Name="loiTB" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sai" Foreground="Red" Visibility="Hidden"></TextBlock>
@@ -45,8 +45,8 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Tên đăng nhập" Padding="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="287,38,86,38" Width="135" />
-                <TextBox x:Name="tenDangNhapTB" Grid.Column="1" Margin="10,30,223,30" VerticalContentAlignment="Center"/>
+                <TextBlock Text="Tên đăng nhập" Padding="2" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0" />
+                <TextBox x:Name="tenDangNhapTB" Grid.Column="1"  Margin="10" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="250" Height="45" VerticalAlignment="Center"/>
             </Grid>
 
             <Grid Grid.Row="3">
@@ -54,11 +54,11 @@
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Mật khẩu" Padding="2" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="290,30,149,30" />
-                <PasswordBox x:Name="matKhauTB" Grid.Column="1" Margin="10,30,223,30" VerticalContentAlignment="Center"/>
+				<TextBlock Text="Mật khẩu" Padding="2" FontSize="16" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,40,0"  />
+				<PasswordBox x:Name="matKhauTB" Grid.Column="1" Margin="10" HorizontalAlignment="Left" VerticalContentAlignment="Center" Width="250" Height="45" VerticalAlignment="Center"/>
             </Grid>
 
-            <Button x:Name="dangNhapBT" Click="dangNhapBT_Click" Grid.Row="4" Content="Đăng nhập" Background="Blue" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Height="36" Margin="425,20,425,20" Width="146" ></Button>
+            <Button x:Name="dangNhapBT" Click="dangNhapBT_Click" Grid.Row="4" Content="Đăng nhập" Background="Blue" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" Padding="10"></Button>
         </Grid>
 
     </DockPanel>
