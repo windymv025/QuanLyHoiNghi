@@ -135,5 +135,13 @@ namespace QuanLyHoiNghi
                 suaHinhAnhBtn.Content = "Sửa";
             }    
         }
+
+        private void dangXuatBT_Click(object sender, RoutedEventArgs e)
+        {
+            DangNhapViewModel.User = null;
+            DangNhapWindow DN = new DangNhapWindow();
+            DN.Show();
+            this.Close();
+        }
     }
 }

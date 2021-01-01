@@ -34,7 +34,7 @@
                     <ColumnDefinition Width="199*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Thông tin tài khoản" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Margin="0,26,14,19" Width="185"/>
-                <Button x:Name="dangXuatBT" Grid.Column="1" Margin="201,30,53,19" Content="Đăng xuất" Background="Blue" Foreground="White"/>
+                <Button x:Name="dangXuatBT" Grid.Column="1" Margin="201,30,53,19" Content="Đăng xuất" Background="Blue" Foreground="White" Click="dangXuatBT_Click"/>
             </Grid>
             <TextBlock x:Name="loiTB" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sai" Foreground="Red" Visibility="Hidden"></TextBlock>
             <Grid Grid.Row="2">
