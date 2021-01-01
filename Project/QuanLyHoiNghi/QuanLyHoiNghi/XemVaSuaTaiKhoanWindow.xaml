@@ -67,10 +67,10 @@
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="80"></RowDefinition>
                     </Grid.RowDefinitions>
-                    <TextBox x:Name="tenTB" Margin="0,20" VerticalContentAlignment="Center"></TextBox>
-                    <TextBox x:Name="tenDangNhapTB" Grid.Row="1" Margin="0,20" VerticalContentAlignment="Center"></TextBox>
-                    <PasswordBox x:Name="matKhauTB" Grid.Row="2" Margin="0,20" VerticalContentAlignment="Center"></PasswordBox>
-                    <TextBox x:Name="emailTB" Grid.Row="3" Margin="0,20" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox x:Name="tenTB" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
+					<TextBox x:Name="tenDangNhapTB" Grid.Row="1" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
+                    <PasswordBox x:Name="matKhauTB" Grid.Row="2" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></PasswordBox>
+					<TextBox x:Name="emailTB" Grid.Row="3" Margin="0,20" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
                 </Grid>
                 <Grid Grid.Column="3">
                     <Grid.RowDefinitions>
