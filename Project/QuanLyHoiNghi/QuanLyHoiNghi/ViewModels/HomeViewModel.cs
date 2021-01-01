@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace QuanLyHoiNghi.ViewModels
 {
-    
     public class PagingInfo
     {
         public int CurrentPage { get; set; }

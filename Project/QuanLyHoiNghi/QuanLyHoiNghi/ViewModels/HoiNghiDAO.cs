@@ -21,7 +21,7 @@ namespace QuanLyHoiNghi.ViewModels
             List<HOINGHI> list = new List<HOINGHI>();
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                string sqlHoiNghi = $"select* from HOINGHI where (TENHN LIKE N'%{name}%')";
+                string sqlHoiNghi = $"select* from HOINGHI where freetext(TENHN, N'%{name}%')";
                 List<HOINGHI> resultHoiNghi = db.HOINGHIs.SqlQuery(sqlHoiNghi).ToList();
                 DateTime defaultDate = new DateTime();
 
@@ -37,7 +37,7 @@ namespace QuanLyHoiNghi.ViewModels
                                      select item).ToList();
                 }
 
-                string sqlDiaDiem = $"select* from DIADIEMTOCHUC where (TENDD LIKE N'%{place}%')";
+                string sqlDiaDiem = $"select* from DIADIEMTOCHUC where freetext(TENDD, N'%{place}%')";
                 var resultDiaDiem = db.DIADIEMTOCHUCs.SqlQuery(sqlDiaDiem);
 
                 if (resultDiaDiem.Count() > 0 && resultHoiNghi.Count > 0)
@@ -55,7 +55,7 @@ namespace QuanLyHoiNghi.ViewModels
                 }
                 else if (resultDiaDiem.Count() > 0)
                 {
-                    string sql = $"select hn.IDHN, hn.IDDD, TENHN,hn.MOTANGANHN, hn.MOTACHITIETHN, hn.HINHANH, hn.THOIGIANBATDAU, hn.THOIGIANKETTHUC, hn.SOLUONG from HOINGHI as hn join DIADIEMTOCHUC as dd on hn.IDDD = dd.IDDD where (dd.TENDD LIKE N'%{place}%')";
+                    string sql = $"select hn.IDHN, hn.IDDD, TENHN,hn.MOTANGANHN, hn.MOTACHITIETHN, hn.HINHANH, hn.THOIGIANBATDAU, hn.THOIGIANKETTHUC, hn.SOLUONG from HOINGHI as hn join DIADIEMTOCHUC as dd on hn.IDDD = dd.IDDD where freetext(dd.TENDD, N'%{place}%')";
                     var result = db.HOINGHIs.SqlQuery(sql);
                     list = result.ToList();
                 }
