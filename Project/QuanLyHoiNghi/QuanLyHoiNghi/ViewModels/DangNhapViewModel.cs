@@ -11,7 +11,7 @@ namespace QuanLyHoiNghi.ViewModels
 {
     class DangNhapViewModel
     {
-        public  USER User { get; set; }
+        public static USER User = null;
 
         public bool kiemTraUser(string username, string password)
         {
