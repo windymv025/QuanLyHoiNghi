@@ -18,11 +18,14 @@ namespace QuanLyHoiNghi.ViewModels
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
                 USER user = null;
-                user = (from us in db.USERs
+                var hasuser = from us in db.USERs
                         where us.USERNAME == username
-                        select us).First();
-                if (user == null)
+                        select us;
+
+                if (hasuser.Count() <= 0)
                     return false;
+
+                user = hasuser.First();
 
                 if (user.PASSWORD != password)
                     return false;

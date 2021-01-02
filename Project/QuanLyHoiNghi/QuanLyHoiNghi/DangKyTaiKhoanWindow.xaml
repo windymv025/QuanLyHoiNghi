@@ -39,7 +39,7 @@
                     <ColumnDefinition Width="365*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Đăng ký" FontSize="20" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Height="30" Margin="0,30,445,19" Width="95" Grid.ColumnSpan="2"></TextBlock>
-                <Button x:Name="dangNhapBT" Grid.Column="1" Margin="269,30,53,19" Content="Đăng nhập" Background="Blue" Foreground="White" Click="dangNhapBT_Click"/>
+                <Button x:Name="dangNhapBT" Grid.Column="1" Margin="269,20,53,20" Content="Đăng nhập" Background="Blue" Foreground="White" Click="dangNhapBT_Click"/>
             </Grid>
             <TextBlock x:Name="loiTB" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sai" Foreground="Red" Visibility="Hidden"></TextBlock>
             <Grid Grid.Row="2">

@@ -86,6 +86,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CapQuyenHoiNghiWindow.xaml.cs">
+      <DependentUpon>CapQuyenHoiNghiWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DangKyTaiKhoanWindow.xaml.cs">
       <DependentUpon>DangKyTaiKhoanWindow.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,7 @@
     <Compile Include="QuanLyHoiNghiWindow.xaml.cs">
       <DependentUpon>QuanLyHoiNghiWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\CapQuyenHoiNghiViewModel.cs" />
     <Compile Include="ViewModels\DangKyTaiKhoanViewModel.cs" />
     <Compile Include="ViewModels\DangNhapViewModel.cs" />
     <Compile Include="ViewModels\HoiNghiDaDangKyViewModel.cs" />
@@ -137,6 +141,10 @@
     <Compile Include="XemVaSuaTaiKhoanWindow.xaml.cs">
       <DependentUpon>XemVaSuaTaiKhoanWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="CapQuyenHoiNghiWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="DangKyTaiKhoanWindow.xaml" />
     <Compile Include="ThemHoiNghiWindow.xaml.cs">
       <DependentUpon>ThemHoiNghiWindow.xaml</DependentUpon>
