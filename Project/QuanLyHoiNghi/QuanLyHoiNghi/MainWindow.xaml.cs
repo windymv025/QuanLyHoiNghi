@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using QuanLyHoiNghi.Model;
+
 namespace QuanLyHoiNghi
 {
     /// <summary>
@@ -209,6 +211,36 @@ namespace QuanLyHoiNghi
                 viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghi();
                 viewModel.PagingInfo = new PagingInfo(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghi(1);
+            }
+        }
+
+        private void ListViewItem_PreviewGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)sender;
+            item.IsSelected = true;
+        }
+
+        private void ListViewItem_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)sender;
+            item.IsSelected = false;
+        }
+
+        private void xemThemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int index = 0;
+                index = lvDanhSachHoiNghi.SelectedIndex;
+
+                HOINGHI hn = viewModel.ListHoiNghi[((viewModel.PagingInfo.CurrentPage - 1) * 4) + index];
+                ChiTietHoiNghiWindow CTHN = new ChiTietHoiNghiWindow(hn);
+                CTHN.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
