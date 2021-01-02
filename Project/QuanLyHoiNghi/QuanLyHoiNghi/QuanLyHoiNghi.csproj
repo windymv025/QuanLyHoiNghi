@@ -267,9 +267,9 @@
       <DependentUpon>DBQuanLyHoiNghi.edmx</DependentUpon>
       <LastGenOutput>DBQuanLyHoiNghi.cs</LastGenOutput>
     </Content>
-    <None Include="Images\exclamation.png">
+    <Content Include="Assets\exclamation.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
