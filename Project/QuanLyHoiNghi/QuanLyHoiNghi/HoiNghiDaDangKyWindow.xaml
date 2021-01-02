@@ -94,7 +94,23 @@
                     <!--Hội nghị-->
 
                     <ListView Grid.Row="1" x:Name="lvDanhSachHoiNghi" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                            <ListView.ItemTemplate>
+                    <ListView.Resources>
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter Property="IsSelected"  Value="True"/>
+                                </Trigger>
+                               
+                            </Style.Triggers>
+                            <EventSetter Event="PreviewGotKeyboardFocus" Handler="ListViewItem_PreviewGotKeyboardFocus"/>
+                            <EventSetter Event="PreviewLostKeyboardFocus"  Handler="ListViewItem_PreviewLostKeyboardFocus"/>
+                        </Style>
+
+                        
+                           
+                    
+                    </ListView.Resources>
+                    <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" Margin="0,5,0,20">
                                         <Border  Width="100" Height="100" BorderBrush="Blue" CornerRadius="0" BorderThickness="2">
@@ -109,7 +125,7 @@
                                             <TextBlock Grid.Row="0" Text="{Binding TENHN}" FontSize="18" FontWeight="Bold" TextTrimming="WordEllipsis"/>
                                             <TextBlock Grid.Row="1" Text="{Binding MOTANGANHN}" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" FontSize="15" TextTrimming ="WordEllipsis"></TextBlock>
 
-                                            <Button Grid.Row="2" x:Name="xemThemBtn" Content="Xem thêm" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#FF0076FF" Width="100" Foreground="White" Height="30" />
+                                            <Button Click="xemThemBtn_Click" Grid.Row="2" x:Name="xemThemBtn" Content="Xem thêm" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#FF0076FF" Width="100" Foreground="White" Height="30" />
                                         </Grid>
                                     </StackPanel>
                                 </DataTemplate>

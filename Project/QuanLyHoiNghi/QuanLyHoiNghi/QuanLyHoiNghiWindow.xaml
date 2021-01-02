@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyHoiNghi"
         mc:Ignorable="d"
-        Title="QuanLyHoiNghiWindow" Height="450" Width="800">
+       	WindowStartupLocation="CenterScreen"
+        Title="QuanLyHoiNghiWindow" Height="700" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

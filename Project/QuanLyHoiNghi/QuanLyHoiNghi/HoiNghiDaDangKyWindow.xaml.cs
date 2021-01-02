@@ -13,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+using QuanLyHoiNghi.Model;
+
 namespace QuanLyHoiNghi
 {
     /// <summary>
@@ -204,6 +206,35 @@ namespace QuanLyHoiNghi
             }
         }
 
-       
+
+        private void xemThemBtn_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int index = 0;
+                index = lvDanhSachHoiNghi.SelectedIndex;
+
+                HOINGHI hn = viewModel.ListHoiNghi[((viewModel.PagingInfo.CurrentPage -1) * 4) + index];
+                ChiTietHoiNghiWindow CTHN = new ChiTietHoiNghiWindow(hn);
+                CTHN.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void ListViewItem_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)sender;
+            item.IsSelected = false;
+        }
+
+        private void ListViewItem_PreviewGotKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
+        {
+            ListViewItem item = (ListViewItem)sender;
+            item.IsSelected = true;
+        }
     }
 }

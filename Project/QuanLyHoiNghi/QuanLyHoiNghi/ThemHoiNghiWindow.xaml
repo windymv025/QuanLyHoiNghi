@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyHoiNghi" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="ThemHoiNghiWindow" Height="700" Width="1024">
+        WindowStartupLocation="CenterScreen"
+        Title="Thêm hội nghị" Height="700" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
