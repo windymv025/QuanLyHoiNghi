@@ -27,7 +27,7 @@ namespace QuanLyHoiNghi
         {
             InitializeComponent();
             viewModel = new HoiNghiDaDangKyViewModel();
-            viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetAllHoiNghiDaDangKy();
+            viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghiDaDangKy();
             int total = viewModel.ListHoiNghi.Count;
             viewModel.PagingInfo = new PagingInfoOfHNDDK(4, total);
 
@@ -97,7 +97,7 @@ namespace QuanLyHoiNghi
                 tenHoiNghiTextBox.Text = "";
                 diadiemTextBox.Text = "";
 
-                viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetAllHoiNghiDaDangKy();
+                viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghiDaDangKy();
                 viewModel.PagingInfo = new PagingInfoOfHNDDK(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghiDaDangKy(1);
             }
@@ -152,13 +152,13 @@ namespace QuanLyHoiNghi
 
             if (name != "" || place != "" || date != defaultDate)
             {
-                viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetResultSearchHoiNghiDaDangKy(name, place, date);
+                viewModel.ListHoiNghi = HoiNghiDAO.GetResultSearchHoiNghiDaDangKy(name, place, date);
                 viewModel.PagingInfo = new PagingInfoOfHNDDK(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghiDaDangKy(1);
             }
             else
             {
-                viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetAllHoiNghiDaDangKy();
+                viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghiDaDangKy();
                 viewModel.PagingInfo = new PagingInfoOfHNDDK(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghiDaDangKy(1);
             }
@@ -173,13 +173,13 @@ namespace QuanLyHoiNghi
 
             if (name != "" || place != "" || date != defaultDate)
             {
-                viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetResultSearchHoiNghiDaDangKy(name, place, date);
+                viewModel.ListHoiNghi = HoiNghiDAO.GetResultSearchHoiNghiDaDangKy(name, place, date);
                 viewModel.PagingInfo = new PagingInfoOfHNDDK(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghiDaDangKy(1);
             }
             else
             {
-                viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetAllHoiNghiDaDangKy();
+                viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghiDaDangKy();
                 viewModel.PagingInfo = new PagingInfoOfHNDDK(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghiDaDangKy(1);
             }
@@ -194,13 +194,13 @@ namespace QuanLyHoiNghi
 
             if (name != "" || place != "" || date != defaultDate)
             {
-                viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetResultSearchHoiNghiDaDangKy(name, place, date);
+                viewModel.ListHoiNghi = HoiNghiDAO.GetResultSearchHoiNghiDaDangKy(name, place, date);
                 viewModel.PagingInfo = new PagingInfoOfHNDDK(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghiDaDangKy(1);
             }
             else
             {
-                viewModel.ListHoiNghi = HoiNghiDaDangKyDAO.GetAllHoiNghiDaDangKy();
+                viewModel.ListHoiNghi = HoiNghiDAO.GetAllHoiNghiDaDangKy();
                 viewModel.PagingInfo = new PagingInfoOfHNDDK(4, viewModel.ListHoiNghi.Count);
                 loadPageHoiNghiDaDangKy(1);
             }
