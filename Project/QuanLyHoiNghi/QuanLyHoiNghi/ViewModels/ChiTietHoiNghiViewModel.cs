@@ -3,9 +3,11 @@ using QuanLyHoiNghi.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace QuanLyHoiNghi.ViewModels
@@ -25,31 +27,30 @@ namespace QuanLyHoiNghi.ViewModels
 
         public String DiaDiem { get; set; }
 
+        public int SucChua { get; set; }
+
+        public String ImagePathHoiNghi { get; set; }
+
         public bool IsSignedUp { get; set; }
 
         public ICommand SignUpCommand { get; set; }
 
-        public ChiTietHoiNghiViewModel(HOINGHI hoiNghi, USER user)
+        public ChiTietHoiNghiViewModel(HOINGHI hoiNghi)
         {
-            this.User = user;
-
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                var HoiNghi = (from hn in db.HOINGHIs
-                               join dd in db.DIADIEMTOCHUCs on hn.IDDD equals dd.IDDD
-                               where hn.IDHN == 1
-                               select new { HoiNghi = hn, DiaDiem = dd }).ToList().FirstOrDefault();
+                this.HoiNghi = hoiNghi;
+                DIADIEMTOCHUC diaDiem = (from dd in db.DIADIEMTOCHUCs
+                                         where dd.IDDD == hoiNghi.IDDD
+                                         select dd).ToList().FirstOrDefault();
 
-                //var DiaDiemHN = (from dd in db.DIADIEMTOCHUCs
-                //                where dd.IDDD == hoiNghi.IDDD
-                //                select dd).ToList().FirstOrDefault();
-
-                this.HoiNghi = HoiNghi.HoiNghi;
-                this.DiaDiem = HoiNghi.DiaDiem.TENDD + ", " + HoiNghi.DiaDiem.DIACHI;
+                this.DiaDiem = diaDiem.TENDD + ", " + diaDiem.DIACHI;
+                this.SucChua = diaDiem.SUCCHUA;
             }
 
             this.NgayBatDau = this.HoiNghi.THOIGIANBATDAU.ToString("dd/MM/yy hh:mm");
             this.NgayKetThuc = this.HoiNghi.THOIGIANKETTHUC.ToString("dd/MM/yy hh:mm");
+            this.ImagePathHoiNghi = Path.Combine(Environment.CurrentDirectory, this.HoiNghi.HINHANH);
             this.IsSignedUp = false;
             this.SignUpCommand = new RelayCommand(SignUp);
         }
@@ -62,19 +63,34 @@ namespace QuanLyHoiNghi.ViewModels
             }
             else
             {
-                using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
+                if (this.HoiNghi.SOLUONG >= this.SucChua)
                 {
-                    DANGKITHAMGIA dangky = new DANGKITHAMGIA();
-                    dangky.IDHN = this.HoiNghi.IDHN;
-                    dangky.IDUSER = 1;
-                    dangky.TRANGTHAI = 0;
-                    dangky.THOIGIANDK = DateTime.Now;
-
-                    db.DANGKITHAMGIAs.Add(dangky);
-                    db.SaveChanges();
+                    MessageBox.Show("Số lượng tham gia hội nghị đã đạt giới hạn.");
+                    return;
                 }
 
-                IsSignedUp = !IsSignedUp;
+                try
+                {
+                    using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
+                    {
+                        DANGKITHAMGIA dangky = new DANGKITHAMGIA();
+                        dangky.IDHN = this.HoiNghi.IDHN;
+                        dangky.IDUSER = 1;
+                        dangky.TRANGTHAI = 0;
+                        dangky.THOIGIANDK = DateTime.Now;
+
+                        db.DANGKITHAMGIAs.Add(dangky);
+                        db.SaveChanges();
+                    }
+
+                    IsSignedUp = !IsSignedUp;
+                }
+                catch
+                {
+                    MessageBox.Show("Đã có lỗi xảy ra.");
+                }
+
+
             }
 
         }

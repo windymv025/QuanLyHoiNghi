@@ -63,7 +63,7 @@
                         <Setter Property="Content" Value="Đăng ký"/>
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsSignedUp}" Value="True">
-                                <Setter Property="Background" Value="Orange"/>
+                                <Setter Property="Background" Value="Red"/>
                                 <Setter Property="Content" Value="Đã đăng ký"/>
                             </DataTrigger>
                         </Style.Triggers>
@@ -97,7 +97,7 @@
             <!-- Ảnh hội nghị -->
             <Grid Grid.Row="1" Margin="0 20 0 0">
 
-                <Image Height="300" Source="{Binding HoiNghi.HINHANH}"/>
+                <Image Height="300" Source="{Binding ImagePathHoiNghi}"/>
 
             </Grid>
 

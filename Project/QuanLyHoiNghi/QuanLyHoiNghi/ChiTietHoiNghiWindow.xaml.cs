@@ -1,4 +1,5 @@
-﻿using QuanLyHoiNghi.ViewModels;
+﻿using QuanLyHoiNghi.Model;
+using QuanLyHoiNghi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,10 +23,10 @@ namespace QuanLyHoiNghi
     {
         private ChiTietHoiNghiViewModel viewModel;
 
-        public ChiTietHoiNghiWindow()
+        public ChiTietHoiNghiWindow(HOINGHI HoiNghi)
         {
             InitializeComponent();
-            ChiTietHoiNghiViewModel viewModel = new ChiTietHoiNghiViewModel(null, null);
+            ChiTietHoiNghiViewModel viewModel = new ChiTietHoiNghiViewModel(HoiNghi);
             this.viewModel = viewModel;
             this.DataContext = viewModel;
         }

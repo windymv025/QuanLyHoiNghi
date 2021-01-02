@@ -22,10 +22,11 @@ namespace QuanLyHoiNghi
     public partial class ChinhSuaHoiNghiWindow : Window
     {
         private ChinhSuaHoiNghiViewModel viewModel;
-        public ChinhSuaHoiNghiWindow(HOINGHI hoiNghi)
+
+        public ChinhSuaHoiNghiWindow(HOINGHI HoiNghi)
         {
             InitializeComponent();
-            ChinhSuaHoiNghiViewModel viewModel = new ChinhSuaHoiNghiViewModel(hoiNghi);
+            ChinhSuaHoiNghiViewModel viewModel = new ChinhSuaHoiNghiViewModel(HoiNghi);
             this.viewModel = viewModel;
             this.DataContext = this.viewModel;
         }

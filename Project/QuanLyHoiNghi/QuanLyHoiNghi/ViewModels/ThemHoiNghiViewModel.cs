@@ -4,6 +4,7 @@ using QuanLyHoiNghi.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,14 +41,20 @@ namespace QuanLyHoiNghi.ViewModels
 
         public ICommand AddHoiNghiCommand { get; set; }
 
+        public ICommand CapQuyenCommand { get; set; }
+
+        public bool IsSaved { get; set; }
+
         public bool IsChooseImage { get; set; }
+
+        public int SavedId { get; set; }
 
         public ThemHoiNghiViewModel()
         {
             ImagePathHoiNghi = NoiDungHoiNghi = TenHoiNghi = MoTa = "";
             SoLuong = "0";
             NgayBatDau = NgayKetThuc = DateTime.Now;
-            IsChooseImage = false;
+            IsChooseImage = IsSaved = false;
             IndexDiaDiem = -1;
 
             ListDiaDiemString = new List<string>();
@@ -63,6 +70,7 @@ namespace QuanLyHoiNghi.ViewModels
 
             this.ChooseImageCommand = new RelayCommand(ChooseImage);
             this.AddHoiNghiCommand = new RelayCommand(AddHoiNghi);
+            this.CapQuyenCommand = new RelayCommand(CapQuyen);
         }
 
         private bool ValidateInput()
@@ -74,7 +82,7 @@ namespace QuanLyHoiNghi.ViewModels
             }
 
             int num;
-            if (String.IsNullOrEmpty(SoLuong.Trim()) || !int.TryParse(SoLuong, out num))
+            if (String.IsNullOrEmpty(SoLuong.Trim()) || !int.TryParse(SoLuong, out num) || num > ListDiaDiem[IndexDiaDiem].SUCCHUA)
             {
                 MessageBox.Show("Mời nhập lại số lượng.");
                 return false;
@@ -112,26 +120,50 @@ namespace QuanLyHoiNghi.ViewModels
             if (!ValidateInput())
                 return;
 
+            try
+            {
+                using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
+                {
+                    int id = db.HOINGHIs.Max(hn => hn.IDHN) + 1;
+
+                    HOINGHI HoiNghi = new HOINGHI();
+                    HoiNghi.IDHN = id;
+                    HoiNghi.IDDD = ListDiaDiem[IndexDiaDiem].IDDD;
+                    HoiNghi.TENHN = TenHoiNghi;
+                    HoiNghi.MOTACHITIETHN = NoiDungHoiNghi;
+                    HoiNghi.THOIGIANBATDAU = NgayBatDau;
+                    HoiNghi.THOIGIANKETTHUC = NgayKetThuc;
+                    String path = SaveImage(ImagePathHoiNghi);
+                    HoiNghi.HINHANH = path;
+                    HoiNghi.MOTANGANHN = MoTa;
+                    HoiNghi.SOLUONG = int.Parse(SoLuong);
+
+                    db.HOINGHIs.Add(HoiNghi);
+                    db.SaveChanges();
+
+                    IsSaved = true;
+                    SavedId = id;
+                    MessageBox.Show("Đã thêm hội nghị.");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Đã có lỗi xãy ra.");
+                return;
+            }
+        }
+
+        private void CapQuyen()
+        {
+            if (!IsSaved)
+                return;
+
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                int id = db.HOINGHIs.Max(hn => hn.IDHN) + 1;
-
-                HOINGHI HoiNghi = new HOINGHI();
-                HoiNghi.IDHN = id;
-                HoiNghi.IDDD = ListDiaDiem[IndexDiaDiem].IDDD;
-                HoiNghi.TENHN = TenHoiNghi;
-                HoiNghi.MOTACHITIETHN = NoiDungHoiNghi;
-                HoiNghi.THOIGIANBATDAU = NgayBatDau;
-                HoiNghi.THOIGIANKETTHUC = NgayKetThuc;
-                HoiNghi.HINHANH = ImagePathHoiNghi;
-                HoiNghi.MOTANGANHN = MoTa;
-                HoiNghi.SOLUONG = int.Parse(SoLuong);
-
-                db.HOINGHIs.Add(HoiNghi);
-                db.SaveChanges();
+                HOINGHI hoiNghi = (HOINGHI)db.HOINGHIs.Where(hn => hn.IDHN == SavedId);
+                CapQuyenHoiNghiWindow window = new CapQuyenHoiNghiWindow(hoiNghi, "0");
+                window.ShowDialog();
             }
-
-            MessageBox.Show("Đã thêm hội nghị.");
         }
 
         private void ChooseImage()
@@ -148,6 +180,20 @@ namespace QuanLyHoiNghi.ViewModels
                 ImagePathHoiNghi = dialog.FileName;
                 IsChooseImage = true;
             }
+        }
+
+        private String SaveImage(String fileName)
+        {
+            String imageFolderPath = Path.Combine(Environment.CurrentDirectory, "Images");
+            if (!Directory.Exists(imageFolderPath))
+                Directory.CreateDirectory(imageFolderPath);
+
+            String newFileName = DateTime.Now.ToString("dd-MM-yy-HH-mm-ss") + Path.GetExtension(fileName);
+            String imagePath = Path.Combine(imageFolderPath, newFileName);
+            File.Copy(fileName, imagePath);
+
+            return "Images\\" + newFileName;
+
         }
     }
 }
