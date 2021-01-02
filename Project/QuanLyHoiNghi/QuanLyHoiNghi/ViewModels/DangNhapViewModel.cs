@@ -31,6 +31,7 @@ namespace QuanLyHoiNghi.ViewModels
                     return false;
 
                 User = user;
+                User.HINHANH = System.IO.Path.GetFullPath(User.HINHANH);
                 return true;
             }
         }
@@ -52,14 +53,15 @@ namespace QuanLyHoiNghi.ViewModels
         }
         public void chinhSuaMatKhau(string pass)
         {
-            User.PASSWORD = pass;
+            string hashPass = this.maHoaMatKhauMD5(pass);
+            User.PASSWORD = hashPass;
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
                 foreach (var us in db.USERs)
                 {
                     if (us.IDUSER == User.IDUSER)
                     {
-                        us.PASSWORD = pass;
+                        us.PASSWORD = hashPass;
                         break;
                     }
                 }
@@ -97,6 +99,24 @@ namespace QuanLyHoiNghi.ViewModels
                 }
                 db.SaveChanges();
             }
+        }
+        private string maHoaMatKhauMD5(string password)
+        {
+            //Tạo MD5 
+            MD5 mh = MD5.Create();
+            //Chuyển kiểu chuổi thành kiểu byte
+            byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(password);
+            //mã hóa chuỗi đã chuyển
+            byte[] hash = mh.ComputeHash(inputBytes);
+            //tạo đối tượng StringBuilder (làm việc với kiểu dữ liệu lớn)
+            StringBuilder sb = new StringBuilder();
+
+            for (int i = 0; i < hash.Length; i++)
+            {
+                sb.Append(hash[i].ToString("X2"));
+            }
+
+            return sb.ToString();
         }
     }
 }
