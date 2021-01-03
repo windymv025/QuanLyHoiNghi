@@ -23,111 +23,125 @@
                 </Grid.ColumnDefinitions>
                 <Button x:Name="trangChuBtn" Content="Trang Chủ" FontSize="14" FontWeight="Bold" Click="trangChuBtn_Click"></Button>
                 <Button Grid.Column="1" x:Name="hoiNghiDangKyBtn" Content="Hội nghị đã đăng ký" FontSize="14" FontWeight="Bold" Click="hoiNghiDangKyBtn_Click"></Button>
-                <Button Grid.Column="2" x:Name="quanLyHoiNghiBtn" Content="Quản lý hội nghị" FontSize="14" FontWeight="Bold" Background="Blue" Foreground="White"></Button>
+                <Button Grid.Column="2" x:Name="quanLyHoiNghiBtn" Content="Quản lý hội nghị" FontSize="14" FontWeight="Bold"  Background="Blue" Foreground="White"></Button>
                 <Button Grid.Column="3" Name="taiKhoanBtn" Content="Tài khoản" FontSize="14" FontWeight="Bold" Click="taiKhoanBtn_Click"></Button>
             </Grid>
 
-            <StackPanel>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="100"/>
-                        <RowDefinition Height="*"></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <!--Tìm kiếm-->
-                    <Grid Grid.ColumnSpan="2" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <!--Tìm kiếm-->
+                <Grid Grid.ColumnSpan="2" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid  Name="timKiem_grid" Visibility="Collapsed" Margin="20,20,20,20">
                         <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-                        <Grid  Name="timKiem_grid" Visibility="Collapsed" Margin="20,20,20,20">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1.5*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="2*"/>
-                            </Grid.ColumnDefinitions>
 
 
-                            <Label Content="Tên hội nghị: " FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-                            <TextBox x:Name="tenHoiNghiTextBox" VerticalAlignment="Center" Grid.Column="1" Width="auto" Height="40" Margin="10,0,0,0" FontSize="14"></TextBox>
+                        <Label Content="Tên hội nghị: " FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                        <TextBox x:Name="tenHoiNghiTextBox" TextChanged="tenHoiNghiTextBox_TextChanged" VerticalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Width="auto" Height="40" Margin="10,0,0,0" FontSize="14"></TextBox>
 
-                            <Label Grid.Column="2" Content="Địa điểm:" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
-                            <TextBox Grid.Column="3" x:Name="điaiemTextBox" Width="auto" Height="40" VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBox>
+                        <Label Grid.Column="2" Content="Địa điểm:" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                        <TextBox Grid.Column="3" x:Name="diadiemTextBox" TextChanged="diadiemTextBox_TextChanged" Width="auto" Height="40" VerticalAlignment="Center" VerticalContentAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBox>
 
-                            <Label Grid.Column="4" Content="Thời gian:" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+                        <Label Grid.Column="4" Content="Thời gian:" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
 
-                            <DatePicker Grid.Column="5" VerticalAlignment="Center" VerticalContentAlignment="Center"  Margin="10,0,0,0" Height="40" FontWeight="Bold" FontStyle="Italic" FontSize="14" ></DatePicker>
+                        <DatePicker Name="ngayBatDauDatePicker" SelectedDateChanged="ngayBatDauDatePicker_SelectedDateChanged" Grid.Column="5" VerticalAlignment="Center" VerticalContentAlignment="Center"  Margin="10,0,0,0" Height="40" FontWeight="Bold" FontStyle="Italic" FontSize="14" ></DatePicker>
 
-                        </Grid>
-
-                        <!--Ẩn tim kiem-->
-                        <Grid x:Name="sapXep_grid" Margin="0,0,0,-25">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"/>
-                                <ColumnDefinition Width="4*"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="1" FontWeight="Bold" VerticalAlignment="Center"  FontSize="22" Text="Quản lý hội nghị" />
-                            <ComboBox Grid.Column="2" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White">
-                                <ComboBoxItem IsSelected="True">
-                                    <TextBlock Text="Tăng dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <TextBlock Text="Giảm dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
-                                </ComboBoxItem>
-                            </ComboBox>
-                            <ComboBox Grid.Column="3" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White" Text="Sắp xếp">
-                                <ComboBoxItem >
-                                    <TextBlock Text="Theo tên" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
-                                </ComboBoxItem>
-                                <ComboBoxItem>
-                                    <TextBlock Text="Theo ngày tổ chức" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
-                                </ComboBoxItem>
-                            </ComboBox>
-                        </Grid>
-
-                        <Image Grid.Column="1" x:Name="timKiemBtn" Source="Assets/search.png" Margin="5,0,5,0" MouseDown="timKiemBtn_MouseDown"></Image>
-                        <Image x:Name="themBtn" Source="Assets/add.jpg" Margin="10,45,9.6,-47" MouseDown="themBtn_MouseDown" RenderTransformOrigin="0.462,0.98" Grid.Column="1"/>
                     </Grid>
 
-                    <!--Hội nghị-->
-                    <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="30,10,30,10">
-                        <ListView>
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Orientation="Horizontal">
-                                        <Border  Width="100" Height="100" BorderBrush="Blue" CornerRadius="0" BorderThickness="2">
-                                            <TextBlock Text="{Binding ThoiGianBatDau}" FontWeight="Bold" Foreground="Blue" FontSize="20" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
-                                        </Border>
-                                        <Grid  Margin="30,0,0,0">
-                                            <Grid.RowDefinitions>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="*"/>
-                                                <RowDefinition Height="30"/>
-                                            </Grid.RowDefinitions>
-                                            <TextBlock Grid.Row="0" Text="{Binding TENHN}" FontSize="18" FontWeight="Bold" TextTrimming="WordEllipsis"/>
-                                            <TextBlock Grid.Row="1" Text="{Binding MOTANGANHN}" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" FontSize="15" TextTrimming ="WordEllipsis"></TextBlock>
+                    <!--Ẩn tim kiem-->
+                    <Grid x:Name="sapXep_grid" HorizontalAlignment="Left" Width="968">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="1" Text="Quản lý hội nghị" FontWeight="Bold" VerticalAlignment="Center"  FontSize="22" />
+                        <ComboBox x:Name="loaiSapXepCB" Grid.Column="2" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White" SelectionChanged="loaiSapXepCB_SelectionChanged">
+                            <ComboBoxItem>
+                                <TextBlock Text="Tăng dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock Text="Giảm dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                            </ComboBoxItem>
+                        </ComboBox>
+                        <ComboBox x:Name="hinhThucSapXepCB" Grid.Column="3" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White">
+                            <ComboBoxItem IsSelected="True">
+                                <TextBlock Text="Theo tên" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <TextBlock Text="Theo ngày tổ chức" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </Grid>
 
-                                            <Button Grid.Row="2" x:Name="xemThemBtn" Content="Xem thêm" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#FF0076FF" Width="100" Foreground="White" Height="30" />
-                                        </Grid>
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-
+                    <Image Grid.Column="1" x:Name="timKiemBtn" Source="Assets/search.png" Margin="5,-4,4.6,4" MouseDown="timKiemBtn_MouseDown"></Image>
+                    <Image Grid.Column="1" x:Name="themBtn" Source="Assets/add.jpg" Margin="10,41,9.6,-21" MouseDown="themBtn_MouseDown"></Image>
                 </Grid>
 
-            </StackPanel>
+                <!--Hội nghị-->
+
+                <ListView Grid.Row="1" x:Name="lvDanhSachHoiNghiQL" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListView.Resources>
+                        <Style TargetType="ListViewItem">
+                            <Style.Triggers>
+                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                                    <Setter Property="IsSelected"  Value="True"/>
+                                </Trigger>
+
+                            </Style.Triggers>
+                            <EventSetter Event="PreviewGotKeyboardFocus" Handler="ListViewItem_PreviewGotKeyboardFocus"/>
+                            <EventSetter Event="PreviewLostKeyboardFocus"  Handler="ListViewItem_PreviewLostKeyboardFocus"/>
+                        </Style>
+
+
+
+
+                    </ListView.Resources>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="0,5,0,20">
+                                <Border  Width="100" Height="100" BorderBrush="Blue" CornerRadius="0" BorderThickness="2">
+                                    <TextBlock Text="{Binding THOIGIANBATDAU}" FontWeight="Bold" Foreground="Blue" FontSize="18" TextAlignment="Center" VerticalAlignment="Center" TextWrapping="WrapWithOverflow"/>
+                                </Border>
+                                <Grid  Margin="30,0,0,0">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Grid.Row="0" Text="{Binding TENHN}" FontSize="18" FontWeight="Bold" TextTrimming="WordEllipsis"/>
+                                    <TextBlock Grid.Row="1" Text="{Binding MOTANGANHN}" TextWrapping="WrapWithOverflow" VerticalAlignment="Top" FontSize="15" TextTrimming ="WordEllipsis"></TextBlock>
+
+                                    <Button Click="chinhSuaBtn_Click" Grid.Row="2" x:Name="chinhSuaBtn" Content="Chỉnh Sửa" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="#FF0076FF" Width="100" Foreground="White" Height="30" />
+                                </Grid>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </Grid>
+
+
 
         </DockPanel>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image x:Name="prevBtn" Source="Assets/search.png" Width="40"/>
+            <Image x:Name="prevBtn" Source="Assets/previousbutton.png" Width="40" MouseDown="prevBtn_MouseDown"/>
             <TextBlock Text="2/10" x:Name="trangHienTaiTxt" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"  Margin="40,0,40,0"/>
-            <Image x:Name="nextBtn" Source="Assets/search.png" Width="40"/>
+            <Image x:Name="nextBtn" Source="Assets/nextbutton.png" Width="40" MouseDown="nextBtn_MouseDown"/>
         </StackPanel>
     </Grid>
 </Window>
