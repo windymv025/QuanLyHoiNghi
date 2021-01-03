@@ -23,10 +23,10 @@ namespace QuanLyHoiNghi
     {
         private ChiTietHoiNghiViewModel viewModel;
 
-        public ChiTietHoiNghiWindow(HOINGHI HoiNghi)
+        public ChiTietHoiNghiWindow(HOINGHI HoiNghi, USER User)
         {
             InitializeComponent();
-            ChiTietHoiNghiViewModel viewModel = new ChiTietHoiNghiViewModel(HoiNghi);
+            ChiTietHoiNghiViewModel viewModel = new ChiTietHoiNghiViewModel(HoiNghi, User, this);
             this.viewModel = viewModel;
             this.DataContext = viewModel;
         }
