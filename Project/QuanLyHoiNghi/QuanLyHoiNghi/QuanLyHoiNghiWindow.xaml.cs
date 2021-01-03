@@ -207,7 +207,6 @@ namespace QuanLyHoiNghi
             }
         }
 
-
         private void ListViewItem_PreviewLostKeyboardFocus(object sender, KeyboardFocusChangedEventArgs e)
         {
             ListViewItem item = (ListViewItem)sender;
@@ -222,12 +221,28 @@ namespace QuanLyHoiNghi
 
         private void themBtn_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //
+            ThemHoiNghiWindow ThemHN = new ThemHoiNghiWindow();
+            ThemHN.Show();
+            this.Close();
         }
 
         private void chinhSuaBtn_Click(object sender, RoutedEventArgs e)
         {
-            //
+            try
+            {
+                int index = 0;
+                index = lvDanhSachHoiNghiQL.SelectedIndex;
+
+                HOINGHI hn = viewModel.ListHoiNghi[((viewModel.PagingInfo.CurrentPage - 1) * 4) + index];
+                ChinhSuaHoiNghiWindow CSHN = new ChinhSuaHoiNghiWindow(hn);
+                CSHN.Show();
+                this.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

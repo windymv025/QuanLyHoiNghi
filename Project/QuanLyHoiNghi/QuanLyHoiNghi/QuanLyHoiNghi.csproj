@@ -93,6 +93,9 @@
     <Compile Include="CapQuyenHoiNghiWindow.xaml.cs">
       <DependentUpon>CapQuyenHoiNghiWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChinhSuaHoiNghiWindow.xaml.cs">
+      <DependentUpon>ChinhSuaHoiNghiWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DangKyTaiKhoanWindow.xaml.cs">
       <DependentUpon>DangKyTaiKhoanWindow.xaml</DependentUpon>
     </Compile>
@@ -147,6 +150,10 @@
       <DependentUpon>XemVaSuaTaiKhoanWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="CapQuyenHoiNghiWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChinhSuaHoiNghiWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -247,6 +254,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Resource Include="Assets\add.jpg" />
     <Content Include="Assets\choosepicture.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

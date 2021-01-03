@@ -141,6 +141,13 @@ namespace QuanLyHoiNghi.ViewModels
                     db.HOINGHIs.Add(HoiNghi);
                     db.SaveChanges();
 
+                    CHITIETADMIN ChiTietAdmin = new CHITIETADMIN();
+                    ChiTietAdmin.IDHN = id;
+                    ChiTietAdmin.IDUSER = DangNhapViewModel.User.IDUSER;
+                    ChiTietAdmin.LOAIADMIN = "0";
+                    db.CHITIETADMINs.Add(ChiTietAdmin);
+                    db.SaveChanges();
+
                     IsSaved = true;
                     SavedId = id;
                     MessageBox.Show("Đã thêm hội nghị.");
@@ -148,7 +155,7 @@ namespace QuanLyHoiNghi.ViewModels
             }
             catch
             {
-                MessageBox.Show("Đã có lỗi xãy ra.");
+                MessageBox.Show("Đã có lỗi xảy ra.");
                 return;
             }
         }

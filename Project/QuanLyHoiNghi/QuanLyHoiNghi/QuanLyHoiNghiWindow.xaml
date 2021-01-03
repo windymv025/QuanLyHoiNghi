@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:QuanLyHoiNghi"
         mc:Ignorable="d"
        	WindowStartupLocation="CenterScreen"
-        Title="QuanLyHoiNghiWindow" Height="700" Width="1024">
+        Title="Quản lý hội nghị" Height="700" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -29,7 +29,8 @@
 
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="40"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <!--Tìm kiếm-->
@@ -47,8 +48,6 @@
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
-
-
                         <Label Content="Tên hội nghị: " FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
                         <TextBox x:Name="tenHoiNghiTextBox" TextChanged="tenHoiNghiTextBox_TextChanged" VerticalAlignment="Center" VerticalContentAlignment="Center" Grid.Column="1" Width="auto" Height="40" Margin="10,0,0,0" FontSize="14"></TextBox>
 
@@ -87,14 +86,15 @@
                             </ComboBoxItem>
                         </ComboBox>
                     </Grid>
-
-                    <Image Grid.Column="1" x:Name="timKiemBtn" Source="Assets/search.png" Margin="5,-4,4.6,4" MouseDown="timKiemBtn_MouseDown"></Image>
-                    <Image Grid.Column="1" x:Name="themBtn" Source="Assets/add.jpg" Margin="10,41,9.6,-21" MouseDown="themBtn_MouseDown"></Image>
+                    <Image Grid.Column="1" x:Name="timKiemBtn" Source="Assets/search.png" Margin="5,10,5,4" MouseDown="timKiemBtn_MouseDown"></Image>
                 </Grid>
+                <Image Grid.Row="1" x:Name="themBtn" Source="Assets/add.jpg"  MouseDown="themBtn_MouseDown" HorizontalAlignment="Right" Margin="0,0,10,0" Visibility="Visible" >
+                    
+                </Image>
 
                 <!--Hội nghị-->
 
-                <ListView Grid.Row="1" x:Name="lvDanhSachHoiNghiQL" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                <ListView Grid.Row="2" x:Name="lvDanhSachHoiNghiQL" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                     <ListView.Resources>
                         <Style TargetType="ListViewItem">
                             <Style.Triggers>
@@ -106,10 +106,6 @@
                             <EventSetter Event="PreviewGotKeyboardFocus" Handler="ListViewItem_PreviewGotKeyboardFocus"/>
                             <EventSetter Event="PreviewLostKeyboardFocus"  Handler="ListViewItem_PreviewLostKeyboardFocus"/>
                         </Style>
-
-
-
-
                     </ListView.Resources>
                     <ListView.ItemTemplate>
                         <DataTemplate>

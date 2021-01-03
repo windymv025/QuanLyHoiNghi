@@ -33,22 +33,57 @@ namespace QuanLyHoiNghi
 
         private void btnTrangChu_Click(object sender, RoutedEventArgs e)
         {
-
+            MainWindow Main = new MainWindow();
+            Main.Show();
+            this.Close();
         }
 
         private void btnHoiNghiDangKy_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DangNhapViewModel.User != null)
+            {
+                HoiNghiDaDangKyWindow HNDDangKy = new HoiNghiDaDangKyWindow();
+                HNDDangKy.Show();
+                this.Close();
+            }
+            else
+            {
+                LoiXemHNDDKWindow LoiHNDDangKy = new LoiXemHNDDKWindow();
+                LoiHNDDangKy.Show();
+                this.Close();
+            }
         }
 
         private void btnQuanLyHoiNghi_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DangNhapViewModel.User != null && DangNhapViewModel.User.LOAIUSER == "1")
+            {
+                QuanLyHoiNghiWindow HNQLy = new QuanLyHoiNghiWindow();
+                HNQLy.Show();
+                this.Close();
+            }
+            else
+            {
+                LoiXemHNQLWindow LoiHNQL = new LoiXemHNQLWindow();
+                LoiHNQL.Show();
+                this.Close();
+            }
         }
 
         private void btnTaiKhoan_Click(object sender, RoutedEventArgs e)
         {
-
+            if (DangNhapViewModel.User == null)
+            {
+                DangNhapWindow DN = new DangNhapWindow();
+                DN.Show();
+                this.Close();
+            }
+            else
+            {
+                XemVaSuaTaiKhoanWindow TK = new XemVaSuaTaiKhoanWindow();
+                TK.Show();
+                this.Close();
+            }
         }
     }
 }

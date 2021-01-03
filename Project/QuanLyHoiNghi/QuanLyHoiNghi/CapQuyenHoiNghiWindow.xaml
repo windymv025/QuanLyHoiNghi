@@ -22,10 +22,10 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Name="btnTrangChu" Content="Trang chủ"/>
-            <Button Grid.Column="1" Name="btnHoiNghiDangKY" Content="Hội nghị đã đăng ký"/>
-            <Button Grid.Column="2" Name="btnQuanLyHoiNghi" Content="Quản lý hội nghị"  Background="Blue" Foreground="White"/>
-            <Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" />
+            <Button Grid.Column="0" Name="btnTrangChu" Content="Trang chủ" FontSize="14" FontWeight="Bold" Click="btnTrangChu_Click"/>
+            <Button Grid.Column="1" Name="btnHoiNghiDangKY" Content="Hội nghị đã đăng ký" FontSize="14" FontWeight="Bold" Click="btnHoiNghiDangKY_Click"/>
+            <Button Grid.Column="2" Name="btnQuanLyHoiNghi" Content="Quản lý hội nghị"  Background="Blue" Foreground="White" FontSize="14" FontWeight="Bold" Click="btnQuanLyHoiNghi_Click"/>
+            <Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" FontSize="14" FontWeight="Bold" Click="btnTaiKhoan_Click"/>
         </Grid>
 
         <Grid Grid.Row="1">

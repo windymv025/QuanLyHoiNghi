@@ -50,11 +50,11 @@ namespace QuanLyHoiNghi.ViewModels
 
         public ChinhSuaHoiNghiViewModel(HOINGHI hoiNghi)
         {
-            // this.HoiNghi = hoiNghi;
-            using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
-            {
-                this.HoiNghi = db.HOINGHIs.FirstOrDefault();
-            }
+            this.HoiNghi = hoiNghi;
+            //using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
+            //{
+            //    this.HoiNghi = db.HOINGHIs.FirstOrDefault();
+            //}
             LoadData();
 
             this.ChooseImageCommand = new RelayCommand(ChooseImage);

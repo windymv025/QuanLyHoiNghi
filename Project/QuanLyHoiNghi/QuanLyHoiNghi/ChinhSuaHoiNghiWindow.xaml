@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyHoiNghi" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="ChinhSuaHoiNghiWindow" Height="700" Width="1024">
+        WindowStartupLocation="CenterScreen"
+        Title="Chỉnh sửa hội nghị" Height="700" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -21,10 +22,10 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Name="btnTrangChu" Content="Trang chủ" Click="btnTrangChu_Click"/>
-            <Button Grid.Column="1" Name="btnHoiNghiDangKy" Content="Hội nghị đã đăng ký" Click="btnHoiNghiDangKy_Click"/>
-            <Button Grid.Column="2" Name="btnQuanLyHoiNghi" Content="Quản lý hội nghị" Background="Blue" Foreground="White" Click="btnQuanLyHoiNghi_Click"/>
-            <Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" Click="btnTaiKhoan_Click"/>
+            <Button Grid.Column="0" Name="btnTrangChu" Content="Trang chủ" Click="btnTrangChu_Click" FontWeight="Bold" FontSize="14"/>
+            <Button Grid.Column="1" Name="btnHoiNghiDangKy" Content="Hội nghị đã đăng ký" Click="btnHoiNghiDangKy_Click" FontSize="14" FontWeight="Bold"/>
+            <Button Grid.Column="2" Name="btnQuanLyHoiNghi" Content="Quản lý hội nghị" Background="Blue" Foreground="White" Click="btnQuanLyHoiNghi_Click" FontSize="14" FontWeight="Bold"/>
+            <Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" Click="btnTaiKhoan_Click" FontSize="14" FontWeight="Bold"/>
         </Grid>
 
         <!-- Thêm hội nghị -->

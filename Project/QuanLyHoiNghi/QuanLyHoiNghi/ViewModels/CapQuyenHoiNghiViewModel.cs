@@ -1,9 +1,11 @@
-﻿using QuanLyHoiNghi.Command;
+﻿using Microsoft.Win32;
+using QuanLyHoiNghi.Command;
 using QuanLyHoiNghi.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -116,7 +118,7 @@ namespace QuanLyHoiNghi.ViewModels
                 this.User = user;
                 this.IsCapQuyen = isCapQuyen;
                 this.LoaiAdmin = LoaiAdmin;
-               // this.ImagePath = Path.Combine(Environment.CurrentDirectory, this.User.HINHANH ?? "Images\\user.png");
+                this.ImagePath = Path.Combine(Environment.CurrentDirectory, this.User.HINHANH ?? "Images\\user.png");
                 this.CapQuyenCommand = new RelayCommand(CapQuyen);
             }
 

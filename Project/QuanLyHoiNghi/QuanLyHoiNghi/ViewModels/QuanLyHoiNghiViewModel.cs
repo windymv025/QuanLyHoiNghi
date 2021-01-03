@@ -18,9 +18,9 @@ namespace QuanLyHoiNghi.ViewModels
                 var listHoiNghi = from hoiNghi in db.HOINGHIs
                                   join chitietadmin in db.CHITIETADMINs
                                   on hoiNghi.IDHN equals chitietadmin.IDHN
-                                  join user in db.USERs
-                                  on chitietadmin.IDUSER equals user.IDUSER 
-                                  where user.LOAIUSER == "1"
+                                  //join user in db.USERs
+                                  //on chitietadmin.IDUSER equals user.IDUSER 
+                                  where chitietadmin.IDUSER == DangNhapViewModel.User.IDUSER
                                   select hoiNghi;
                 list = listHoiNghi.ToList();
             }
@@ -71,11 +71,11 @@ namespace QuanLyHoiNghi.ViewModels
                 }
 
                 var listHN = from hn in list
-                             join ctam in db.CHITIETADMINs
-                             on hn.IDHN equals ctam.IDHN
-                             join user in db.USERs
-                             on ctam.IDUSER equals user.IDUSER
-                             where user.LOAIUSER == "1"
+                             join chitietadmin in db.CHITIETADMINs
+                             on hn.IDHN equals chitietadmin.IDHN
+                             //join user in db.USERs
+                             //on ctam.IDUSER equals user.IDUSER
+                             where chitietadmin.IDUSER == DangNhapViewModel.User.IDUSER
                              select hn;
 
                 list = listHN.ToList();
