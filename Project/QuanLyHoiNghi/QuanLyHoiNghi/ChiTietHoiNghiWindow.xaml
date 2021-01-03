@@ -65,7 +65,7 @@
                         <Style.Triggers>
                             <DataTrigger Binding="{Binding IsSignedUp}" Value="True">
                                 <Setter Property="Background" Value="Red"/>
-                                <Setter Property="Content" Value="Đã đăng ký"/>
+                                <Setter Property="Content" Value="Hủy đăng ký"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>

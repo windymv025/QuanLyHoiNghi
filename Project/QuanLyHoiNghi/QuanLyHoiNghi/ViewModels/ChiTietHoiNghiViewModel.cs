@@ -47,13 +47,35 @@ namespace QuanLyHoiNghi.ViewModels
 
                 this.DiaDiem = diaDiem.TENDD + ", " + diaDiem.DIACHI;
                 this.SucChua = diaDiem.SUCCHUA;
+
+                if (DangNhapViewModel.User == null)
+                {
+                    this.IsSignedUp = false;
+                    this.SignUpCommand = new RelayCommand(SignUp);
+                }
+                else
+                {
+                    int isSignedUpCount = (from dk in db.DANGKITHAMGIAs
+                                           where dk.IDUSER == DangNhapViewModel.User.IDUSER && dk.IDHN == hoiNghi.IDHN
+                                           select dk).Count();
+                    if (isSignedUpCount <= 0)
+                    {
+                        this.IsSignedUp = false;
+                        this.SignUpCommand = new RelayCommand(SignUp);
+                    }
+                    else
+                    {
+                        this.IsSignedUp = true;
+                        this.SignUpCommand = new RelayCommand(UnSignUp);
+                    }
+                }
             }
 
             this.NgayBatDau = this.HoiNghi.THOIGIANBATDAU.ToString("dd/MM/yy hh:mm");
             this.NgayKetThuc = this.HoiNghi.THOIGIANKETTHUC.ToString("dd/MM/yy hh:mm");
             this.ImagePathHoiNghi = Path.Combine(Environment.CurrentDirectory, this.HoiNghi.HINHANH);
-            this.IsSignedUp = false;
-            this.SignUpCommand = new RelayCommand(SignUp);
+            //this.IsSignedUp = false;
+            //this.SignUpCommand = new RelayCommand(SignUp);
         }
 
         private void SignUp()
@@ -78,7 +100,7 @@ namespace QuanLyHoiNghi.ViewModels
                     {
                         DANGKITHAMGIA dangky = new DANGKITHAMGIA();
                         dangky.IDHN = this.HoiNghi.IDHN;
-                        dangky.IDUSER = 1;
+                        dangky.IDUSER = DangNhapViewModel.User.IDUSER;
                         dangky.TRANGTHAI = 0;
                         dangky.THOIGIANDK = DateTime.Now;
 
@@ -87,16 +109,47 @@ namespace QuanLyHoiNghi.ViewModels
                     }
 
                     IsSignedUp = !IsSignedUp;
+                    SignUpCommand = new RelayCommand(UnSignUp);
                 }
                 catch
                 {
                     MessageBox.Show("Đã có lỗi xảy ra.");
                 }
-
-
             }
-
         }
+        
+        private void UnSignUp()
+        {
+            if (DangNhapViewModel.User == null)
+            {
+                DangNhapWindow dangNhapWindow = new DangNhapWindow();
+                dangNhapWindow.Show();
+                this.Window.Close();
+            }
+            else
+            {
+                try
+                {
+                    using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
+                    {
 
+                        var dky = from dk in db.DANGKITHAMGIAs
+                                  where dk.IDHN == this.HoiNghi.IDHN && dk.IDUSER == DangNhapViewModel.User.IDUSER
+                                  select dk;
+                        if (dky.Count() > 0)
+                        {
+                            db.DANGKITHAMGIAs.Remove(dky.First());
+                            db.SaveChanges();
+                            IsSignedUp = !IsSignedUp;
+                            SignUpCommand = new RelayCommand(SignUp);
+                        }
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Đã có lỗi xảy ra.");
+                }
+            }
+        }
     }
 }
