@@ -21,8 +21,6 @@ namespace QuanLyHoiNghi.ViewModels
 
         public HOINGHI HoiNghi { get; set; }
 
-        public USER User { get; set; }
-
         public String NgayBatDau { get; set; }
 
         public String NgayKetThuc { get; set; }
@@ -37,10 +35,9 @@ namespace QuanLyHoiNghi.ViewModels
 
         public ICommand SignUpCommand { get; set; }
 
-        public ChiTietHoiNghiViewModel(HOINGHI hoiNghi, USER User, Window window)
+        public ChiTietHoiNghiViewModel(HOINGHI hoiNghi, Window window)
         {
             this.Window = window;
-            this.User = User;
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
                 this.HoiNghi = hoiNghi;
@@ -61,7 +58,7 @@ namespace QuanLyHoiNghi.ViewModels
 
         private void SignUp()
         {
-            if (User == null)
+            if (DangNhapViewModel.User == null)
             {
                 DangNhapWindow dangNhapWindow = new DangNhapWindow();
                 dangNhapWindow.Show();

@@ -234,7 +234,7 @@ namespace QuanLyHoiNghi
                 index = lvDanhSachHoiNghi.SelectedIndex;
 
                 HOINGHI hn = viewModel.ListHoiNghi[((viewModel.PagingInfo.CurrentPage - 1) * 4) + index];
-                ChiTietHoiNghiWindow CTHN = new ChiTietHoiNghiWindow(hn, null);
+                ChiTietHoiNghiWindow CTHN = new ChiTietHoiNghiWindow(hn);
                 CTHN.Show();
                 this.Close();
             }
