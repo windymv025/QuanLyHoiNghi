@@ -247,6 +247,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Assets\choosepicture.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\nextbutton.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -256,7 +259,9 @@
     <Content Include="Assets\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Images\user_example.png" />
+    <None Include="Images\user_example.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <Content Include="Model\DBQuanLyHoiNghi.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DBQuanLyHoiNghi.Context.cs</LastGenOutput>
@@ -267,7 +272,9 @@
       <DependentUpon>DBQuanLyHoiNghi.edmx</DependentUpon>
       <LastGenOutput>DBQuanLyHoiNghi.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\exclamation.png" />
+    <Content Include="Assets\exclamation.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

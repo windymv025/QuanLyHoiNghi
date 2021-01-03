@@ -100,15 +100,11 @@
                                 <Trigger Property="IsKeyboardFocusWithin" Value="True">
                                     <Setter Property="IsSelected"  Value="True"/>
                                 </Trigger>
-                               
+
                             </Style.Triggers>
                             <EventSetter Event="PreviewGotKeyboardFocus" Handler="ListViewItem_PreviewGotKeyboardFocus"/>
                             <EventSetter Event="PreviewLostKeyboardFocus"  Handler="ListViewItem_PreviewLostKeyboardFocus"/>
                         </Style>
-
-                        
-                           
-                    
                     </ListView.Resources>
                     <ListView.ItemTemplate>
                                 <DataTemplate>
