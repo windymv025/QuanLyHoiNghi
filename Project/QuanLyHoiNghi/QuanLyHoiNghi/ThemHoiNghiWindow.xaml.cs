@@ -25,7 +25,7 @@ namespace QuanLyHoiNghi
         public ThemHoiNghiWindow()
         {
             InitializeComponent();
-            ThemHoiNghiViewModel viewModel = new ThemHoiNghiViewModel();
+            ThemHoiNghiViewModel viewModel = new ThemHoiNghiViewModel(this);
             this.viewModel = viewModel;
             this.DataContext = this.viewModel;
         }

@@ -116,6 +116,7 @@ namespace QuanLyHoiNghi.ViewModels
             public CapQuyenUser(USER user, int IdHN, bool isCapQuyen, String LoaiAdmin)
             {
                 this.User = user;
+                this.IdHN = IdHN;
                 this.IsCapQuyen = isCapQuyen;
                 this.LoaiAdmin = LoaiAdmin;
                 this.ImagePath = Path.Combine(Environment.CurrentDirectory, this.User.HINHANH ?? "Images\\user.png");
@@ -132,7 +133,6 @@ namespace QuanLyHoiNghi.ViewModels
                     {
                         using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
                         {
-                            CHITIETADMIN a = db.CHITIETADMINs.Where(ct => ct.IDHN == IdHN && ct.IDUSER == User.IDUSER).ToList().FirstOrDefault();
                             CHITIETADMIN chiTiet = new CHITIETADMIN();
                             chiTiet.IDHN = IdHN;
                             chiTiet.IDUSER = User.IDUSER;

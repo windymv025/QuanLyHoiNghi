@@ -26,7 +26,7 @@ namespace QuanLyHoiNghi
         public ChinhSuaHoiNghiWindow(HOINGHI HoiNghi)
         {
             InitializeComponent();
-            ChinhSuaHoiNghiViewModel viewModel = new ChinhSuaHoiNghiViewModel(HoiNghi);
+            ChinhSuaHoiNghiViewModel viewModel = new ChinhSuaHoiNghiViewModel(HoiNghi, this);
             this.viewModel = viewModel;
             this.DataContext = this.viewModel;
         }

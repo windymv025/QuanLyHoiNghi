@@ -17,6 +17,7 @@ namespace QuanLyHoiNghi.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Window Window { get; set; }
 
         public HOINGHI HoiNghi { get; set; }
 
@@ -48,13 +49,11 @@ namespace QuanLyHoiNghi.ViewModels
 
         public bool IsChooseImage { get; set; }
 
-        public ChinhSuaHoiNghiViewModel(HOINGHI hoiNghi)
+        public ChinhSuaHoiNghiViewModel(HOINGHI hoiNghi, Window window)
         {
+            this.Window = window;
             this.HoiNghi = hoiNghi;
-            //using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
-            //{
-            //    this.HoiNghi = db.HOINGHIs.FirstOrDefault();
-            //}
+
             LoadData();
 
             this.ChooseImageCommand = new RelayCommand(ChooseImage);
@@ -176,7 +175,9 @@ namespace QuanLyHoiNghi.ViewModels
         private void CapQuyen()
         {
             CapQuyenHoiNghiWindow window = new CapQuyenHoiNghiWindow(this.HoiNghi, "1");
+            this.Window.Hide();
             window.ShowDialog();
+            this.Window.Show();
         }
 
         private void ChooseImage()

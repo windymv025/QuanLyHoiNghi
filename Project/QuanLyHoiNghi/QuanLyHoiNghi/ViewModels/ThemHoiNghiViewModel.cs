@@ -17,6 +17,8 @@ namespace QuanLyHoiNghi.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        public Window Window { get; set; }
+
         public String TenHoiNghi { get; set; }
 
         public DateTime NgayBatDau { get; set; }
@@ -49,8 +51,9 @@ namespace QuanLyHoiNghi.ViewModels
 
         public int SavedId { get; set; }
 
-        public ThemHoiNghiViewModel()
+        public ThemHoiNghiViewModel(Window window)
         {
+            this.Window = window;
             ImagePathHoiNghi = NoiDungHoiNghi = TenHoiNghi = MoTa = "";
             SoLuong = "0";
             NgayBatDau = NgayKetThuc = DateTime.Now;
@@ -163,13 +166,18 @@ namespace QuanLyHoiNghi.ViewModels
         private void CapQuyen()
         {
             if (!IsSaved)
+            {
+                MessageBox.Show("Hội nghị phải được lưu trước khi cấp quyền.");
                 return;
+            }
 
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                HOINGHI hoiNghi = (HOINGHI)db.HOINGHIs.Where(hn => hn.IDHN == SavedId);
+                HOINGHI hoiNghi = (HOINGHI)db.HOINGHIs.Where(hn => hn.IDHN == SavedId).FirstOrDefault();
                 CapQuyenHoiNghiWindow window = new CapQuyenHoiNghiWindow(hoiNghi, "0");
+                this.Window.Hide();
                 window.ShowDialog();
+                this.Window.Show();
             }
         }
 
