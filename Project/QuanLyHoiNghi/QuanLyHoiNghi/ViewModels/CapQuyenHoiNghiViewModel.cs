@@ -119,7 +119,7 @@ namespace QuanLyHoiNghi.ViewModels
                 this.IdHN = IdHN;
                 this.IsCapQuyen = isCapQuyen;
                 this.LoaiAdmin = LoaiAdmin;
-                this.ImagePath = Path.Combine(Environment.CurrentDirectory, this.User.HINHANH ?? "Images\\user.png");
+                this.ImagePath = Path.Combine(Environment.CurrentDirectory, this.User.HINHANH ?? "Images\\user_example.png");
                 this.CapQuyenCommand = new RelayCommand(CapQuyen);
             }
 

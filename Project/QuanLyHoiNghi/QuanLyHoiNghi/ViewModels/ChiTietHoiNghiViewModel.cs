@@ -71,8 +71,8 @@ namespace QuanLyHoiNghi.ViewModels
                 }
             }
 
-            this.NgayBatDau = this.HoiNghi.THOIGIANBATDAU.ToString("dd/MM/yy hh:mm");
-            this.NgayKetThuc = this.HoiNghi.THOIGIANKETTHUC.ToString("dd/MM/yy hh:mm");
+            this.NgayBatDau = this.HoiNghi.THOIGIANBATDAU.ToString("dd/MM/yyyy hh:mm");
+            this.NgayKetThuc = this.HoiNghi.THOIGIANKETTHUC.ToString("dd/MM/yyyy hh:mm");
             this.ImagePathHoiNghi = Path.Combine(Environment.CurrentDirectory, this.HoiNghi.HINHANH);
             //this.IsSignedUp = false;
             //this.SignUpCommand = new RelayCommand(SignUp);

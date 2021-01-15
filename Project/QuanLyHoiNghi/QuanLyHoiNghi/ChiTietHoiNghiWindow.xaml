@@ -22,11 +22,12 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" Name="btnTrangChu" Content="Trang chủ" Background="Blue" Foreground="White" Click="btnTrangChu_Click"/>
-            <Button Grid.Column="1" Name="btnHoiNghiDangKY" Content="Hội nghị đã đăng ký" Click="btnHoiNghiDangKY_Click"/>
-            <Button Grid.Column="2" Name="btnQuanLyHoiNghi" Content="Quản lý hội nghị" Click="btnQuanLyHoiNghi_Click"/>
-            <Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" Click="btnTaiKhoan_Click"/>
-        </Grid>
+			<Button Grid.Column="0" Name="btnTrangChu" Content="Trang chủ" FontSize="14" FontWeight="Bold" Background="Blue" Foreground="White" Click="btnTrangChu_Click"/>
+			<Button Grid.Column="1" Name="btnHoiNghiDangKY" Content="Hội nghị đã đăng ký" FontSize="14" FontWeight="Bold" Click="btnHoiNghiDangKY_Click"/>
+			<Button Grid.Column="2" Name="btnQuanLyHoiNghi" Content="Quản lý hội nghị" FontSize="14" FontWeight="Bold" Click="btnQuanLyHoiNghi_Click"/>
+			<Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" FontSize="14" FontWeight="Bold" Click="btnTaiKhoan_Click"/>
+
+		</Grid>
 
         <!-- Chi tiết hội nghị -->
         <Grid Margin="150 50 150 0" Grid.Row="1">
@@ -77,9 +78,10 @@
                 HorizontalAlignment="Center"
                 FontWeight="Bold"
                 FontSize="24"
-                Width="400"
+                Width="auto"
+					Padding="0,0,130,0"
                 TextAlignment="Center"
-                TextWrapping="Wrap"
+                TextWrapping="WrapWithOverflow"
                 />
 
                 <Button 
@@ -95,7 +97,7 @@
 
             </Grid>
 
-            <!-- Ảnh hội nghị -->
+				<!-- Ảnh hội nghị -->
             <Grid Grid.Row="1" Margin="0 20 0 0">
 
                 <Image Height="300" Source="{Binding ImagePathHoiNghi}"/>
@@ -106,7 +108,8 @@
             <Grid Grid.Row="2" Margin="0 20 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*"/>
-                    <ColumnDefinition Width="6*"/>
+					<ColumnDefinition Width="2"/>
+					<ColumnDefinition Width="6*"/>
                 </Grid.ColumnDefinitions>
 
                 <!-- Thời gian và địa điểm -->
@@ -169,8 +172,12 @@
 
                 </StackPanel>
 
+				<Border Grid.Column="1" Background="Gray">
+					
+				</Border>
+
                 <!-- Nội dung -->
-                <StackPanel Grid.Column="1" Orientation="Vertical">
+                <StackPanel Grid.Column="2" Orientation="Vertical">
 
                     <TextBlock
                         Text="Nội dung hội nghị"

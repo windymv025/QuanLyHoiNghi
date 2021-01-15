@@ -1,11 +1,9 @@
-﻿using Microsoft.Win32;
-using QuanLyHoiNghi.Model;
+﻿using QuanLyHoiNghi.Model;
 using QuanLyHoiNghi.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,18 +17,30 @@ using System.Windows.Shapes;
 namespace QuanLyHoiNghi
 {
     /// <summary>
-    /// Interaction logic for ChinhSuaHoiNghiWindow.xaml
+    /// Interaction logic for DanhSachDangKyHoiNghi.xaml
     /// </summary>
-    public partial class ChinhSuaHoiNghiWindow : Window
+    public partial class DanhSachDangKyHoiNghi : Window
     {
-        private ChinhSuaHoiNghiViewModel viewModel;
-
-        public ChinhSuaHoiNghiWindow(HOINGHI HoiNghi)
+        const int NUMBER_USER_PER_PAGE = 4;
+        DanhSachDangKyHoiNghiViewModel viewModel;
+        public DanhSachDangKyHoiNghi(HOINGHI hoiNghi)
         {
             InitializeComponent();
-            ChinhSuaHoiNghiViewModel viewModel = new ChinhSuaHoiNghiViewModel(HoiNghi, this);
-            this.viewModel = viewModel;
-            this.DataContext = this.viewModel;
+            viewModel = new DanhSachDangKyHoiNghiViewModel(hoiNghi);
+            int total = viewModel.ListDangKyUser.Count;
+            viewModel.PagingInfo = new PagingInfo(NUMBER_USER_PER_PAGE, total);
+            loadPage(1);
+        }
+
+        private void loadPage(int page)
+        {
+            var result = viewModel.loadPage(page, viewModel.PagingInfo.ItemInPerPage);
+            lvDanhSachDangKy.ItemsSource = result;
+            if (viewModel.PagingInfo.TotalPage == 0)
+            {
+                viewModel.PagingInfo.CurrentPage = 0;
+            }
+            trangHienTaiTxt.Text = $"{viewModel.PagingInfo.CurrentPage}/{viewModel.PagingInfo.TotalPage}";
         }
 
         private void btnTrangChu_Click(object sender, RoutedEventArgs e)
@@ -40,7 +50,7 @@ namespace QuanLyHoiNghi
             this.Close();
         }
 
-        private void btnHoiNghiDangKy_Click(object sender, RoutedEventArgs e)
+        private void btnHoiNghiDangKY_Click(object sender, RoutedEventArgs e)
         {
             if (DangNhapViewModel.User != null)
             {
@@ -58,6 +68,7 @@ namespace QuanLyHoiNghi
 
         private void btnQuanLyHoiNghi_Click(object sender, RoutedEventArgs e)
         {
+
             if (DangNhapViewModel.User != null && DangNhapViewModel.User.LOAIUSER == "1")
             {
                 QuanLyHoiNghiWindow HNQLy = new QuanLyHoiNghiWindow();
@@ -88,16 +99,20 @@ namespace QuanLyHoiNghi
             }
         }
 
-        private void soLuongTxt_TextChanged(object sender, TextChangedEventArgs e)
+        private void prevBtn_Click(object sender, RoutedEventArgs e)
         {
-            soLuongTxt.Text = Regex.Replace(soLuongTxt.Text, "[0-9]+", "");
+            loadPage(viewModel.PagingInfo.CurrentPage - 1);
+
         }
 
-        private void btnDanhSachDangKy_Click(object sender, RoutedEventArgs e)
+        private void nextBtn_Click(object sender, RoutedEventArgs e)
         {
-            DanhSachDangKyHoiNghi dangKyHoiNghi = new DanhSachDangKyHoiNghi(viewModel.HoiNghi);
-            dangKyHoiNghi.Show();
-            this.Close();
+            loadPage(viewModel.PagingInfo.CurrentPage + 1);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            loadPage(viewModel.PagingInfo.CurrentPage);
         }
     }
 }

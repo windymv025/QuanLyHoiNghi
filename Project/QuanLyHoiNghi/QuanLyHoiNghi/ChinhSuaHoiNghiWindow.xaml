@@ -28,8 +28,9 @@
             <Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" Click="btnTaiKhoan_Click" FontSize="14" FontWeight="Bold"/>
         </Grid>
 
+		<ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
         <!-- Thêm hội nghị -->
-        <Grid Margin="100 10 100 0" Grid.Row="1">
+			<Grid  Margin="100 10 100 0" >
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -55,47 +56,47 @@
             <Grid Grid.Row="1" Margin="0 20 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="45"/>
-                    <RowDefinition Height="45"/>
-                    <RowDefinition Height="45"/>
-                    <RowDefinition Height="45"/>
-                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="50"/>
                     <RowDefinition Height="100"/>
                 </Grid.RowDefinitions>
 
                 <TextBlock Grid.Row="0" Grid.Column="0"
                            Text="Tên hội nghị"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="1" Grid.Column="0"
                            Text="Thời gian"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="2" Grid.Column="0" 
                            Text="Địa điểm"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="3" Grid.Column="0" 
                            Text="Số lượng"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="4" Grid.Column="0" 
                            Text="Mô tả"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="5" Grid.Column="0"
                            Text="Nội dung hội nghị"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
 
                 <!-- Tên -->
@@ -119,9 +120,9 @@
                                          Height="30"
                                          VerticalAlignment="Top"
                                          TextAlignment="Left"
-                                         Format="Custom" FormatString="dd/MM/yy - hh:mm"
+                                         Format="Custom" FormatString="dd/MM/yyyy - hh:mm"
                                          AllowTextInput="False"
-                                         Value="{Binding NgayBatDau}"
+                                         Value="{Binding NgayBatDau}" Margin="0,0,10,0"
                                          />
 
                     <xctk:DateTimePicker Grid.Row="1" Grid.Column="1"
@@ -129,8 +130,8 @@
                                          Height="30"
                                          VerticalAlignment="Top"
                                          TextAlignment="Left"
-                                         Format="Custom" FormatString="dd/MM/yy - hh:mm"
-                                         AllowTextInput="False"
+                                         Format="Custom" FormatString="dd/MM/yyyy - hh:mm"
+                                         AllowTextInput="False" Margin="10,0,0,0"
                                          Value="{Binding NgayKetThuc}"
                                          />
 
@@ -152,7 +153,8 @@
                 </Grid>
 
 
-                <TextBox Grid.Row="3" Grid.Column="1"
+                <TextBox Grid.Row="3" Grid.Column="1" TextChanged="soLuongTxt_TextChanged"
+						 Name="soLuongTxt"
                            Height="30"
                            VerticalAlignment="Top"
                            VerticalContentAlignment="Center"
@@ -161,6 +163,7 @@
 
 
                 <TextBox Grid.Row="4" Grid.Column="1"
+						 x:Name="moTaTxt"
                            Height="30"
                            VerticalAlignment="Top"
                            VerticalContentAlignment="Center"
@@ -171,6 +174,7 @@
                          Text="{Binding MoTa}"/>
 
                 <!-- Nội dung -->
+				
                 <TextBox Grid.Row="5" Grid.Column="1"
                         x:Name="txbNoiDung"
                         Height="90"
@@ -186,22 +190,34 @@
                         Content="Lưu"
                         Background="Blue"
                         Foreground="White"
-                        Height="30"
-                        Width="120"
+                        Height="40"
+                        Width="150"
                         VerticalAlignment="Top"
                         Command="{Binding SaveHoiNghiCommand}"/>
 
-                <Button Grid.Row="1" Grid.Column="2"
+				<Button Grid.Row="1" Grid.Column="2"
                         Name="btnCapQuyen"
                         Content="Cấp quyền"
                         Background="Blue"
                         Foreground="White"
-                        Height="30"
-                        Width="120"
+                        Height="40"
+                        Width="150"
                         VerticalAlignment="Top"
                         Command="{Binding CapQuyenCommand}"/>
 
-            </Grid>
+				<Button Grid.Row="2" Grid.Column="2"
+                        Name="btnDanhSachDangKy"
+						Content="Xem danh sách đăng ký"
+                        Background="Blue"
+                        Foreground="White"
+                        Height="40"
+                        Width="150"
+                        VerticalAlignment="Top"
+						Click="btnDanhSachDangKy_Click"
+                />
+
+
+				</Grid>
 
             <!-- Hình ảnh -->
             <Grid Grid.Row="2" Margin="0 10 0 20">
@@ -230,17 +246,15 @@
                     </Style>
                 </Grid.Resources>
 
-                <Image Source="{Binding ImagePathHoiNghi}" />
+                <Image x:Name="hinhAnhHoiNghi" Source="{Binding ImagePathHoiNghi}" />
                 <Button Command="{Binding ChooseImageCommand}" 
                         Style="{StaticResource HoverEffectDisabledButton}"
                         Background="Transparent"
                         FontSize="30"/>
-
-
             </Grid>
 
         </Grid>
 
-
-    </Grid>
+		</ScrollViewer>
+	</Grid>
 </Window>

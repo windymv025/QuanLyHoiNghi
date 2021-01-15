@@ -55,7 +55,7 @@
             <Grid Grid.Row="1" Margin="0 20 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
@@ -70,32 +70,32 @@
                 <TextBlock Grid.Row="0" Grid.Column="0"
                            Text="Tên hội nghị"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="1" Grid.Column="0"
                            Text="Thời gian"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="2" Grid.Column="0" 
                            Text="Địa điểm"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="3" Grid.Column="0"
                            Text="Số lượng tham dự"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="4" Grid.Column="0"
                            Text="Mô tả"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
                 <TextBlock Grid.Row="5" Grid.Column="0"
                            Text="Nội dung hội nghị"
                            FontWeight="Bold"
-                           FontSize="20"
+                           FontSize="18"
                            VerticalAlignment="Top"/>
 
                 <!-- Tên -->
@@ -119,7 +119,8 @@
                                          Height="30"
                                          VerticalAlignment="Top"
                                          TextAlignment="Left"
-                                         Format="Custom" FormatString="dd/MM/yy - hh:mm"
+										 Margin="0,0,10,0"
+                                         Format="Custom" FormatString="dd/MM/yyyy - hh:mm"
                                          AllowTextInput="False"
                                          Value="{Binding NgayBatDau}"
                                          />
@@ -129,7 +130,8 @@
                                          Height="30"
                                          VerticalAlignment="Top"
                                          TextAlignment="Left"
-                                         Format="Custom" FormatString="dd/MM/yy - hh:mm"
+										 Margin="10,0,0,0"
+                                         Format="Custom" FormatString="dd/MM/yyyy - hh:mm"
                                          AllowTextInput="False"
                                          Value="{Binding NgayKetThuc}"
                                          />

@@ -142,7 +142,7 @@
 
                 </Grid>
 
-                <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0 10 0 10">
+                <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal" Margin="0,10,0,10">
                     <StackPanel.Resources>
                         <Style x:Key="BorderlessButton" TargetType="Button">
                             <Setter Property="OverridesDefaultStyle" Value="True"/>
@@ -166,12 +166,12 @@
                             </Setter>
                         </Style>
                     </StackPanel.Resources>
-                    <Button Style="{StaticResource BorderlessButton}" Width="40" Background="Transparent" Command="{Binding PreviousPageCommand}">
-                        <Image x:Name="prevBtn" Source="Assets/previousbutton.png"/>
+                    <Button Style="{StaticResource BorderlessButton}" Width="25" Background="Transparent" Command="{Binding PreviousPageCommand}">
+                        <Image x:Name="prevBtn" Source="Assets/left-arrow.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                     </Button>
-                    <TextBlock Text="{Binding Pagination}" x:Name="trangHienTaiTxt" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"  Margin="40,0,40,0"/>
-                    <Button Style="{StaticResource BorderlessButton}" Width="40" Background="Transparent" Command="{Binding NextPageCommand}">
-                        <Image x:Name="nextBtn" Source="Assets/nextbutton.png"/>
+                    <TextBlock Text="{Binding Pagination}" x:Name="trangHienTaiTxt" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"  Margin="40,0,40,0"/>
+                    <Button Style="{StaticResource BorderlessButton}" Width="25" Background="Transparent" Command="{Binding NextPageCommand}">
+                        <Image x:Name="nextBtn" Source="Assets/right-arrow-angle.png" RenderOptions.BitmapScalingMode="HighQuality"/>
                     </Button>
                 </StackPanel>
             </Grid>

@@ -235,9 +235,8 @@ namespace QuanLyHoiNghi
 
                 HOINGHI hn = viewModel.ListHoiNghi[((viewModel.PagingInfo.CurrentPage - 1) * 4) + index];
                 ChinhSuaHoiNghiWindow CSHN = new ChinhSuaHoiNghiWindow(hn);
-                this.Hide();
-                CSHN.ShowDialog();
-                this.Show();
+                CSHN.Show();
+                this.Close();
                 
             }
             catch (Exception ex)

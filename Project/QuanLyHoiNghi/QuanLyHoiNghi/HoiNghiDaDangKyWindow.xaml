@@ -88,8 +88,8 @@
                             </ComboBox>
                         </Grid>
 
-                        <Image Grid.Column="1" x:Name="timKiemBtn" Source="Assets/search.png" Margin="5,0,5,0" MouseDown="timKiemBtn_MouseDown"></Image>
-                    </Grid>
+					<Image Grid.Column="1" x:Name="timKiemBtn" Margin="5,10,5,4"  Source="Assets/search-cricel.png" MouseDown="timKiemBtn_MouseDown" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality"/>
+				</Grid>
 
                     <!--Hội nghị-->
 
@@ -133,10 +133,10 @@
          
 
         </DockPanel>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Image x:Name="prevBtn" Source="Assets/previousbutton.png" Width="40" MouseDown="prevBtn_MouseDown"/>
-            <TextBlock Text="2/10" x:Name="trangHienTaiTxt" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="16"  Margin="40,0,40,0"/>
-            <Image x:Name="nextBtn" Source="Assets/nextbutton.png" Width="40" MouseDown="nextBtn_MouseDown"/>
-        </StackPanel>
-    </Grid>
+		<StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10" VerticalAlignment="Center">
+			<Image x:Name="prevBtn" Source="Assets/left-arrow.png" MouseDown="prevBtn_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Width="25"/>
+			<TextBlock Text="2/10" x:Name="trangHienTaiTxt" TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="20"  Margin="40,0,40,0" />
+			<Image x:Name="nextBtn" Source="Assets/right-arrow-angle.png" MouseDown="nextBtn_MouseDown" RenderOptions.BitmapScalingMode="HighQuality" Width="25" />
+		</StackPanel>
+	</Grid>
 </Window>
