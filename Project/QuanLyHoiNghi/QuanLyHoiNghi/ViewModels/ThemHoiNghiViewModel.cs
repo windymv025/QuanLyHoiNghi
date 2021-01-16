@@ -84,6 +84,18 @@ namespace QuanLyHoiNghi.ViewModels
                 return false;
             }
 
+            if (NgayBatDau >= NgayKetThuc)
+            {
+                MessageBox.Show("Mời chọn lại thời gian.");
+                return false;
+            }
+
+            if (IndexDiaDiem < 0)
+            {
+                MessageBox.Show("Mời chọn lại địa điểm.");
+                return false;
+            }
+
             int num;
             if (String.IsNullOrEmpty(SoLuong.Trim()) || !int.TryParse(SoLuong, out num) || num > ListDiaDiem[IndexDiaDiem].SUCCHUA)
             {
@@ -101,18 +113,6 @@ namespace QuanLyHoiNghi.ViewModels
             if (String.IsNullOrEmpty(NoiDungHoiNghi.Trim()))
             {
                 MessageBox.Show("Mời nhập lại nội dung hội nghị.");
-                return false;
-            }
-
-            if (NgayBatDau >= NgayKetThuc)
-            {
-                MessageBox.Show("Mời chọn lại thời gian.");
-                return false;
-            }
-
-            if (IndexDiaDiem < 0)
-            {
-                MessageBox.Show("Mời chọn lại địa điểm.");
                 return false;
             }
 

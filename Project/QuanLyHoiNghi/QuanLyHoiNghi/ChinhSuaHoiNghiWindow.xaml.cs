@@ -90,7 +90,7 @@ namespace QuanLyHoiNghi
 
         private void soLuongTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            soLuongTxt.Text = Regex.Replace(soLuongTxt.Text, "[0-9]+", "");
+            soLuongTxt.Text = Regex.Replace(soLuongTxt.Text, @"[^\d]", String.Empty);
         }
 
         private void btnDanhSachDangKy_Click(object sender, RoutedEventArgs e)
