@@ -116,6 +116,12 @@ namespace QuanLyHoiNghi.ViewModels
                 return false;
             }
 
+            if (String.IsNullOrEmpty(ImagePathHoiNghi))
+            {
+                MessageBox.Show("Mời chọn lại hình ảnh.");
+                return false;
+            }
+
             return true;
         }
         private void AddHoiNghi()
