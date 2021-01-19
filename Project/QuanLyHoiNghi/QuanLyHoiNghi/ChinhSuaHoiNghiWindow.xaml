@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Chỉnh sửa hội nghị" Height="700" Width="1024">
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -153,7 +156,7 @@
                 </Grid>
 
 
-                <TextBox Grid.Row="3" Grid.Column="1" TextChanged="soLuongTxt_TextChanged"
+                <TextBox Grid.Row="3" Grid.Column="1" IsEnabled="False"
 						 Name="soLuongTxt"
                            Height="30"
                            VerticalAlignment="Top"

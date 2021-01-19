@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:QuanLyHoiNghi"
        WindowStartupLocation="CenterScreen"
         Title="Đăng nhập" Height="700" Width="1024">
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
     <DockPanel>
         <!--Nut tab-->
         <Grid DockPanel.Dock="Top" Height="40">

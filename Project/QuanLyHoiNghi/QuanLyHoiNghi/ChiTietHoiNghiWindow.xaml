@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Chi tiết hội nghị" Height="700" Width="1024">
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

@@ -7,7 +7,9 @@
         mc:Ignorable="d"
 		WindowStartupLocation="CenterScreen"
         Title="Trang chủ" Height="700" Width="1024">
-
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*" />
@@ -109,7 +111,12 @@
 
 				<!--Hội nghị-->
 				<ListView x:Name="lvDanhSachHoiNghi" Grid.Row="3"  HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
-                    <ListView.Resources>
+					<ListView.ItemsPanel>
+						<ItemsPanelTemplate>
+							<StackPanel Width="700"/>
+						</ItemsPanelTemplate>
+					</ListView.ItemsPanel>
+					<ListView.Resources>
                         <Style TargetType="ListViewItem">
                             <Style.Triggers>
                                 <Trigger Property="IsKeyboardFocusWithin" Value="True">

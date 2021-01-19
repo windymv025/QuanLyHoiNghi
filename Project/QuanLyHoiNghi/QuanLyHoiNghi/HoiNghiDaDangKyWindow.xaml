@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Hội nghị đã đăng ký" Height="700" Width="1024">
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -93,7 +96,13 @@
 
                     <!--Hội nghị-->
 
-                    <ListView Grid.Row="1" x:Name="lvDanhSachHoiNghi" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+				<Grid Grid.Row="1">
+                    <ListView  x:Name="lvDanhSachHoiNghi" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+						<ListView.ItemsPanel>
+							<ItemsPanelTemplate>
+								<StackPanel Width="700"/>
+							</ItemsPanelTemplate>
+						</ListView.ItemsPanel>
                     <ListView.Resources>
                         <Style TargetType="ListViewItem">
                             <Style.Triggers>
@@ -127,8 +136,8 @@
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-               
-                </Grid>
+				</Grid>
+			</Grid>
 
          
 

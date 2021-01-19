@@ -88,11 +88,6 @@ namespace QuanLyHoiNghi
             }
         }
 
-        private void soLuongTxt_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            soLuongTxt.Text = Regex.Replace(soLuongTxt.Text, "[0-9]+", "");
-        }
-
         private void btnDanhSachDangKy_Click(object sender, RoutedEventArgs e)
         {
             DanhSachDangKyHoiNghi dangKyHoiNghi = new DanhSachDangKyHoiNghi(viewModel.HoiNghi);

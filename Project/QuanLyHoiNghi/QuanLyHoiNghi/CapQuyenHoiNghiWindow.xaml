@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyHoiNghi"
         mc:Ignorable="d"
-        WindowStartupLocation="CenterScreen"
+        WindowStartupLocation="CenterScreen" 
         Title="Cấp quyền hội nghị" Height="700" Width="1024">
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>

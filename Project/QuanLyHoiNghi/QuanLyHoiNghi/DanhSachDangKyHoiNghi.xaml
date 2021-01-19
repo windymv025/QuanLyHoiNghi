@@ -7,10 +7,15 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Danh Sách đăng ký hội nghị" Height="700" Width="1024">
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>
+			<RowDefinition Height="auto"/>
 			<RowDefinition Height="*"/>
+
 		</Grid.RowDefinitions>
 
 		<!--Navigation Bar-->
@@ -28,7 +33,65 @@
 			<Button Grid.Column="3" Name="btnTaiKhoan" Content="Tài khoản" FontSize="14" FontWeight="Bold" Click="btnTaiKhoan_Click"/>
 		</Grid>
 
-		<Grid Grid.Row="1">
+		<!--Tìm kiếm-->
+		<Grid Grid.Row="1" Grid.ColumnSpan="2" >
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="50"/>
+			</Grid.ColumnDefinitions>
+			<Grid  Name="timKiem_grid" Visibility="Collapsed" Margin="20,20,20,20">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="1.5*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="1.5*"/>
+				</Grid.ColumnDefinitions>
+
+
+				<Label Content="Tên người dùng: " FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+				<TextBox x:Name="tenNguoiDungTextBox" TextChanged="tenNguoiDungTextBox_TextChanged" VerticalContentAlignment="Center" Grid.Column="1" Width="auto" Height="40" Margin="10,0,0,0" Padding="5" FontSize="14"></TextBox>
+
+				<Label Grid.Column="2" Content="Email:" FontWeight="Bold" HorizontalContentAlignment="Right" VerticalContentAlignment="Center" />
+				<TextBox Grid.Column="3" x:Name="emailTextBox" TextChanged="emailTextBox_TextChanged" Padding="5" Width="auto" Height="40" VerticalContentAlignment="Center" Margin="10,0,0,0" FontSize="14"></TextBox>
+			</Grid>
+
+			<!--Ẩn tim kiem-->
+			<Grid Grid.Row="1" x:Name="sapXep_grid" Visibility="Visible">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="auto"/>
+					<ColumnDefinition Width="6*"/>
+					<ColumnDefinition Width="*"/>
+					<ColumnDefinition Width="*"/>
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="1" Orientation="Vertical">
+
+					<TextBlock Margin="0,20,0,10" Grid.Column="1" Text="Danh sách đăng ký"  FontSize="24"  FontWeight="DemiBold"  HorizontalAlignment="Center" VerticalAlignment="Center"  />
+				</StackPanel>
+
+				<ComboBox Name="loaiSapXep" Grid.Column="2" Margin="10" VerticalAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="White" Background="White">
+					<ComboBoxItem >
+						<TextBlock Text="Tăng dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+					</ComboBoxItem>
+					<ComboBoxItem>
+						<TextBlock Text="Giảm dần" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+					</ComboBoxItem>
+				</ComboBox>
+				<ComboBox Name="hinhThucSapXepCB" Grid.Column="3" Margin="10" VerticalAlignment="Center" BorderBrush="White" Background="White">
+					<ComboBoxItem IsSelected="True" >
+						<TextBlock Text="Theo tên" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+					</ComboBoxItem>
+					<ComboBoxItem>
+						<TextBlock Text="Theo Email" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+					</ComboBoxItem>
+				</ComboBox>
+			</Grid>
+
+			<Image Grid.Column="1" x:Name="timKiemBtn" Margin="5,10,5,4"  Source="Assets/search-cricel.png" MouseDown="timKiemBtn_MouseDown" HorizontalAlignment="Center" VerticalAlignment="Center" RenderOptions.BitmapScalingMode="HighQuality"/>
+		</Grid>
+		
+
+
+		<Grid Grid.Row="2">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="2.5*"/>
 				<ColumnDefinition Width="5*"/>
@@ -42,25 +105,10 @@
 					<RowDefinition Height="auto"/>
 				</Grid.RowDefinitions>
 
-				<StackPanel Grid.Row="0" Orientation="Vertical">
-					<TextBlock
-                        Text="Danh sách đăng ký"
-                        FontSize="24"
-                        FontWeight="DemiBold"
-                        HorizontalAlignment="Center"
-                        Margin="0 20 0 5"
-                        />
-
-					<TextBlock
-                        Text="{Binding HoiNghi.TENHN}"
-                        FontSize="24"
-                        FontWeight="DemiBold"
-                        HorizontalAlignment="Center"
-                        TextWrapping="Wrap"
-                        />
-				</StackPanel>
+				
 
 				<StackPanel Grid.Row="1">
+					<TextBlock Margin="0,0,0,20" Text="{Binding HoiNghi.TENHN}"  FontSize="24" FontWeight="DemiBold"  HorizontalAlignment="Center"  TextWrapping="Wrap" />
 					<ListView x:Name="lvDanhSachDangKy" Padding="10" VerticalAlignment="Center" VerticalContentAlignment="Center">
 						<ListView.ItemContainerStyle>
 							<Style TargetType="{x:Type ListViewItem}">

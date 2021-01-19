@@ -102,7 +102,6 @@ namespace QuanLyHoiNghi
         private void prevBtn_Click(object sender, RoutedEventArgs e)
         {
             loadPage(viewModel.PagingInfo.CurrentPage - 1);
-
         }
 
         private void nextBtn_Click(object sender, RoutedEventArgs e)
@@ -113,6 +112,93 @@ namespace QuanLyHoiNghi
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             loadPage(viewModel.PagingInfo.CurrentPage);
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (loaiSapXep.SelectedIndex == 0)
+            {
+                if (hinhThucSapXepCB.SelectedIndex == 0)
+                {
+                    viewModel.sapXepUserTangDanTheoTen();
+                    loadPage(1);
+                }
+                else
+                {
+                    viewModel.sapXepUserTangDanTheoEmail();
+                    loadPage(1);
+                }
+            }
+            else
+            {
+                if (hinhThucSapXepCB.SelectedIndex == 0)
+                {
+                    viewModel.sapXepUserGiamDanTheoTen();
+                    loadPage(1);
+                }
+                else
+                {
+                    viewModel.sapXepUserGiamDanTheoEmail();
+                    loadPage(1);
+                }
+            }
+        }
+
+        private void timKiemBtn_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sapXep_grid.Visibility == Visibility.Visible)
+            {
+                sapXep_grid.Visibility = Visibility.Collapsed;
+                timKiem_grid.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                sapXep_grid.Visibility = Visibility.Visible;
+                timKiem_grid.Visibility = Visibility.Collapsed;
+
+                tenNguoiDungTextBox.Text = "";
+                emailTextBox.Text = "";
+            }
+        }
+
+        private void emailTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string email = emailTextBox.Text.Trim();
+            string name = tenNguoiDungTextBox.Text.Trim();
+            if (email != "" || name != "") 
+            {
+                viewModel.LoadDataByNameAndEmail(name, email);
+                int total = viewModel.ListDangKyUser.Count;
+                viewModel.PagingInfo = new PagingInfo(NUMBER_USER_PER_PAGE, total);
+                loadPage(1);
+            }
+            else
+            {
+                viewModel.LoadData();
+                int total = viewModel.ListDangKyUser.Count;
+                viewModel.PagingInfo = new PagingInfo(NUMBER_USER_PER_PAGE, total);
+                loadPage(1);
+            }
+        }
+
+        private void tenNguoiDungTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string email = emailTextBox.Text.Trim();
+            string name = tenNguoiDungTextBox.Text.Trim();
+            if (email != "" || name != "")
+            {
+                viewModel.LoadDataByNameAndEmail(name, email);
+                int total = viewModel.ListDangKyUser.Count;
+                viewModel.PagingInfo = new PagingInfo(NUMBER_USER_PER_PAGE, total);
+                loadPage(1);
+            }
+            else
+            {
+                viewModel.LoadData();
+                int total = viewModel.ListDangKyUser.Count;
+                viewModel.PagingInfo = new PagingInfo(NUMBER_USER_PER_PAGE, total);
+                loadPage(1);
+            }
         }
     }
 }
