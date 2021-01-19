@@ -99,5 +99,6 @@ namespace QuanLyHoiNghi
             dangKyHoiNghi.Show();
             this.Close();
         }
+
     }
 }

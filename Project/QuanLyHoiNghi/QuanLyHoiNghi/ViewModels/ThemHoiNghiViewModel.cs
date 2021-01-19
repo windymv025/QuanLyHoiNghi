@@ -169,6 +169,7 @@ namespace QuanLyHoiNghi.ViewModels
             }
         }
 
+        
         private void CapQuyen()
         {
             if (!IsSaved)
@@ -181,11 +182,12 @@ namespace QuanLyHoiNghi.ViewModels
             {
                 HOINGHI hoiNghi = (HOINGHI)db.HOINGHIs.Where(hn => hn.IDHN == SavedId).FirstOrDefault();
                 CapQuyenHoiNghiWindow window = new CapQuyenHoiNghiWindow(hoiNghi, "0");
-                this.Window.Hide();
-                window.ShowDialog();
-                this.Window.Show();
+                //this.Window.Show();
+                window.Show();
+                this.Window.Close();
             }
         }
+        
 
         private void ChooseImage()
         {

@@ -174,13 +174,14 @@ namespace QuanLyHoiNghi.ViewModels
 
         }
 
+        
         private void CapQuyen()
         {
             CapQuyenHoiNghiWindow window = new CapQuyenHoiNghiWindow(this.HoiNghi, "1");
-            this.Window.Hide();
-            window.ShowDialog();
-            this.Window.Show();
+            window.Show();
+            this.Window.Close();
         }
+        
 
         private void ChooseImage()
         {
