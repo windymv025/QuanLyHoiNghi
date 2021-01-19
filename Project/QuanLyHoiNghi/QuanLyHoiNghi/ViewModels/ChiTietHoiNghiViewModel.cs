@@ -31,7 +31,7 @@ namespace QuanLyHoiNghi.ViewModels
 
         public String ImagePathHoiNghi { get; set; }
 
-        public bool IsSignedUp { get; set; }
+        public int Status { get; set; }     // 0: Chua dang ky ; 1: Da dang ky ; -1: Bi chan
 
         public ICommand SignUpCommand { get; set; }
 
@@ -50,32 +50,23 @@ namespace QuanLyHoiNghi.ViewModels
 
                 if (DangNhapViewModel.User == null)
                 {
-                    this.IsSignedUp = false;
+                    this.Status = 0;
                     this.SignUpCommand = new RelayCommand(SignUp);
                 }
                 else
                 {
-                    int isSignedUpCount = (from dk in db.DANGKITHAMGIAs
-                                           where dk.IDUSER == DangNhapViewModel.User.IDUSER && dk.IDHN == hoiNghi.IDHN
-                                           select dk).Count();
-                    if (isSignedUpCount <= 0)
-                    {
-                        this.IsSignedUp = false;
-                        this.SignUpCommand = new RelayCommand(SignUp);
-                    }
-                    else
-                    {
-                        this.IsSignedUp = true;
-                        this.SignUpCommand = new RelayCommand(UnSignUp);
-                    }
+                    DANGKITHAMGIA dktg = (from dk in db.DANGKITHAMGIAs
+                                          where dk.IDUSER == DangNhapViewModel.User.IDUSER && dk.IDHN == hoiNghi.IDHN
+                                          select dk).FirstOrDefault();
+
+                    this.Status = dktg != null ? (dktg.TRANGTHAI == 1 ? -1 : 1) : 0;
+                    this.SignUpCommand = Status == 0 ? new RelayCommand(SignUp) : new RelayCommand(UnSignUp);
                 }
             }
 
             this.NgayBatDau = this.HoiNghi.THOIGIANBATDAU.ToString("dd/MM/yyyy hh:mm");
             this.NgayKetThuc = this.HoiNghi.THOIGIANKETTHUC.ToString("dd/MM/yyyy hh:mm");
             this.ImagePathHoiNghi = Path.Combine(Environment.CurrentDirectory, this.HoiNghi.HINHANH);
-            //this.IsSignedUp = false;
-            //this.SignUpCommand = new RelayCommand(SignUp);
         }
 
         private void SignUp()
@@ -98,17 +89,29 @@ namespace QuanLyHoiNghi.ViewModels
                 {
                     using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
                     {
+                        DANGKITHAMGIA dktg = (from dk in db.DANGKITHAMGIAs
+                                              where dk.IDUSER == DangNhapViewModel.User.IDUSER && dk.IDHN == this.HoiNghi.IDHN
+                                              select dk).FirstOrDefault();
+
+                        if (dktg != null && dktg.TRANGTHAI == 1)
+                        {
+                            MessageBox.Show("Bạn đã bị chặn.");
+                            return;
+                        }
+
                         DANGKITHAMGIA dangky = new DANGKITHAMGIA();
                         dangky.IDHN = this.HoiNghi.IDHN;
                         dangky.IDUSER = DangNhapViewModel.User.IDUSER;
                         dangky.TRANGTHAI = 0;
                         dangky.THOIGIANDK = DateTime.Now;
-
                         db.DANGKITHAMGIAs.Add(dangky);
+
+                        HOINGHI hn = db.HOINGHIs.Where(o => o.IDHN == this.HoiNghi.IDHN).FirstOrDefault();
+                        hn.SOLUONG += 1;
                         db.SaveChanges();
                     }
 
-                    IsSignedUp = !IsSignedUp;
+                    Status = 1;
                     SignUpCommand = new RelayCommand(UnSignUp);
                 }
                 catch
@@ -116,6 +119,8 @@ namespace QuanLyHoiNghi.ViewModels
                     MessageBox.Show("Đã có lỗi xảy ra.");
                 }
             }
+
+            MessageBox.Show(this.HoiNghi.SOLUONG.ToString());
         }
         
         private void UnSignUp()
@@ -139,8 +144,10 @@ namespace QuanLyHoiNghi.ViewModels
                         if (dky.Count() > 0)
                         {
                             db.DANGKITHAMGIAs.Remove(dky.First());
+                            HOINGHI hn = db.HOINGHIs.Where(o => o.IDHN == this.HoiNghi.IDHN).FirstOrDefault();
+                            hn.SOLUONG -= 1;
                             db.SaveChanges();
-                            IsSignedUp = !IsSignedUp;
+                            Status = 0;
                             SignUpCommand = new RelayCommand(SignUp);
                         }
                     }
@@ -149,6 +156,8 @@ namespace QuanLyHoiNghi.ViewModels
                 {
                     MessageBox.Show("Đã có lỗi xảy ra.");
                 }
+
+                MessageBox.Show(this.HoiNghi.SOLUONG.ToString());
             }
         }
     }

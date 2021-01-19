@@ -122,8 +122,22 @@ namespace QuanLyHoiNghi.ViewModels
                 return false;
             }
 
+            using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
+            {
+                int iddd = this.ListDiaDiem[IndexDiaDiem].IDDD;
+                var listHN = db.HOINGHIs.Where(o => 
+                    (o.IDDD == iddd && (o.THOIGIANBATDAU >= this.NgayBatDau && o.THOIGIANBATDAU <= this.NgayKetThuc || 
+                                        o.THOIGIANKETTHUC >= this.NgayBatDau && o.THOIGIANKETTHUC <= this.NgayKetThuc))).ToList();
+                if (listHN.Count != 0)
+                {
+                    MessageBox.Show("Đã có hội nghị diễn tra trong khung giờ này.");
+                    return false;
+                }
+            }
+
             return true;
         }
+
         private void AddHoiNghi()
         {
             if (!ValidateInput())

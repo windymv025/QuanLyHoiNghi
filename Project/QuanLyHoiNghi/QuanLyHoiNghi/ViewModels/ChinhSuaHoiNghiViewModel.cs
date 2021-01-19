@@ -95,10 +95,9 @@ namespace QuanLyHoiNghi.ViewModels
                 return false;
             }
 
-            int num;
-            if (String.IsNullOrEmpty(SoLuong.Trim()) || !int.TryParse(SoLuong, out num) || num > ListDiaDiem[IndexDiaDiem].SUCCHUA)
+            if (NgayBatDau >= NgayKetThuc)
             {
-                MessageBox.Show("Số lượng vượt quá sức chứa của địa điểm.");
+                MessageBox.Show("Mời chọn lại thời gian.");
                 return false;
             }
 
@@ -108,23 +107,23 @@ namespace QuanLyHoiNghi.ViewModels
                 return false;
             }
 
-
             if (String.IsNullOrEmpty(NoiDungHoiNghi.Trim()))
             {
                 MessageBox.Show("Mời nhập lại nội dung hội nghị.");
                 return false;
             }
 
-            if (NgayBatDau >= NgayKetThuc)
+            using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                MessageBox.Show("Mời chọn lại thời gian.");
-                return false;
-            }
-
-            if (IndexDiaDiem < 0)
-            {
-                MessageBox.Show("Mời chọn lại địa điểm.");
-                return false;
+                int iddd = this.ListDiaDiem[IndexDiaDiem].IDDD;
+                var listHN = db.HOINGHIs.Where(o =>
+                    (o.IDDD == iddd && o.IDHN != this.HoiNghi.IDHN && (o.THOIGIANBATDAU >= this.NgayBatDau && o.THOIGIANBATDAU <= this.NgayKetThuc ||
+                                                                       o.THOIGIANKETTHUC >= this.NgayBatDau && o.THOIGIANKETTHUC <= this.NgayKetThuc))).ToList();
+                if (listHN.Count != 0)
+                {
+                    MessageBox.Show("Đã có hội nghị diễn tra trong khung giờ này.");
+                    return false;
+                }
             }
 
             return true;

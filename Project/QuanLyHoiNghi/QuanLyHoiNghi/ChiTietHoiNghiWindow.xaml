@@ -66,10 +66,17 @@
                         </Setter>
                         <Setter  Property="Background" Value="Blue"/>
                         <Setter Property="Content" Value="Đăng ký"/>
+                        <Setter Property="IsEnabled" Value="True"/>
                         <Style.Triggers>
-                            <DataTrigger Binding="{Binding IsSignedUp}" Value="True">
+                            <DataTrigger Binding="{Binding Status}" Value="1">
                                 <Setter Property="Background" Value="Red"/>
                                 <Setter Property="Content" Value="Hủy đăng ký"/>
+                                <Setter Property="IsEnabled" Value="True"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding Status}" Value="-1">
+                                <Setter Property="Background" Value="Gray"/>
+                                <Setter Property="Content" Value="Đã bị chặn"/>
+                                <Setter Property="IsEnabled" Value="False"/>
                             </DataTrigger>
                         </Style.Triggers>
                     </Style>
@@ -82,7 +89,6 @@
                 FontWeight="Bold"
                 FontSize="24"
                 Width="auto"
-					Padding="0,0,130,0"
                 TextAlignment="Center"
                 TextWrapping="WrapWithOverflow"
                 />

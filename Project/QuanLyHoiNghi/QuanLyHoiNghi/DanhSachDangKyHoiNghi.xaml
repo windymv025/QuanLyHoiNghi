@@ -152,7 +152,7 @@
 												<Setter Property="Content" Value="Xác nhận"/>
 												<Setter Property="IsEnabled" Value="True"/>
 												<Style.Triggers>
-													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="1">
+													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="2">
 														<Setter Property="Background" Value="Red"/>
 														<Setter Property="Content" Value="Hủy xác nhận"/>
 														<Setter Property="IsEnabled" Value="True"/>
@@ -162,7 +162,7 @@
 														<Setter Property="Content" Value="Xác nhận"/>
 														<Setter Property="IsEnabled" Value="True"/>
 													</DataTrigger>
-													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="-1">
+													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="1">
 														<Setter Property="Background" Value="Gray"/>
 														<Setter Property="Content" Value="Xác nhận"/>
 														<Setter Property="IsEnabled" Value="False"/>
@@ -190,7 +190,7 @@
 												<Setter Property="Background" Value="Red"/>
 												<Setter Property="Content" Value="Chặn"/>
 												<Style.Triggers>
-													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="-1">
+													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="1">
 														<Setter Property="Background" Value="Blue"/>
 														<Setter Property="Content" Value="Bỏ chặn"/>
 													</DataTrigger>
@@ -198,7 +198,7 @@
 														<Setter Property="Background" Value="Red"/>
 														<Setter Property="Content" Value="Chặn"/>
 													</DataTrigger>
-													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="1">
+													<DataTrigger Binding="{Binding DangKiThamGia.TRANGTHAI}" Value="2">
 														<Setter Property="Background" Value="Red"/>
 														<Setter Property="Content" Value="Chặn"/>
 													</DataTrigger>
