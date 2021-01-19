@@ -88,11 +88,13 @@ namespace QuanLyHoiNghi
             }
         }
 
+
         private void btnDanhSachDangKy_Click(object sender, RoutedEventArgs e)
         {
             DanhSachDangKyHoiNghi dangKyHoiNghi = new DanhSachDangKyHoiNghi(viewModel.HoiNghi);
             dangKyHoiNghi.Show();
             this.Close();
         }
+
     }
 }

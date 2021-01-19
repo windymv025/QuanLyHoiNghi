@@ -98,7 +98,7 @@ namespace QuanLyHoiNghi.ViewModels
             int num;
             if (String.IsNullOrEmpty(SoLuong.Trim()) || !int.TryParse(SoLuong, out num) || num > ListDiaDiem[IndexDiaDiem].SUCCHUA)
             {
-                MessageBox.Show("Mời nhập lại số lượng.");
+                MessageBox.Show("Số lượng vượt quá sức chứa của địa điểm.");
                 return false;
             }
 
@@ -150,17 +150,19 @@ namespace QuanLyHoiNghi.ViewModels
                     hoiNghi.THOIGIANBATDAU = NgayBatDau;
                     hoiNghi.THOIGIANKETTHUC = NgayKetThuc;
 
-                    String path = SaveImage(ImagePathHoiNghi);
-                    String oldPath = hoiNghi.HINHANH;
-                    hoiNghi.HINHANH = path;
-
+                    if (!ImagePathHoiNghi.Contains(hoiNghi.HINHANH))
+                    {
+                        String path = SaveImage(ImagePathHoiNghi);
+                        String oldPath = hoiNghi.HINHANH;
+                        hoiNghi.HINHANH = path;
+                    }
+                    
 
                     hoiNghi.MOTANGANHN = MoTa;
                     hoiNghi.SOLUONG = int.Parse(SoLuong);
 
                     db.SaveChanges();
 
-                    DeleteImage(oldPath);
                     MessageBox.Show("Đã cập nhật thông tin hội nghị.");
                 }
 
@@ -172,13 +174,14 @@ namespace QuanLyHoiNghi.ViewModels
 
         }
 
+        
         private void CapQuyen()
         {
             CapQuyenHoiNghiWindow window = new CapQuyenHoiNghiWindow(this.HoiNghi, "1");
-            this.Window.Hide();
-            window.ShowDialog();
-            this.Window.Show();
+            window.Show();
+            this.Window.Close();
         }
+        
 
         private void ChooseImage()
         {

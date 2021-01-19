@@ -159,6 +159,7 @@
 
                 <!-- Số lượng -->
                 <TextBox Grid.Row="3" Grid.Column="1" IsEnabled="False"
+                         x:Name="txbSoLuong"
                          Height="30"
                          VerticalContentAlignment="Center"
                         VerticalAlignment="Top"

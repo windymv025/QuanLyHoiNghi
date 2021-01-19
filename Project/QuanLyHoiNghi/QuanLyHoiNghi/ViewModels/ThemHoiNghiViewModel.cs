@@ -84,6 +84,18 @@ namespace QuanLyHoiNghi.ViewModels
                 return false;
             }
 
+            if (NgayBatDau >= NgayKetThuc)
+            {
+                MessageBox.Show("Mời chọn lại thời gian.");
+                return false;
+            }
+
+            if (IndexDiaDiem < 0)
+            {
+                MessageBox.Show("Mời chọn lại địa điểm.");
+                return false;
+            }
+
             int num;
             if (String.IsNullOrEmpty(SoLuong.Trim()) || !int.TryParse(SoLuong, out num) || num > ListDiaDiem[IndexDiaDiem].SUCCHUA)
             {
@@ -104,15 +116,9 @@ namespace QuanLyHoiNghi.ViewModels
                 return false;
             }
 
-            if (NgayBatDau >= NgayKetThuc)
+            if (String.IsNullOrEmpty(ImagePathHoiNghi))
             {
-                MessageBox.Show("Mời chọn lại thời gian.");
-                return false;
-            }
-
-            if (IndexDiaDiem < 0)
-            {
-                MessageBox.Show("Mời chọn lại địa điểm.");
+                MessageBox.Show("Mời chọn lại hình ảnh.");
                 return false;
             }
 
@@ -163,6 +169,7 @@ namespace QuanLyHoiNghi.ViewModels
             }
         }
 
+        
         private void CapQuyen()
         {
             if (!IsSaved)
@@ -175,11 +182,12 @@ namespace QuanLyHoiNghi.ViewModels
             {
                 HOINGHI hoiNghi = (HOINGHI)db.HOINGHIs.Where(hn => hn.IDHN == SavedId).FirstOrDefault();
                 CapQuyenHoiNghiWindow window = new CapQuyenHoiNghiWindow(hoiNghi, "0");
-                this.Window.Hide();
-                window.ShowDialog();
-                this.Window.Show();
+                //this.Window.Show();
+                window.Show();
+                this.Window.Close();
             }
         }
+        
 
         private void ChooseImage()
         {

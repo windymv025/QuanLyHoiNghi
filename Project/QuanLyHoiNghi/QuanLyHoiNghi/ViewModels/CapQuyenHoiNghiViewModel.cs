@@ -44,7 +44,7 @@ namespace QuanLyHoiNghi.ViewModels
 
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                float count = db.USERs.Count();
+                float count = db.USERs.Where(u => u.LOAIUSER.Equals("1")).Count();
                 LastPage = (int)Math.Ceiling(count / USER_PER_PAGE);
                 Pagination = PageIndex.ToString() + "/" + LastPage.ToString();
             }
@@ -63,7 +63,7 @@ namespace QuanLyHoiNghi.ViewModels
 
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                var ListUser = db.USERs.OrderBy(u => u.IDUSER).Skip(index * USER_PER_PAGE).Take(USER_PER_PAGE).ToList();
+                var ListUser = db.USERs.Where(u => u.LOAIUSER.Equals("1")).OrderBy(u => u.IDUSER).Skip(index * USER_PER_PAGE).Take(USER_PER_PAGE).ToList();
                 var ListChiTietAdmin = db.CHITIETADMINs.Where(ct => ct.IDHN == this.HoiNghi.IDHN).ToList();
 
                 foreach (var user in ListUser)
