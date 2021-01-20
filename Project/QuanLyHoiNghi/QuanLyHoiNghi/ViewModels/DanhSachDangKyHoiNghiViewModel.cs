@@ -213,9 +213,9 @@ namespace QuanLyHoiNghi.ViewModels
 
             private void chanNguoiDung()
             {
-                if (this.DangKiThamGia.TRANGTHAI == 1)
+                if (this.DangKiThamGia.TRANGTHAI == 2)  // 0: Chua xac nhan ; 1: Chan ; 2: Xac nhan
                 {
-                    this.DangKiThamGia.TRANGTHAI = -1;
+                    this.DangKiThamGia.TRANGTHAI = 1;
                     using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
                     {
                         foreach (var item in db.DANGKITHAMGIAs)
@@ -241,7 +241,7 @@ namespace QuanLyHoiNghi.ViewModels
                 }
                 else if (this.DangKiThamGia.TRANGTHAI == 0)
                 {
-                    this.DangKiThamGia.TRANGTHAI = -1;
+                    this.DangKiThamGia.TRANGTHAI = 1;
                     using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
                     {
                         foreach (var item in db.DANGKITHAMGIAs)
@@ -269,15 +269,15 @@ namespace QuanLyHoiNghi.ViewModels
                                 break;
                             }
                         }
-                        foreach (var item in db.HOINGHIs)
-                        {
-                            if (item.IDHN == this.HoiNghi.IDHN)
-                            {
-                                item.SOLUONG--;
-                                this.HoiNghi.SOLUONG--;
-                                break;
-                            }
-                        }
+                        //foreach (var item in db.HOINGHIs)
+                        //{
+                        //    if (item.IDHN == this.HoiNghi.IDHN)
+                        //    {
+                        //        item.SOLUONG--;
+                        //        this.HoiNghi.SOLUONG--;
+                        //        break;
+                        //    }
+                        //}
                         db.SaveChanges();
 
                     }
@@ -287,7 +287,7 @@ namespace QuanLyHoiNghi.ViewModels
             {
                 try
                 {
-                    if (this.DangKiThamGia.TRANGTHAI == 1)
+                    if (this.DangKiThamGia.TRANGTHAI == 2)
                     {
                         this.DangKiThamGia.TRANGTHAI = 0;
                         using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
@@ -320,7 +320,7 @@ namespace QuanLyHoiNghi.ViewModels
                         }
                         else
                         {
-                            this.DangKiThamGia.TRANGTHAI = 1;
+                            this.DangKiThamGia.TRANGTHAI = 2;
                             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
                             {
                                 foreach (var item in db.DANGKITHAMGIAs)
