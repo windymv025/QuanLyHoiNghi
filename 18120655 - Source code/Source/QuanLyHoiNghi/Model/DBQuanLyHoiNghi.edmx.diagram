@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d77df5be291c4c5cab8e3bd067077e01" Name="Diagram1">
+        <EntityTypeShape EntityType="QuanLiHoiNghiModel.CHITIETADMIN" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLiHoiNghiModel.DANGKITHAMGIA" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLiHoiNghiModel.DIADIEMTOCHUC" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLiHoiNghiModel.HOINGHI" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QuanLiHoiNghiModel.USER" Width="1.5" PointX="3" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="QuanLiHoiNghiModel.FK_CHITIETA_CO_HOINGHI" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLiHoiNghiModel.FK_CHITIETA_GOM_CO_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLiHoiNghiModel.FK_DANGKITH_BAO_GOM_USER" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLiHoiNghiModel.FK_DANGKITH_DUOC_DANG_HOINGHI" ManuallyRouted="false" />
+        <AssociationConnector Association="QuanLiHoiNghiModel.FK_HOINGHI_DUOC_TO_C_DIADIEMT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

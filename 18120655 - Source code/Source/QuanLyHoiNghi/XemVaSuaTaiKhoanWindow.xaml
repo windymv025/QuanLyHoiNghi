@@ -1,0 +1,104 @@
+﻿<Window x:Class="QuanLyHoiNghi.XemVaSuaTaiKhoanWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyHoiNghi"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="Xem và sửa tài khoản" Height="700" Width="1024">
+	<Window.Icon>
+		<BitmapImage UriSource="/Assets/presentation.ico" RenderOptions.BitmapScalingMode="HighQuality"></BitmapImage>
+	</Window.Icon>
+	<DockPanel>
+		<!--Nut tab-->
+		<Grid DockPanel.Dock="Top" Height="40">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*" />
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Button x:Name="trangChuBtn" Content="Trang Chủ" FontSize="14" FontWeight="Bold" Click="trangChuBtn_Click"></Button>
+			<Button Grid.Column="1" x:Name="hoiNghiDangKyBtn" Content="Hội nghị đã đăng ký" FontSize="14" FontWeight="Bold" Click="hoiNghiDangKyBtn_Click"></Button>
+			<Button Grid.Column="2" x:Name="quanLyHoiNghiBtn" Content="Quản lý hội nghị" FontSize="14" FontWeight="Bold" Click="quanLyHoiNghiBtn_Click"></Button>
+			<Button Grid.Column="3" Name="taiKhoanBtn" Content="Tài khoản" FontSize="14" FontWeight="Bold" Background="Blue" Foreground="White"></Button>
+		</Grid>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="100"></RowDefinition>
+				<RowDefinition Height="45"></RowDefinition>
+				<RowDefinition Height="*"></RowDefinition>
+
+			</Grid.RowDefinitions>
+			<Grid>
+				<TextBlock Text="Thông tin tài khoản" FontSize="25" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+				<Button x:Name="dangXuatBT" HorizontalAlignment="Right" Margin="0,0,50,0" Width="150" Height="45" Content="Đăng xuất" Background="Blue" Foreground="White" Click="dangXuatBT_Click"/>
+			</Grid>
+			<TextBlock x:Name="loiTB" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Text="Sai" Foreground="Red" Visibility="Hidden"></TextBlock>
+			<Grid Grid.Row="2">
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="152*"></ColumnDefinition>
+					<ColumnDefinition Width="102*"></ColumnDefinition>
+					<ColumnDefinition Width="127*"></ColumnDefinition>
+					<ColumnDefinition Width="127*"></ColumnDefinition>
+				</Grid.ColumnDefinitions>
+				<StackPanel HorizontalAlignment="Center" >
+					<Grid Margin="0,0,0,20" >
+						<Image x:Name="hinhAnh" Height="230" Source="{Binding HINHANH}" Width="230" ></Image>
+						<Button Height="45" Name="chooseImageBorder" Visibility="Collapsed" Click="chooseImageBorder_Click" VerticalAlignment="Bottom" Padding="5" BorderBrush="{x:Null}" Background="{x:Null}" Foreground="{x:Null}" >
+							<Image x:Name="chooseImage" Source="Assets/choosepicture.png" />
+						</Button>
+					</Grid>
+					<Button x:Name="suaHinhAnhBtn" Click="suaHinhAnhBtn_Click" Content="Sửa" Width="100" Height="45" Background="Blue" Foreground="White"></Button>
+					<Button  x:Name="huySuaHinhAnhBtn" Click="huySuaHinhAnhBtn_Click" Visibility="Collapsed" Width="100" Height="45" HorizontalAlignment="Center" Margin="0,10,0,0" Content="Hủy" Background="Red" Foreground="Black" FontWeight="Bold"></Button>
+				</StackPanel>
+				<Grid Grid.Column="1">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+					</Grid.RowDefinitions>
+					<TextBlock Text="Tên" HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontSize="16"  FontWeight="Bold" />
+					<TextBlock Grid.Row="1" Text="Tên đăng nhập"  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontSize="16"  FontWeight="Bold"/>
+					<TextBlock Grid.Row="2" Text="Mật khẩu"  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontSize="16"  FontWeight="Bold"/>
+					<TextBlock Grid.Row="3" Text="Email"  HorizontalAlignment="Left" Margin="40,0,0,0" VerticalAlignment="Center" FontSize="16"  FontWeight="Bold"/>
+				</Grid>
+				<Grid Grid.Column="2">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+					</Grid.RowDefinitions>
+					<TextBox x:Name="tenTB" VerticalAlignment="Center" Text="{Binding TENUSER}" FontSize="18" Height="45" Padding="5" VerticalContentAlignment="Center" IsEnabled="False" ></TextBox>
+					<TextBox x:Name="tenDangNhapTB" Grid.Row="1" Padding="5" Text="{Binding USERNAME}" FontSize="18" VerticalAlignment="Center" Height="45" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
+					<PasswordBox x:Name="matKhauTB" Grid.Row="2" Padding="5" Password="**********" FontSize="18" VerticalAlignment="Center" Height="45" VerticalContentAlignment="Center" IsEnabled="False"></PasswordBox>
+					<TextBox x:Name="emailTB" Grid.Row="3" Padding="5" FontSize="18" Text="{Binding EMAIL}" VerticalAlignment="Center" Height="45" VerticalContentAlignment="Center" IsEnabled="False"></TextBox>
+				</Grid>
+				<Grid Grid.Column="3">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+						<RowDefinition Height="80"></RowDefinition>
+					</Grid.RowDefinitions>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+						<Button x:Name="suaTenBtn" Click="suaTen_Click" Margin="20,0,0,0" Width="100" Height="45" HorizontalAlignment="Left" Content="Sửa" Background="Blue" Foreground="White"></Button>
+						<Button  x:Name="huySuaTenBtn" Click="huySuaTenBtn_Click" Visibility="Collapsed" Margin="20,0,10,0" Width="100" Height="45" HorizontalAlignment="Left" Content="Hủy" Background="Red" Foreground="Black" FontWeight="Bold"></Button>
+					</StackPanel>
+
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="2">
+						<Button x:Name="suaMatKhauBtn" Click="suaMatKhauBtn_Click"  Margin="20,0,0,0" Width="100" Height="45" HorizontalAlignment="Left" Content="Sửa" Background="Blue" Foreground="White"></Button>
+						<Button  x:Name="huySuaMatKhauBtn" Click="huySuaMatKhauBtn_Click" Margin="20,0,10,0" Width="100" Height="45" HorizontalAlignment="Left" Content="Hủy" Visibility="Collapsed" Background="Red" Foreground="Black" FontWeight="Bold"></Button>
+					</StackPanel>
+					<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="3">
+						<Button x:Name="suaEmailBtn" Click="suaEmailBtn_Click"  Margin="20,0,0,0" Width="100" Height="45" HorizontalAlignment="Left" Content="Sửa" Background="Blue" Foreground="White"></Button>
+						<Button  x:Name="huySuaEmailBtn" Visibility="Collapsed" Click="huySuaEmailBtn_Click" Margin="20,0,10,0" Width="100" Height="45" HorizontalAlignment="Left" Content="Hủy" Background="Red" Foreground="Black" FontWeight="Bold"></Button>
+					</StackPanel>
+				</Grid>
+			</Grid>
+		</Grid>
+	</DockPanel>
+</Window>
