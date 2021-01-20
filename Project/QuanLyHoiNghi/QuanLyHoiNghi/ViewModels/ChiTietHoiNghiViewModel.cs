@@ -105,9 +105,7 @@ namespace QuanLyHoiNghi.ViewModels
                         dangky.TRANGTHAI = 0;
                         dangky.THOIGIANDK = DateTime.Now;
                         db.DANGKITHAMGIAs.Add(dangky);
-
-                        HOINGHI hn = db.HOINGHIs.Where(o => o.IDHN == this.HoiNghi.IDHN).FirstOrDefault();
-                        hn.SOLUONG += 1;
+                      
                         db.SaveChanges();
                     }
 
@@ -119,8 +117,6 @@ namespace QuanLyHoiNghi.ViewModels
                     MessageBox.Show("Đã có lỗi xảy ra.");
                 }
             }
-
-            MessageBox.Show(this.HoiNghi.SOLUONG.ToString());
         }
         
         private void UnSignUp()
@@ -143,9 +139,13 @@ namespace QuanLyHoiNghi.ViewModels
                                   select dk;
                         if (dky.Count() > 0)
                         {
+                            if(dky.First().TRANGTHAI == 2)
+                            {
+                                HOINGHI hn = db.HOINGHIs.Where(o => o.IDHN == this.HoiNghi.IDHN).FirstOrDefault();
+                                hn.SOLUONG -= 1;
+                            }
                             db.DANGKITHAMGIAs.Remove(dky.First());
-                            HOINGHI hn = db.HOINGHIs.Where(o => o.IDHN == this.HoiNghi.IDHN).FirstOrDefault();
-                            hn.SOLUONG -= 1;
+                           
                             db.SaveChanges();
                             Status = 0;
                             SignUpCommand = new RelayCommand(SignUp);
@@ -155,9 +155,7 @@ namespace QuanLyHoiNghi.ViewModels
                 catch
                 {
                     MessageBox.Show("Đã có lỗi xảy ra.");
-                }
-
-                MessageBox.Show(this.HoiNghi.SOLUONG.ToString());
+                }             
             }
         }
     }
