@@ -269,15 +269,7 @@ namespace QuanLyHoiNghi.ViewModels
                                 break;
                             }
                         }
-                        //foreach (var item in db.HOINGHIs)
-                        //{
-                        //    if (item.IDHN == this.HoiNghi.IDHN)
-                        //    {
-                        //        item.SOLUONG--;
-                        //        this.HoiNghi.SOLUONG--;
-                        //        break;
-                        //    }
-                        //}
+                      
                         db.SaveChanges();
 
                     }
