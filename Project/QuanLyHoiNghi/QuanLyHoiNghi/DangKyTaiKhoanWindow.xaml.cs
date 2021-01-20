@@ -80,19 +80,22 @@ namespace QuanLyHoiNghi
             }
 
             List<string> username = viewModel.layTatCaUserName();
-            if(username.IndexOf(tenDangNhapTB.Text) >= 0)
+            for (int i = 0; i < username.Count; i++)
             {
-                if (loiTB.Visibility == Visibility.Hidden)
+                if (String.Compare(username[i], tenDangNhapTB.Text, true) == 0)
                 {
-                    loiTB.Visibility = Visibility.Visible;
-                    loiTB.Text = "Tên đăng nhập đã tồn tại.";
+                    if (loiTB.Visibility == Visibility.Hidden)
+                    {
+                        loiTB.Visibility = Visibility.Visible;
+                        loiTB.Text = "Tên đăng nhập đã tồn tại.";
+                    }
+                    else
+                    {
+                        loiTB.Text = "Tên đăng nhập đã tồn tại.";
+                    }
+
+                    return;
                 }
-                else
-                {
-                    loiTB.Text = "Tên đăng nhập đã tồn tại.";
-                }
-                
-                return;
             }
 
            
