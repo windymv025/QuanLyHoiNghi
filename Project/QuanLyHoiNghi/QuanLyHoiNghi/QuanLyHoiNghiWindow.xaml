@@ -96,7 +96,7 @@
 				</Image>
 
 				<!--Hội nghị-->
-				<ListView Grid.Row="2" HorizontalContentAlignment="Center"  x:Name="lvDanhSachHoiNghiQL" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lvDanhSachHoiNghiQL_SelectionChanged">
+				<ListView Grid.Row="2"  x:Name="lvDanhSachHoiNghiQL" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lvDanhSachHoiNghiQL_SelectionChanged">
 					<ListView.ItemsPanel>
 							<ItemsPanelTemplate>
 								<StackPanel Width="700" ></StackPanel>
