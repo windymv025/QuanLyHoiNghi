@@ -37,7 +37,7 @@ namespace QuanLyHoiNghi.ViewModels
 
         public int IndexDiaDiem { get; set; }
 
-        public String SoLuong { get; set; }
+        public string SoLuong { get; set; }
 
         public String MoTa { get; set; }
 
@@ -117,9 +117,12 @@ namespace QuanLyHoiNghi.ViewModels
             {
                 int iddd = this.ListDiaDiem[IndexDiaDiem].IDDD;
                 var listHN = db.HOINGHIs.Where(o =>
-                    (o.IDDD == iddd && o.IDHN != this.HoiNghi.IDHN && (o.THOIGIANBATDAU >= this.NgayBatDau && o.THOIGIANBATDAU <= this.NgayKetThuc ||
-                                                                       o.THOIGIANKETTHUC >= this.NgayBatDau && o.THOIGIANKETTHUC <= this.NgayKetThuc))).ToList();
-                if (listHN.Count != 0)
+                    (o.IDDD == iddd && o.IDHN != this.HoiNghi.IDHN && 
+                        (o.THOIGIANBATDAU >= this.NgayBatDau && o.THOIGIANBATDAU <= this.NgayKetThuc 
+                            || o.THOIGIANKETTHUC >= this.NgayBatDau && o.THOIGIANKETTHUC <= this.NgayKetThuc)
+                        )).ToList();
+               
+                if (listHN.Count() > 0)
                 {
                     MessageBox.Show("Đã có hội nghị diễn tra trong khung giờ này.");
                     return false;
@@ -166,7 +169,7 @@ namespace QuanLyHoiNghi.ViewModels
                 }
 
             }
-            catch
+            catch (Exception ex)
             {
                 MessageBox.Show("Đã có lỗi xảy ra.");
             }
@@ -198,23 +201,26 @@ namespace QuanLyHoiNghi.ViewModels
             }
         }
 
-        private String SaveImage(String fileName)
+        private string SaveImage(string fileName)
         {
-            String imageFolderPath = Path.Combine(Environment.CurrentDirectory, "Images");
+            string imageFolderPath = Path.Combine(Environment.CurrentDirectory, "Images");
             if (!Directory.Exists(imageFolderPath))
                 Directory.CreateDirectory(imageFolderPath);
 
-            String newFileName = DateTime.Now.ToString("dd-MM-yy-HH-mm-ss") + Path.GetExtension(fileName);
-            String imagePath = Path.Combine(imageFolderPath, newFileName);
+            var info = new FileInfo(fileName);
+            var newName = $"{Guid.NewGuid()}{info.Extension}";
+
+            //string newFileName = DateTime.Now.ToString("dd-MM-yy-HH-mm-ss") + Path.GetExtension(fileName);
+            string imagePath = Path.Combine(imageFolderPath, newName);
             File.Copy(fileName, imagePath);
 
-            return "Images\\" + newFileName;
+            return "Images\\" + newName;
 
         }
 
         private void DeleteImage(String fileName)
         {
-            String path = Path.Combine(Environment.CurrentDirectory, fileName);
+            string path = Path.Combine(Environment.CurrentDirectory, fileName);
             if (File.Exists(path))
                 File.Delete(path);
         }

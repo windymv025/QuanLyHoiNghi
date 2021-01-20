@@ -31,10 +31,6 @@
 			</Grid>
 
 			<Grid>
-				<Grid.ColumnDefinitions>
-					<ColumnDefinition Width="97*"/>
-					<ColumnDefinition Width="157*"/>
-				</Grid.ColumnDefinitions>
 				<Grid.RowDefinitions>
 					<RowDefinition Height="100"></RowDefinition>
 					<RowDefinition Height="15"/>
@@ -44,14 +40,14 @@
 				</Grid.RowDefinitions>
 
 				<!--Tên phần mềm-->
-				<StackPanel HorizontalAlignment="Center" Grid.ColumnSpan="2" Visibility="Visible" >
+				<StackPanel HorizontalAlignment="Center" Grid.ColumnSpan="2" Visibility="Visible" Grid.Column="1" Margin="70,0,268,0" >
 					<TextBlock Text="Phần mềm Quản lý Hội nghị" FontSize="35" FontWeight="Bold" FontFamily="Segoe UI Black" Margin="0,20,0,10"></TextBlock>
 					<TextBlock Text="Phần mềm hỗ trợ quản lý hội nghị hiệu quả" FontWeight="Bold" HorizontalAlignment="Center" FontStyle="Italic" FontSize="14"></TextBlock>
 				</StackPanel>
-				<Border  Grid.Row="1" Height="1" Background="Black" BorderBrush="Black" OpacityMask="Black" VerticalAlignment="Bottom" Grid.ColumnSpan="2" ></Border>
+				<Border  Grid.Row="1" Height="1" Background="Black" BorderBrush="Black" OpacityMask="Black" VerticalAlignment="Bottom" Grid.ColumnSpan="3" ></Border>
 
 				<!--Tìm kiếm-->
-				<Grid Grid.Row="2" Grid.ColumnSpan="2" >
+				<Grid Grid.Row="2" Grid.ColumnSpan="3" >
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="*"/>
 						<ColumnDefinition Width="50"/>
@@ -110,25 +106,25 @@
 				</Grid>
 
 				<!--Hội nghị-->
-				<ListView x:Name="lvDanhSachHoiNghi" Grid.Row="3"  HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2">
+				<ListView x:Name="lvDanhSachHoiNghi" Grid.Row="3" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="3" SelectionChanged="lvDanhSachHoiNghi_SelectionChanged">
 					<ListView.ItemsPanel>
 						<ItemsPanelTemplate>
 							<StackPanel Width="700"/>
 						</ItemsPanelTemplate>
 					</ListView.ItemsPanel>
 					<ListView.Resources>
-                        <Style TargetType="ListViewItem">
-                            <Style.Triggers>
-                                <Trigger Property="IsKeyboardFocusWithin" Value="True">
-                                    <Setter Property="IsSelected"  Value="True"/>
-                                </Trigger>
+						<Style TargetType="ListViewItem">
+							<Style.Triggers>
+								<Trigger Property="IsKeyboardFocusWithin" Value="True">
+									<Setter Property="IsSelected"  Value="True"/>
+								</Trigger>
 
-                            </Style.Triggers>
-                            <EventSetter Event="PreviewGotKeyboardFocus" Handler="ListViewItem_PreviewGotKeyboardFocus"/>
-                            <EventSetter Event="PreviewLostKeyboardFocus"  Handler="ListViewItem_PreviewLostKeyboardFocus"/>
-                        </Style>
-                    </ListView.Resources>
-                    <ListView.ItemTemplate>
+							</Style.Triggers>
+							<EventSetter Event="PreviewGotKeyboardFocus" Handler="ListViewItem_PreviewGotKeyboardFocus"/>
+							<EventSetter Event="PreviewLostKeyboardFocus"  Handler="ListViewItem_PreviewLostKeyboardFocus"/>
+						</Style>
+					</ListView.Resources>
+					<ListView.ItemTemplate>
 						<DataTemplate>
 							<StackPanel Orientation="Horizontal" Margin="0,5,0,20">
 								<Border  Width="100" Height="100" BorderBrush="Blue" CornerRadius="0" BorderThickness="2">

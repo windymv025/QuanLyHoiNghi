@@ -84,7 +84,7 @@ namespace QuanLyHoiNghi.ViewModels
             List<HOINGHI> list = new List<HOINGHI>();
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                string sqlHoiNghi = $"select * from HOINGHI where (TENHN LIKE N'%{name}%')";
+                string sqlHoiNghi = $"select * from HOINGHI where freetext(TENHN, N'%{name}%')";
                 List<HOINGHI> resultHoiNghi = db.HOINGHIs.SqlQuery(sqlHoiNghi).ToList();
                 DateTime defaultDate = new DateTime();
 
@@ -99,7 +99,7 @@ namespace QuanLyHoiNghi.ViewModels
                                      select item).ToList();
                 }
 
-                string sqlDiaDiem = $"select* from DIADIEMTOCHUC where (TENDD LIKE N'%{place}%')";
+                string sqlDiaDiem = $"select* from DIADIEMTOCHUC where  freetext(TENDD, N'%{place}%')";
                 var resultDiaDiem = db.DIADIEMTOCHUCs.SqlQuery(sqlDiaDiem);
 
                 if (resultDiaDiem.Count() > 0 && resultHoiNghi.Count > 0)
@@ -154,7 +154,7 @@ namespace QuanLyHoiNghi.ViewModels
             List<HOINGHI> list = new List<HOINGHI>();
             using (DBQuanLiHoiNghiEntities db = new DBQuanLiHoiNghiEntities())
             {
-                string sqlHoiNghi = $"select * from HOINGHI where (TENHN LIKE N'%{name}%')";
+                string sqlHoiNghi = $"select * from HOINGHI where freetext(TENHN, N'%{name}%')";
                 List<HOINGHI> resultHoiNghi = db.HOINGHIs.SqlQuery(sqlHoiNghi).ToList();
                 DateTime defaultDate = new DateTime();
 
@@ -169,7 +169,7 @@ namespace QuanLyHoiNghi.ViewModels
                                      select item).ToList();
                 }
 
-                string sqlDiaDiem = $"select* from DIADIEMTOCHUC where (TENDD LIKE N'%{place}%')";
+                string sqlDiaDiem = $"select* from DIADIEMTOCHUC where  freetext(TENDD, N'%{place}%')";
                 var resultDiaDiem = db.DIADIEMTOCHUCs.SqlQuery(sqlDiaDiem);
 
                 if (resultDiaDiem.Count() > 0 && resultHoiNghi.Count > 0)

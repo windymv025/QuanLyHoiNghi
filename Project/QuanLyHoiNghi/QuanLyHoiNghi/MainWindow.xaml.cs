@@ -243,5 +243,10 @@ namespace QuanLyHoiNghi
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void lvDanhSachHoiNghi_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
