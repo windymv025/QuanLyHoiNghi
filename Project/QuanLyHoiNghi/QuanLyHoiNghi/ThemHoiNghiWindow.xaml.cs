@@ -88,7 +88,7 @@ namespace QuanLyHoiNghi
 
         private void txbSoLuong_TextChanged(object sender, TextChangedEventArgs e)
         {
-            txbSoLuong.Text = Regex.Replace(txbSoLuong.Text, @"[^\d]", String.Empty);
+            txbSoLuong.Text = Regex.Replace(txbSoLuong.Text, "[^0-9]+", String.Empty);
         }
     }
 }

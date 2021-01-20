@@ -96,5 +96,9 @@ namespace QuanLyHoiNghi
             this.Close();
         }
 
+        private void soLuongTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            soLuongTxt.Text = Regex.Replace(soLuongTxt.Text, "[^0-9]+", String.Empty);
+        }
     }
 }

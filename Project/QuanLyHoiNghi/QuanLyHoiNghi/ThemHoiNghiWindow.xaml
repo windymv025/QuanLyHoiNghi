@@ -158,13 +158,13 @@
                 </Grid>
 
                 <!-- Số lượng -->
-                <TextBox Grid.Row="3" Grid.Column="1" IsEnabled="False"
+                <TextBox Grid.Row="3" Grid.Column="1"
                          x:Name="txbSoLuong"
                          Height="30"
                          VerticalContentAlignment="Center"
                         VerticalAlignment="Top"
                          Padding="3"
-                         Text="{Binding SoLuong}"/>
+                         Text="0"/>
 
                 <!-- Mô tả  -->
                 <TextBox Grid.Row="4" Grid.Column="1"

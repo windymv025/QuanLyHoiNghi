@@ -156,7 +156,7 @@
                 </Grid>
 
 
-                <TextBox Grid.Row="3" Grid.Column="1" IsEnabled="False"
+                <TextBox Grid.Row="3" Grid.Column="1" TextChanged="soLuongTxt_TextChanged"
 						 Name="soLuongTxt"
                            Height="30"
                            VerticalAlignment="Top"
