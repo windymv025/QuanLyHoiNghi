@@ -3,6 +3,10 @@
 # Lớp 18_1
 # Nhóm 01
 
+#------------------------------------------------------------------------------------------------#
+# ======================================== DEMO SAN PHAM ======================================= #
+#------------------------------------------------------------------------------------------------#
+
 # --------------------------- #
 # ----- Thành viên nhóm ----- #
 # --------------------------- #
@@ -20,7 +24,7 @@
     - User có các thông tin như admin.
     - Các vấn đề ràng buộc (địa điểm không thể sử dụng chung trong cùng thời điểm), phân quyền,…
 
-# II. Các chức năng cần có
+# II. Các chức năng cần có:
     1. Đối với phân hệ Khách:
         - Màn hình chính giới thiệu chương trình và danh sách các Hội nghị với thông tin ngắn gọn.
             + Cho phép sắp xếp: Tăng dần, giảm dần.
@@ -29,15 +33,23 @@
             
         - Màn hình xem chi tiết Hội nghị với đầy đủ thông tin của Hội nghị và cho phép đăng ký tham dự (đề xuất lựa chọn nếu chưa có account thì đăng ký account, nếu đã có account thì đăng nhập và đăng ký tham dự).
         
+        - Màn hình đăng nhập.
+        
+        - Màn hình đăng ký (Có chức năng mã hóa mật khẩu).
+            + Đăng ký tài khoản thường (Không thể tạo hội nghị)
+            + Đăng ký tài khoản Admin (Có thêm quyền tạo và quản lý hội nghị)
+        
     2. Đối với phân hệ người dùng (user) đã đăng nhập:
         - Có đủ các chức năng của phân hệ Khách.
         
-        - Màn hình profile để xem và chỉnh sửa thông tin cá nhân.
-
         - Màn hình thống kê các Hội nghị đã đăng ký tham dự.
             + Cho phép sắp xếp: Tăng dần, giảm dần.
             + Cho phép tìm kiếm theo tên, địa điểm và thời gian tổ chức hội nghị.
             + Sử dụng Full Text Search trong tìm kiếm tên hội nghị và tên địa điểm.
+        
+        - Màn hình profile để xem và chỉnh sửa thông tin cá nhân.
+        
+        - Chức năng đăng xuất.
 
     3. Đối với phân hệ Admin:
         - Màn hình quản lý Hội nghị: 
@@ -49,10 +61,12 @@
             + Xem danh sách.
             + Ngăn chặn truy cập.
             + Sắp xếp và lọc theo nhiều tiêu chí.
-        
-        
-        
-        
+            
+# III. Các con đường bất hạnh đã được xử lý:
+    - Không cho user đăng ký nếu số người tham dự đã bị đầy.
+    - Giao diện thu phóng không bị hư.
+    - Không cho thêm mới hội nghị nếu thời gian diễn ra hội nghị trùng với thời gian của hội nghị đã tạo trước đó.
+    - ...
         
         
         
